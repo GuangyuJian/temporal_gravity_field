@@ -13,10 +13,13 @@ function [wnm,w_han]=sh_filter_han(max_degree,r0,r1,m1,R)
 %       wcs     [(Nmax+1)  x  (Nmax+1)/2] 
 %               weighted coefficients storaged as cs-format
 %----------------------------------------------------------------------------
+
 % Authors: Karl Jian
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-10
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
 %**************************************************************************
 % Ref: Han, SC et al. 2005. 
 % ‘Non-Isotropic Filtering of GRACE Temporal Gravity 

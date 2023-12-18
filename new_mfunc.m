@@ -11,6 +11,7 @@ function new_mfunc(filename)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-18
+% Encode: UTF-8
 %**************************************************************************
 %
 dateStr = datestr(now, 'yyyy-mm-dd');
@@ -45,6 +46,7 @@ header = [header, sprintf('%% address: %s\n', "Guangdong University of Technolog
 header = [header, sprintf('%% email: %s\n', "gyjian@mail2.gdut.edu.cn")];
 header = [header, sprintf('%% date: %s\n', dateStr)];
 header = [header, sprintf('%% MATLAB_version: %s\n', version)];
+header = [header, sprintf('%% Encode: UTF-8 %s\n', version)];
 header = [header, sprintf('%%**************************************************************************\n')];
 header = [header, sprintf('%%Ref:\n')];
 header = [header, sprintf('%%**************************************************************************\n')];

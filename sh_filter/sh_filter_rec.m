@@ -9,10 +9,13 @@ function [wnm]=sh_filter_rec(wnm_basic,recn)
 %       wnm           [(Nmax+2)*(Nmax+1)/2 x 1]   
 %                     reconstructive weighted coefficients storaged as clm-format
 %----------------------------------------------------------------------------
+
 % Authors: Karl Jian
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-10
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
 %**************************************************************************
 % Ref: Jian, Guangyu, Chuang Xu, Fang Zou, and Bo Huang. 2023. 
 % ‘A Novel GRACE Reconstructive Filter to Extract the Mass Changes in Madagascar’. 

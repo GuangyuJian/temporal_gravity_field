@@ -9,10 +9,13 @@ function [wnm]=sh_filter_gauss(max_degree,rf,radius_earth)
 %       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
 %               weighted coefficients storaged as clm-format
 %----------------------------------------------------------------------------
+
 % Authors: Karl Jian
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-10
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
 %**************************************************************************
 % Ref:  Chambers et al.JGR, 2006, 
 % Observing seasonal steric sea level variations with GRACE and satellite altimetry

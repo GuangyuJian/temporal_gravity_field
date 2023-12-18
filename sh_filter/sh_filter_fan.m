@@ -9,10 +9,13 @@ function [wnm]=sh_filter_fan(max_degree,rf,radius_earth)
 %       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
 %               weighted coefficients storaged as clm-format                                   
 %----------------------------------------------------------------------------
+
 % Authors: Karl Jian
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-10
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
 %**************************************************************************
 % Ref:  Zhang, Zi-Zhan, B. F. Chao, Yang Lu, and Hou-Tse Hsu. 2009. 
 % ‘An Effective Filtering for GRACE Time-Variable Gravity: Fan Filter’. 

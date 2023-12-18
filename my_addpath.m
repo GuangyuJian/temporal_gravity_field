@@ -10,6 +10,7 @@ function []=my_addpath(root_path)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-18
+% Encode: UTF-8
 %**************************************************************************
 % use: my_addpath('F:\V4')
 % root_path='F:\V4\allmy_trans_func'
