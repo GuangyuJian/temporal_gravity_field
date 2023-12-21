@@ -26,6 +26,8 @@ function [cs, rows, cols]=storage_sc2cs(field)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
+
+SHBundle_check('sc2cs')
 [cs, rows, cols] = sc2cs(field);  %this function comed from project 'SHBundle'.                                 
                                   
                               

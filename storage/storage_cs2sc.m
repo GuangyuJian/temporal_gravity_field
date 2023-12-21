@@ -27,6 +27,8 @@ function [sc, rows, cols]=storage_cs2sc(field, backval)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
+
+SHBundle_check('cs2sc')
 [sc, rows, cols] = cs2sc(field, backval);  %this function comed from project 'SHBundle'.                                 
                                   
                               

@@ -35,6 +35,8 @@ function [outc,outs,nm]=storage_cs2vec(in,ordflag)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
+
+SHBundle_check('cs2vec')
 [outc,outs,nm] = cs2vec(in,ordflag);  %this function comed from project 'SHBundle'.                                 
                       
 end
