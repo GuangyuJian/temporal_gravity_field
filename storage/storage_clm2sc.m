@@ -36,7 +36,8 @@ function varargout=storage_clm2sc(clm, varargin)
 %Ref: 
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
-%**************************************************************************                        
+%**************************************************************************
+SHBundle_check('clm2sc')
 varargout = clm2sc(clm, varargin);  %this function comed from project 'SHBundle'.                                 
                                   
                               

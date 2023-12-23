@@ -26,6 +26,7 @@ function  vec = storage_cssc2clm(mat,lmax)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
+SHBundle_check('cssc2clm')
 vec = cssc2clm(mat,lmax);  %this function comed from project 'SHBundle'.                                 
                                   
                               

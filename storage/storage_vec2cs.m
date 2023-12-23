@@ -28,6 +28,7 @@ function [out]=storage_vec2cs(nm,inC,inS)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
+SHBundle_check('vec2cs')
 out = vec2cs(nm,inC,inS);  %this function comed from project 'SHBundle'.                                 
                       
 end
