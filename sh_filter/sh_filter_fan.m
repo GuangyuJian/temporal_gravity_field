@@ -22,18 +22,18 @@ function [wnm]=sh_filter_fan(max_degree,rf,radius_earth)
 % GEOPHYSICAL RESEARCH LETTERS.
 %**************************************************************************
 
-r1=rf*1000;%%Unit:km
+% r1=rf*1000;%%Unit:km
 % weights per degree
 
 for n=0:max_degree
-    wn(n+1)=exp(-((n)*r1/radius_earth)^2/(4*log(2)));
+    wn(n+1)=exp(-((n)*rf/radius_earth)^2/(4*log(2)));
 end
 
 % the weights are sorted by degree n, then by order m.
 for n=0:max_degree
     st=2+(n+2)*(n-1)/2;
     for m=0:n
-        wnm(st+m,1)=Wn(n+1);
+        wnm(st+m,1)=wn(n+1)*wn(m+1);
     end
 end                                               
                               

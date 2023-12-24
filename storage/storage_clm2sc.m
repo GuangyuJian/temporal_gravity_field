@@ -1,4 +1,4 @@
-function varargout=storage_clm2sc(clm, varargin)                               
+function [sc,maxGOout,stdsc]=storage_clm2sc(clm, varargin)                               
 %                              
 % CLM2SC converts a list of coefficients in clm-format to /S|C\-format 
 % and--if available--does the same with the standard deviations.
@@ -38,8 +38,10 @@ function varargout=storage_clm2sc(clm, varargin)
 % function from project 'SHBundle'
 %**************************************************************************
 SHBundle_check('clm2sc')
-varargout = clm2sc(clm, varargin);  %this function comed from project 'SHBundle'.                                 
-                                  
-                              
+if length(varargin)==2
+[sc,maxGOout,stdsc] = clm2sc(clm, varargin{1}, varargin{2});  %this function comed from project 'SHBundle'.                                 
+% elseif    length(varargin)==4                    
+% [sc,c,s] = clm2sc(clm, varargin{1},varargin{2}, varargin{3},varargin{4});  %this function comed from project 'SHBundle'.                                 
+end                              
 end
 
