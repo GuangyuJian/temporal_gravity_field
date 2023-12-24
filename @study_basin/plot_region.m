@@ -4,7 +4,7 @@ function []=plot_region(self)
 %**************************************************************************
 % In   :
 %       self              [object] a object from the class "study_basin"
-% 
+%
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)
@@ -16,13 +16,15 @@ function []=plot_region(self)
 
 
 if nargin==1
-    figure;
+    figure('Position',[100 100 1500 500 ]);
+    tiledlayout(1,3,"TileSpacing","compact")
+    nexttile;
     plot_boundary(self);
     hold on;
     plot_grid(self);
-    figure;
+    nexttile;
     plot_mask(self);
-    figure;
+    nexttile;
     plot_cos_weight_grid(self);
 end
 
@@ -44,8 +46,10 @@ end
 
 function plot_grid(self)
 hold on;
-x=self.grid_fir.*self.mask;
-y=self.grid_ceta.*self.mask;
+
+[grid_fir,grid_ceta]=meshgrid(self.fir,self.ceta);
+x=grid_fir.*self.mask;
+y=grid_ceta.*self.mask;
 scatter(x(:),y(:));
 
 end

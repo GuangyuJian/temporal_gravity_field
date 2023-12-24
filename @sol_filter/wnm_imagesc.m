@@ -34,7 +34,7 @@ clm=[nn mm wnm wnm];
 [temp,maxGOout,stdsc]=storage_clm2sc(clm,'max_lm', maxn);
 
 temp((temp==0))=nan;
-figure;
+% figure;
 
 h=imagesc(-maxn:1:maxn,0:maxn,temp);
 

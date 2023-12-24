@@ -21,9 +21,11 @@ wnm=self.wnm;
 maxn=self.maxn;
 
 
-plot(wnm);
+plot(wnm,'LineWidth',1.5);
 ylabel('weight');
 caxis ([0 1])
 grid on;
+
+set(gca,'FontSize',12)
 end
 

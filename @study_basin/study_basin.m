@@ -43,13 +43,13 @@ classdef study_basin<handle
     methods
         function self=study_basin(Resolution,box)
             %             default
-            self.boundary_fir=[];
-            self.boundary_ceta=[];
+            self.boundary_fir=[nan];
+            self.boundary_ceta=[nan];
             
             if nargin==1
-                self.set_Resolution(Resolution);
+                self.set_Reso(Resolution);
             elseif nargin==2
-                self.set_Resolution(Resolution,box);
+                self.set_Reso(Resolution,box);
             end
 
             disp('------------------------------------------------');
@@ -62,7 +62,7 @@ classdef study_basin<handle
 
         %%
         %setting your study basin by giving the boundary
-        get_mask(self,boundary_fir1,boundary_ceta1,boundary_fir2,boundary_ceta2);
+        get_mask(self,bf1,bc1,bf2,bc2);
         plot_region(self)%show the study basin
         %=======================================
         self=set_fir_ceta(self,fir,ceta);

@@ -31,12 +31,12 @@ ceta=self.ceta;
 if nargin==5
     self.boundary_fir=[bf1,NaN,bf2];
     self.boundary_ceta=[bc1,NaN,bc2];
-    [M,C]=GRID_boundary2grid(fir,ceta,bf1,bc1,bf2,bc2);
+    [M,C]=boundary2grid(fir,ceta,bf1,bc1,bf2,bc2);
     
 elseif nargin==3
     self.boundary_fir=bf1;
     self.boundary_ceta=bc1;
-    [M,C]=GRID_boundary2grid(fir,ceta,bf1,bc1);
+    [M,C]=boundary2grid(fir,ceta,bf1,bc1);
 
 elseif nargin<3 
    error('check');
@@ -45,4 +45,41 @@ end
 self.mask=M;
 self.cos_weight_grid=C;
 disp("mask is done")
+end
+
+function [mask,cos_weight_grid]=boundary2grid(M_fir,M_ceta,bf1,bc1,bf2,bc2)
+
+fir=M_fir;
+ceta=M_ceta;
+
+if ~isrow(fir)
+error('longititude vector is not row vector');
+end
+
+if ~isrow(ceta)
+error('latitude vector is not row vector');
+end
+fir=fir(:)';
+ceta=ceta(:)';
+
+
+
+[x,y]=meshgrid(M_fir,M_ceta);
+if nargin==4
+    mask=inpolygon(x,y,bf1,bc1);
+    temp=repmat(cosd(ceta)',[size(fir)]);
+%     cos_weight_grid=temp.*mask/sum(temp.*mask,"all");
+    cos_weight_grid=temp;%.*mask/sum(temp.*mask,"all");
+elseif nargin==6
+    mask1=inpolygon(x,y,bf1,bc1);
+    mask2=inpolygon(x,y,bf2,bc2);
+    mask=mask1-mask2;
+    temp=repmat(cosd(ceta)',[size(fir)]);
+%     cos_weight_grid=temp.*mask/sum(temp.*mask,"all");
+    cos_weight_grid=temp;%.*mask/sum(temp.*mask,"all");
+end
+%
+
+%
+
 end
