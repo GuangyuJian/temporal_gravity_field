@@ -1,5 +1,8 @@
 clear;
+root_path=dir;
+my_addpath(root_path(1).folder);
 clc;
+
 my_addpath('\@sol_filter\');
 %%
 clc;
@@ -28,7 +31,7 @@ legend(str_legend)
 
 %%
 close all;
-figure('Position',[0 100 800*3 800]);
+figure('Position',[0 100 800*2 500]);
 tiledlayout(2,4,"TileSpacing","compact")
 
 
