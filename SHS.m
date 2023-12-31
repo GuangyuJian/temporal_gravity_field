@@ -1,4 +1,4 @@
-function [sf]=SHS(sol_tgf,shc,unit)
+function [sf]=SHS(sol_tgf,sol_shc,unit)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -6,7 +6,6 @@ function [sf]=SHS(sol_tgf,shc,unit)
 % Out  :
 %
 %----------------------------------------------------------------------------
-
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
@@ -21,6 +20,11 @@ sol_filter=sol_tgf.sol_filter;
 study_basin=sol_tgf.study_basin;
 fir=study_basin.fir;
 ceta=study_basin.ceta;
+
+if strcmp(unit,'ewh (m)')
+    sol_shc.change_unit('mc');
+    shc=sol_shc.storage;
+end
 
 maxn=sol_filter.maxn;
 
@@ -41,7 +45,7 @@ end
 % pre-assigan memory space
 value=zeros(nceta,nfir,ntime);
 
-temp=zeros(en,nceta);
+ temp=zeros(en,nceta);
 
 for t=1:ntime
     cnm=shc(t).cnm(1:1:en);

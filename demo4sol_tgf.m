@@ -1,4 +1,4 @@
-my_addpath('\@study_basin');
+
 my_addpath('E:\github_desktop\test\temporal_gravity_field\demo_test\');
 %%
 s=shaperead('F:\data\10 basin_shpfile\中国流域划分\珠江区1：25万界线数据集（2002年）\珠江区1：25万界线数据集（2002年）\珠江区.shp');
@@ -22,10 +22,16 @@ clc
 mysolution=sol_tgf(myf,pearl_river);
 clc;
 %%
-shc(1).cnm=sh_jpl60(1).C;
-shc(1).snm=sh_jpl60(1).S;
+clear shc;
+% for tt=1:130
+shc(1).cnm=solcsrddk5.SH(30).C;
+shc(1).snm=solcsrddk5.SH(30).S;
 
-[sf]=SHS(mysolution,shc,'ewh (mm)');
+shc=sol_shc(shc,60,'shc','gc');
+%%
+[sf]=SHS(mysolution,shc,'ewh (m)');
+%%
+sf.imagesc_tt(1)
 %%
 
 %%
