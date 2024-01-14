@@ -44,6 +44,7 @@ end
 
 self.mask=M;
 self.cos_weight_grid=C;
+show_time_tag;
 disp("mask is done")
 end
 

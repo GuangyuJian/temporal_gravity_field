@@ -7,9 +7,10 @@ if PnMl_flag==1
     else
         error('wrong');
     end
-    self.DD_start_order=PnMl_m;
+    self.PnMl_m=PnMl_m;
 else
     self.PnMl_flag=0;
 end
-
+show_time_tag;
+disp('sol_filter:——>pre_destrip: done');
 end

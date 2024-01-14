@@ -27,6 +27,8 @@ classdef study_basin<handle
 
     properties
         %=================
+        name char
+        %=================
         Resolution          %resolution of sphere function
         fir                 %longitude vector of cacilate point
         ceta                %latitude vector of cacilate point

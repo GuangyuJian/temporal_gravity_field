@@ -27,9 +27,12 @@ for l=0:Lmax
     end
 
     Coe_P(st:en,:)=p.*m;
+%     plm(l+1,1:l+1)=p.*m;
 %     if Lmax>200
 %         waitbar((l+1)/(Lmax+1),h);
 %     end
     
 end
+
+
 end

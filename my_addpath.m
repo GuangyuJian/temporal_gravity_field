@@ -14,6 +14,34 @@ function []=my_addpath(root_path)
 %**************************************************************************
 % use: my_addpath('F:\V4')
 % root_path='F:\V4\allmy_trans_func'
+show_time_tag;
 addpath(genpath([root_path]));
 disp([root_path 'is done'])
 end
+
+function []=show_time_tag()
+%
+%----------------------------------------------------------------------------
+% In   :
+%
+% Out  :
+%
+%----------------------------------------------------------------------------
+
+
+% Authors: Karl Jian (K.J)
+% address: Guangdong University of Technology(GDUT)
+% email: gyjian@mail2.gdut.edu.cn
+% date: 2024-01-11
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+%**************************************************************************
+%Ref:
+%**************************************************************************
+
+if nargin==0
+disp('-------------------------');
+disp(datetime('now'));
+end
+
+end
+

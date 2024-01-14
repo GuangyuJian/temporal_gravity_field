@@ -23,7 +23,7 @@ if exist(func_name)
 
 
 else
-    error(['function ' func_name ' from SHBundle project in the current path ']);
+    error(['check function ' func_name ' from SHBundle project in the current path ']);
 end
 
 end

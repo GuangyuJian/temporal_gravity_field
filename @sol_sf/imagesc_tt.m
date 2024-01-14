@@ -29,5 +29,16 @@ c.Label.String=self.unit;
 
 colormap("jet");
 
+if ~isempty(self.time)
+iy=self.int_year(tt);
+im=self.int_month(tt);
+
+if im<10
+titlestr=([num2str(iy) '0' num2str(im) ]);
+else
+titlestr=([num2str(iy) num2str(im) ]);
+end
+title(titlestr);
+end
 end
 

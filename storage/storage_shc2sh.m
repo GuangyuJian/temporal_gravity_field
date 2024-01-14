@@ -30,7 +30,7 @@ function [sh]=storage_shc2sh(shc)
 %Ref:
 %**************************************************************************
 
-nsh=length(shct(1).c);
+nsh=length(shct(1).cnm);
 sh=zeros(nsh*2,1);
 sh(:,1)=[shc(1).c;shc(1).s];
 end

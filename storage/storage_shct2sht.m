@@ -37,11 +37,11 @@ function [sht]=storage_shct2sht(shct)
 %Ref:
 %**************************************************************************
 tt=length(shct);
-nsh=length(shct(1).c);
+nsh=length(shct(1).cnm);
 
 sht=zeros(nsh*2,tt);
 for i=1:tt         
-sht(:,i)=[shct(i).c;shct(i).s];
+sht(:,i)=[shct(i).cnm;shct(i).snm];
 end
 
 end

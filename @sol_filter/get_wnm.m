@@ -41,6 +41,8 @@ switch self.Filter_Type
 
 end
 self.wnm=wnm;
-disp('get_wnm:  weight function is storaging');
+
+show_time_tag;
+disp('sol_filter:——>get_wnm:  weight function is storaging');
 
 end
