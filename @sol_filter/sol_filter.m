@@ -59,8 +59,10 @@ classdef sol_filter<handle
         pre_destrip(self,PnMl_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
         pre_destriping(self,option); %the destriping method from fengwei toolbox
         %% show the filter function
-        wnm_plot(self);
-        wnm_imagesc(self);
+        h=wnm_plot(self);
+        h=wnm_imagesc(self);
+        [h]=wn_plot(self);
+        [h]=wn_semilogy(self);
     end
 end
 

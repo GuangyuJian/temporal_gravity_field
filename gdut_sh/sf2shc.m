@@ -52,7 +52,7 @@ end
 
 %% create sf object (spherical function)
 switch sol_sf.unit
-    case 'ewh (m)'
+    case 'ewh (mm)'
     my_shc=sol_shc(shc,maxn,'shc','mc');
 
 end

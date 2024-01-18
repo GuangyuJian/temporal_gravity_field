@@ -33,6 +33,8 @@ switch self.Filter_Type
         end
         wnm=sh_filter_fan(maxn,(rn+rm)/2,radius_earth);
         wnm=sh_filter_rec(wnm,recn);
+    case 'han'
+        wnm=sh_filter_han(maxn,radius_earth);
 
     otherwise
         en=1+(maxn+3)*(maxn)/2;

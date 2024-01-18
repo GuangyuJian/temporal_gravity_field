@@ -1,11 +1,13 @@
 classdef sol_shc<handle
 
     properties
-        type char  {mustBeMember(type,{'gc','mc'})}='gc';
-        unit  char  {mustBeMember(unit,{'none','ewh (m)'})}='none';
-        storage_type(1,:) char {mustBeMember(storage_type,{'vec','cs','shc','clm','sc','sh'})}='shc';
+        type char  {mustBeMember(type,{'gc','mc','gdc'})}='gc';
+        unit  char  {mustBeMember(unit,{'none','ewh (mm)','ugal'})}='none';
+        storage_type(1,:) char {mustBeMember(storage_type,{'shc'})}='shc';
+
         maxn double
         storage struct
+        shc_sigma  struct
         time
         int_year
         int_month
@@ -21,6 +23,8 @@ classdef sol_shc<handle
             for tt=1:length(shc)
                 shc(tt).cnm=shc(tt).cnm(1:en);
                 shc(tt).snm=shc(tt).snm(1:en);
+                %                 shc(tt).cnm_sigma=shc(tt).cnm_sigma(1:en);
+                %                 shc(tt).snm_sigma=shc(tt).snm_sigma(1:en);
             end
             self.storage=shc;
             self.maxn=maxn;
@@ -29,22 +33,29 @@ classdef sol_shc<handle
             switch type
 
                 case 'gc'
-
                     self.unit='none';
-
+                case 'gdc'
+                    self.unit='ugal';
                 case 'mc'
-                    self.unit='ewh (m)';
+                    self.unit='ewh (mm)';
             end
 
             self.info=[];
         end
 
-        self=change_type(self,unit)
-        self=change_storage(self,storage_type)
-         [self]=de_bg(self,ts,te);
+        self=change_type(self,unit);
+        [self]=de_bg(self,ts,te);
+
+        % show
         show_info(self);
+        h=show_shc(self,tt);
+        h=show_shc_sigma(self,tt);
+        [h]=show_shc_degree_sigma(self,tt);
+        [h]=show_shc_degree(self,tt);
+        
+        %info
         [self]=append_info(self,info_type);
-    
+
         % math
         objnew = plus(objl,objr);
         objnew = minus(objl,objr)

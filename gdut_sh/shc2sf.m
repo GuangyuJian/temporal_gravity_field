@@ -37,6 +37,7 @@ if sol_filter.PnMl_flag==1
 
     for tt=1:ntime
         %         disp(sol_shc.time(tt))
+        tt
         nn=sol_filter.PnMl_n;
         ll=sol_filter.PnMl_m;
         [shc(tt).cnm]=math_PnMl(shc(tt).cnm,nn,ll,maxn);
@@ -46,10 +47,13 @@ end
 
 switch type
 
-    case ' '
-%         shc=sol_shc.storage;
-    case 'mc'
-       
+    case 'gdc'
+        for k=1:ntime
+            [shc(k).cnm]=gc2gdc(shc(k).cnm,maxn);
+            [shc(k).snm]=gc2gdc(shc(k).snm,maxn);
+        end
+
+    case 'mc'  
         for k=1:ntime
             [shc(k).cnm]=gc2mc(shc(k).cnm,maxn);
             [shc(k).snm]=gc2mc(shc(k).snm,maxn);
@@ -63,8 +67,8 @@ nceta=length(ceta);
 % prepare Ylm (spherical basis function)
 [pnm,cmf,smf,~]=get_sob(sol_filter,study_basin);
 en=1+(maxn+3)*(maxn)/2;
-cmf=cmf(1:maxn+1,:);
-smf=smf(1:maxn+1,:);
+% cmf=cmf(1:maxn+1,:);
+% smf=smf(1:maxn+1,:);
 pnm=pnm(1:en,:);
 % if nfir~=size(cmf,2)
 %     error();
@@ -78,6 +82,7 @@ value=zeros(nceta,nfir,ntime);
 for t=1:ntime
     cnm=shc(t).cnm(1:1:en);
     snm=shc(t).snm(1:1:en);
+
     cnm=cnm(:).*wnm(:);
     snm=snm(:).*wnm(:);
     [value(:,:,t)]=gdut_shs(cnm,snm,cmf,smf,pnm,maxn);
@@ -87,8 +92,10 @@ end
 switch type
 
     case 'mc'
-        unit='ewh (m)';
-    case ' '
+        unit='ewh (mm)';
+    case 'gdc'
+        unit='uGal';
+        
 end
 
 sf=sol_sf(value,unit,fir,ceta);

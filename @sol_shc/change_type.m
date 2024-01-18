@@ -32,17 +32,47 @@ else
     switch temp
 
         case 'gc2mc'
-            self.unit='ewh (m)';
+            self.unit='ewh (mm)';
             for k=1:length(in_shc)
                 [ou_shc(k).cnm]=gc2mc(in_shc(k).cnm,maxn);
                 [ou_shc(k).snm]=gc2mc(in_shc(k).snm,maxn);
             end
+
+        case 'gc2gdc'
+            self.unit='ugal(10^-8 m/s^2)';
+            for k=1:length(in_shc)
+                [ou_shc(k).cnm]=gc2gdc(in_shc(k).cnm,maxn);
+                [ou_shc(k).snm]=gc2gdc(in_shc(k).snm,maxn);
+            end
+
         case 'mc2gc'
-             self.unit='none';
+            self.unit='none';
             for k=1:length(in_shc)
                 [ou_shc(k).cnm]=mc2gc(in_shc(k).cnm,maxn);
                 [ou_shc(k).snm]=mc2gc(in_shc(k).snm,maxn);
+            end
+        case 'mc2gdc'
+            self.unit='ugal(10^-8 m/s^2)';
+            for k=1:length(in_shc)
+                [in_shc(k).cnm]=mc2gc(in_shc(k).cnm,maxn);
+                [in_shc(k).snm]=mc2gc(in_shc(k).snm,maxn);
+                [ou_shc(k).cnm]=gc2gdc(in_shc(k).cnm,maxn);
+                [ou_shc(k).snm]=gc2gdc(in_shc(k).snm,maxn);
+            end
 
+        case 'gdc2mc'
+            self.unit='ewh (mm)';
+            for k=1:length(in_shc)
+                [in_shc(k).cnm]=gdc2gc(in_shc(k).cnm,maxn);
+                [in_shc(k).snm]=gdc2gc(in_shc(k).snm,maxn);
+                [ou_shc(k).cnm]=gc2mc(in_shc(k).cnm,maxn);
+                [ou_shc(k).snm]=gc2mc(in_shc(k).snm,maxn);
+            end
+        case 'gdc2gc'
+            self.unit='none';
+            for k=1:length(in_shc)
+                [ou_shc(k).cnm]=gdc2gc(in_shc(k).cnm,maxn);
+                [ou_shc(k).snm]=gdc2gc(in_shc(k).snm,maxn);
             end
     end
     self.storage=ou_shc;

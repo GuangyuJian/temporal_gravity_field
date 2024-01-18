@@ -33,18 +33,20 @@ elseif nin==1
     titlename=varargin{3};
 end
 
-iy=self.int_year(tt);
-im=self.int_month(tt);
+if ~isempty(self.time)
 
-if im<10
-    titlestr=([num2str(iy) '0' num2str(im) ]);
-else
-    titlestr=([num2str(iy) num2str(im) ]);
+    iy=self.int_year(tt);
+    im=self.int_month(tt);
+
+    if im<10
+        titlestr=([num2str(iy) '0' num2str(im) ]);
+    else
+        titlestr=([num2str(iy) num2str(im) ]);
+    end
+    title(titlestr);
 end
-title(titlestr);
-
-if isempty(titlename)
-titlename=titlestr;
+if ~isempty(titlename)
+    titlename=titlestr;
 end
 
 

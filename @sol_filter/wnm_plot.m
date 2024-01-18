@@ -1,4 +1,4 @@
-function []=wnm_plot(self)
+function [h]=wnm_plot(self)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -21,7 +21,7 @@ wnm=self.wnm;
 maxn=self.maxn;
 
 
-plot(wnm,'LineWidth',1.5);
+h=plot(wnm,'LineWidth',1.5);
 ylabel('weight');
 caxis ([0 1])
 grid on;

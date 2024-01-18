@@ -1,4 +1,4 @@
-function [h]=wnm_imagesc(self)
+function [h]=wn_semilogy(self)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -13,7 +13,6 @@ function [h]=wnm_imagesc(self)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-24
 % MATLAB_version: 9.12.0.1884302 (R2022a)
-% Encode: UTF-8 9.12.0.1884302 (R2022a)
 %**************************************************************************
 %Ref:
 %**************************************************************************
@@ -33,19 +32,13 @@ clm=[nn mm wnm wnm];
 % plot(wnm);
 [sc]=storage_clm2sc(clm, maxn);
 
-sc((sc==0))=nan;
-% figure;
-
-h=imagesc(-maxn:1:maxn,0:maxn,sc);
-
-set(gca,'FontSize',12)
-set(h,'alphadata',~isnan(sc));
-ylabel('Degree (n)');
-xlabel('C<——Order (m)——>S');
-colormap(jet);
-colorbar;
+wn=sc(:,maxn+1);
+nn=0:maxn;
+h=semilogy(nn,wn,'LineWidth',1.5);
+ylabel('weight');
 caxis ([0 1])
 grid on;
 
+set(gca,'FontSize',12)
 end
 

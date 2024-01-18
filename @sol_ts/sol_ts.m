@@ -3,7 +3,6 @@ classdef sol_ts<handle
     properties
         unit char
         value (:,1) double
-
         name char
 
         time

@@ -67,7 +67,11 @@ for loc=1:length(n)
     nn=n(loc);
     mm=m(loc);
     nm=(nn^2+nn+2)/2+mm;
-
+    
+%     for checking
+%     nnn(nm,1)=nn;
+%     mmm(nm,1)=mm;
+    
     C(nm,1)=c(loc);
     S(nm,1)=s(loc);
     C_Sigma(nm,1)=sigmac(loc);

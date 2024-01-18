@@ -1,30 +1,44 @@
-function []=SHBundle_check(func_name)
-% Check the function whether in path 
-% and provdie the source project of the function
+function [h]=wn_plot(self)
+%
 %----------------------------------------------------------------------------
 % In   :
-%           func_name       char
+%
 % Out  :
-%           none
+%
 %----------------------------------------------------------------------------
 
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2023-12-22
+% date: 2023-12-24
 % MATLAB_version: 9.12.0.1884302 (R2022a)
-% Encode: UTF-8 9.12.0.1884302 (R2022a)
 %**************************************************************************
 %Ref:
 %**************************************************************************
 
-if exist(func_name)
+wnm=self.wnm;
+maxn=self.maxn;
 
-
-else
-    error(['check function ' func_name ' from SHBundle project in the current path ']);
+f=0;
+for n=0:maxn
+    for m=0:n
+        f=f+1;
+        nn(f,1)=n;
+        mm(f,1)=m;
+    end
 end
+clm=[nn mm wnm wnm];
+% plot(wnm);
+[sc]=storage_clm2sc(clm, maxn);
 
+wn=sc(:,maxn+1);
+nn=0:maxn;
+h=plot(nn,wn,'LineWidth',1.5);
+ylabel('weight');
+caxis ([0 1])
+grid on;
+
+set(gca,'FontSize',12)
 end
 

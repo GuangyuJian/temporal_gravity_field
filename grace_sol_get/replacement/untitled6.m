@@ -8,12 +8,10 @@ csr_shc.int_year=int_year;
 csr_shc.int_month=int_month;
 %%
 dir_in='TN-14_C30_C20_GSFC_SLR.txt';
-replace_c20c30(csr_shc,dir_in);
-
+replace_c20c30(csr_shc,dir_in); 
 %%
 dir_in='TN-13_GEOC_CSR_RL0602.txt';
 record=replace_degree1(csr_shc,dir_in);
-
 %% 
 csr_shc.de_bg(2004,2010);
 %%

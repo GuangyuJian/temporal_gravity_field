@@ -1,4 +1,4 @@
-function [vecc,vecs,nm]=storage_shc2vec(shc,nmax)
+function [vecc,vecs,nm]=storage_shc2vec(shc,maxn)
 %----------------------------------------------------------------------------
 % In   :    shc     [struct{C;S}]
 %                   a structure storages values of c and s
@@ -29,8 +29,13 @@ function [vecc,vecs,nm]=storage_shc2vec(shc,nmax)
 %**************************************************************************
 %Ref:
 %**************************************************************************
+ntime=length(shc);
+if ntime>1
+error('more than one shc');
+end
+
 loc=0;
-for n=0:nmax
+for n=0:maxn
     for m=0:n
         loc=loc+1;
         nm(loc,1)=n;

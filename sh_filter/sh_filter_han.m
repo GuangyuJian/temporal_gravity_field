@@ -1,12 +1,12 @@
-function [wnm,w_han]=sh_filter_han(max_degree,r0,r1,m1,R)                               
+function [wnm,w_han]=sh_filter_han(max_degree,R,r0,r1,m1)                               
 %                              
 %**************************************************************************
 % In   :    
 %       max_degree      [1x1] maximum  degree (int)
+%       radius_earth    [1x1] radius of earth (km)    
 %       r0;             [1 x 1]  parameter of han smoothing, unit: km 
 %       r1;             [1 x 1]  parameter of han smoothing, unit: km 
-%       m1;             [1 x 1]  parameter of han smoothing, unit: km 
-%       radius_earth    [1x1] radius of earth (km)                                             
+%       m1;             [1 x 1]  parameter of han smoothing, unit: km                                          
 % Out  :    
 %       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
 %               weighted coefficients storaged as clm-format
@@ -27,7 +27,7 @@ function [wnm,w_han]=sh_filter_han(max_degree,r0,r1,m1,R)
 % GEOPHYSICAL JOURNAL INTERNATIONAL 163(1): 18–25.
 %**************************************************************************  
 
-if nargin==0
+if nargin==2
     disp('defval the parameter in Han')
     r0=500;
     r1=1000;

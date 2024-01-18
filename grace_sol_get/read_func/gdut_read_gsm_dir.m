@@ -1,4 +1,4 @@
-function [shc,time,int_year,int_month]=gdut_read_gsm_dir(dir_in,nmax)
+function [shc,time,int_year,int_month,shc_sigma]=gdut_read_gsm_dir(dir_in,nmax)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -59,7 +59,7 @@ for t=1:num_t
     %读入数据Loading
 
 
-    [shc(t).cnm,shc(t).snm,shc(t).cnm_sigma,shc(t).snm_sigma,time(t),int_year(t),int_month(t)]=gdut_read_gsm(dir_in,file_name,nmax);
+    [shc(t).cnm,shc(t).snm,shc_sigma(t).cnm_sigma,shc_sigma(t).snm_sigma,time(t),int_year(t),int_month(t)]=gdut_read_gsm(dir_in,file_name,nmax);
 
 end
 

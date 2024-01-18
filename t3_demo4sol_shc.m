@@ -18,9 +18,6 @@ replace_c20c30(csr_shc,dir_in);
 dir_in='TN-13_GEOC_CSR_RL0602.txt';
 replace_degree1(csr_shc,dir_in);
 
-dir_in='TN-13_GEOC_CSR_RL0602.txt';
-replace_degree1(csr_shc,dir_in);
-
 dir_in="GIA_mass0km.txt";
  replace_gia( csr_shc,dir_in,2004,2010);
 %  去除背景场2004-2010 也提供了如下背景场去除方法

@@ -1,13 +1,13 @@
-function [sc,maxGOout,stdsc]=storage_clm2sc(clm, varargin)                               
-%                              
-% CLM2SC converts a list of coefficients in clm-format to /S|C\-format 
+function [sc]=storage_clm2sc(clm, maxn)
+%
+% CLM2SC converts a list of coefficients in clm-format to /S|C\-format
 % and--if available--does the same with the standard deviations.
 %
 % IN:
 %    clm ............ coefficients as matrix in the form [l m C S [sigma_C, sigma_S]]
 %    'max_lm' ....... only coefficients up to a degree = order = max_lm are
-%                     used. (default: read all coefficients (max_lm = inf)) 
-%    'gcoef2sc' ..... provides functionality of deprecated function gcoef2sc, 
+%                     used. (default: read all coefficients (max_lm = inf))
+%    'gcoef2sc' ..... provides functionality of deprecated function gcoef2sc,
 %                     see "OUT (gcoef2sc)" below. (default: false)
 %
 % OUT (standard):
@@ -24,7 +24,7 @@ function [sc,maxGOout,stdsc]=storage_clm2sc(clm, varargin)
 % EXAMPLE:
 %    clm2sc(clm, 'max_lm', 30, 'gcoef2sc', false);
 %----------------------------------------------------------------------------
-   
+
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
@@ -33,15 +33,24 @@ function [sc,maxGOout,stdsc]=storage_clm2sc(clm, varargin)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-%Ref: 
+%Ref:
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************
-SHBundle_check('clm2sc')
-if length(varargin)==2
-[sc,maxGOout,stdsc] = clm2sc(clm, varargin{1}, varargin{2});  %this function comed from project 'SHBundle'.                                 
-% elseif    length(varargin)==4                    
-% [sc,c,s] = clm2sc(clm, varargin{1},varargin{2}, varargin{3},varargin{4});  %this function comed from project 'SHBundle'.                                 
-end                              
+
+sc=zeros(maxn+1,maxn*2+1);
+for k=1:size(clm,1)
+    rr=clm(k,1);
+
+    cc=maxn+1-clm(k,2);
+    sc(rr+1,cc)=clm(k,3);
+    if clm(k,2)~=0
+        %     rr=clm(k,1);
+        cc=maxn+1+clm(k,2);
+        sc(rr+1,cc)=clm(k,4);
+    end
+end
+
+
 end
 

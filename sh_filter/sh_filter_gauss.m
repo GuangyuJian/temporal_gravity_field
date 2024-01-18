@@ -1,4 +1,4 @@
-function [wnm]=sh_filter_gauss(max_degree,rf,radius_earth)                               
+function [wnm,wn]=sh_filter_gauss(max_degree,rf,radius_earth)                               
 %                              
 %**************************************************************************
 % In   : 
@@ -8,6 +8,8 @@ function [wnm]=sh_filter_gauss(max_degree,rf,radius_earth)
 % Out  :    
 %       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
 %               weighted coefficients storaged as clm-format
+%       wn      [Nmax+1]   
+%               weighted coefficients of degree
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian

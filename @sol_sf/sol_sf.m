@@ -1,7 +1,7 @@
 classdef sol_sf
 
     properties
-        unit char
+        unit char  {mustBeMember(unit,{'none','ewh (mm)','ugal'})}='none';
         fir double
         ceta double
         value double

@@ -1,4 +1,4 @@
-function [sc, rows, cols]=storage_cs2sc(field, backval)                               
+function [sc]=storage_cs2sc(cs)                               
 %                              
 % CS2SC(FIELD,backval) converts the square (L+1)x(L+1) matrix FIELD, containing
 % spherical harmonics coefficients in |C\S| storage format into a 
@@ -28,9 +28,15 @@ function [sc, rows, cols]=storage_cs2sc(field, backval)
 % function from project 'SHBundle'
 %**************************************************************************                        
 
-SHBundle_check('cs2sc')
-[sc, rows, cols] = cs2sc(field, backval);  %this function comed from project 'SHBundle'.                                 
-                                  
+[rows,cols] = size(field);
+if rows~=cols
+    error('!');
+else
+    maxn = rows-1;
+    c    = tril(field);
+    s    = rot90(triu(field,1),-1);
+    sc   = [s(:,2:maxn+1) c];
+end                        
                               
 end
 

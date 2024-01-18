@@ -23,10 +23,13 @@ function [sfvalue]=gdut_shs(cnm,snm,cmf,smf,pnm,maxn)
 %     temp(:,i)=cnm.*pnm(:,i);
 % end
 % value= ( cmf* temp)';
+% 
 % for i=1:nceta
 %     temp(:,i)=snm.*pnm(:,i);
 % end
-% value= value+(smf* temp )';
+% sfvalue= value+(smf* temp )';
+
+
 
 for mm=0:maxn
     nn=mm:maxn;

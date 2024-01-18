@@ -29,6 +29,10 @@ function [sh]=storage_shc2sh(shc)
 %**************************************************************************
 %Ref:
 %**************************************************************************
+ntime=length(shc);
+if ntime>1
+error('more than one shc');
+end
 
 nsh=length(shct(1).cnm);
 sh=zeros(nsh*2,1);

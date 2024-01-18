@@ -1,5 +1,5 @@
-function  vec = storage_cssc2clm(mat,lmax)                              
-%                              
+function  clm = storage_cssc2clm(mat,maxn)
+%
 % CSSC2CLM converts CS, SC format matrices and degree variance information
 % to Colombo ordering vectors [l m Clm Slm]
 %
@@ -7,13 +7,11 @@ function  vec = storage_cssc2clm(mat,lmax)
 %    mat ..... CS, SC or degree vector
 %    lmax .... Maximum degree of the Spherical Harmonic development
 %
-% OUT: 
+% OUT:
 %    vec ..... [l m Clm Slm] vector with Colombo ordering
 %
-% USES:
-%    sc2cs
 %----------------------------------------------------------------------------
-   
+
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
@@ -22,13 +20,23 @@ function  vec = storage_cssc2clm(mat,lmax)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-%Ref: 
+%Ref:
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
-%**************************************************************************                        
-SHBundle_check('cssc2clm')
-vec = cssc2clm(mat,lmax);  %this function comed from project 'SHBundle'.                                 
-                                  
-                              
+%**************************************************************************
+% SHBundle_check('cssc2clm')
+% vec = cssc2clm(mat,lmax);  %this function comed from project 'SHBundle'.
+[rows,cols]=size(mat);
+
+if rows==cols
+    [vecc,vecs,nm]=storage_cs2vec(cs);
+elseif rows*2+1==cols
+    [cs]=storage_sc2cs(sc);
+    [vecc,vecs,nm]=storage_sc2vec(cs);
+else
+    error('!');
+end
+clm=[nm vecc vecs];
+
 end
 
