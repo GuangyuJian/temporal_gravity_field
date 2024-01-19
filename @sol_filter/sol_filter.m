@@ -47,14 +47,14 @@ classdef sol_filter<handle
 
             self.fw_destrip_flag=0;
             self.fw_destrip_type='NONE';
-            
+
             en=1+(maxn+3)*(maxn)/2;
             wnm(1:en,1)=1;
             self.wnm=wnm;
             disp("the filter solutions is done");
 
         end
-        %% defind the traditional filter 
+        %% defind the traditional filter
         set_filter(self,varargin);%set the filter parameter
         pre_destrip(self,PnMl_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
         pre_destriping(self,option); %the destriping method from fengwei toolbox
@@ -64,6 +64,14 @@ classdef sol_filter<handle
         [h]=wn_plot(self);
         [h]=wn_semilogy(self);
     end
+    %%
+    methods(Static)
+        wnm=w_fan(max_degree,rf,radius_earth);
+        wnm=w_rec(wnm_basic,recn);
+        wnm=w_han(max_degree,R,r0,r1,m1);
+        wnm=w_gauss(max_degree,rf,radius_earth) ;
+    end
 end
+
 
 

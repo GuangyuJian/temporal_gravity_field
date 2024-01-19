@@ -15,26 +15,26 @@ switch self.Filter_Type
         wnm(1:en,1)=1;
 
     case "gauss"
-        wnm=sh_filter_gauss(maxn,rn,radius_earth);
+        wnm=sol_filter.w_gauss(maxn,rn,radius_earth); %类内静态函数调用的方法class_name.static_methods
 
     case "fan"
         if rn~=rm
             error('wrong: fan radius should be the same');
         end
-        wnm=sh_filter_fan(maxn,(rn+rm)/2,radius_earth);
+        wnm=sol_filter.w_fan(maxn,(rn+rm)/2,radius_earth);
 
     case "recgauss"
-        wnm=sh_filter_gauss(maxn,rn,radius_earth);
-        wnm=sh_filter_rec(wnm,recn);
+        wnm=sol_filter.w_gauss(maxn,rn,radius_earth);
+        wnm=sol_filter.w_rec(wnm,recn);
 
     case "recfan"
         if rn~=rm
             error('wrong: fan radius should be the same');
         end
-        wnm=sh_filter_fan(maxn,(rn+rm)/2,radius_earth);
-        wnm=sh_filter_rec(wnm,recn);
+        wnm=sol_filter.w_fan(maxn,(rn+rm)/2,radius_earth);
+        wnm=sol_filter.w_rec(wnm,recn);
     case 'han'
-        wnm=sh_filter_han(maxn,radius_earth);
+        wnm=sol_filter.w_han(maxn,radius_earth);
 
     otherwise
         en=1+(maxn+3)*(maxn)/2;
