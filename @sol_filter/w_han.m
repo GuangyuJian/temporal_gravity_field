@@ -1,5 +1,7 @@
 function [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)                               
-%                              
+% [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)                              
+% a static method from class named @sol_filter
+% usage:sol_filter.w_han                
 %**************************************************************************
 % In   :    
 %       max_degree      [1x1] maximum  degree (int)

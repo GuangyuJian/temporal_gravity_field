@@ -1,10 +1,11 @@
 function [h]=wn_semilogy(self)
-%
+%   usage: self.wn_semilogy
+%   plot the weight function in degree-depende format with semilog-y axis 
 %----------------------------------------------------------------------------
 % In   :
-%
+%       self    (1x1)  @sol_filter
 % Out  :
-%
+%       h       (1x1)   @handle of plot
 %----------------------------------------------------------------------------
 
 
@@ -36,6 +37,7 @@ wn=sc(:,maxn+1);
 nn=0:maxn;
 h=semilogy(nn,wn,'LineWidth',1.5);
 ylabel('weight');
+xlabel('degree');
 caxis ([0 1])
 grid on;
 

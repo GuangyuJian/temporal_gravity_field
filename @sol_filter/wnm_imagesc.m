@@ -1,10 +1,11 @@
 function [h]=wnm_imagesc(self)
-%
+%   usage: self.wnm_imagesc
+%   plot the weight function in sc format
 %----------------------------------------------------------------------------
 % In   :
-%
+%       self    (1x1)  @sol_filter
 % Out  :
-%
+%       h       (1x1)   @handle of plot
 %----------------------------------------------------------------------------
 
 
@@ -13,11 +14,9 @@ function [h]=wnm_imagesc(self)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2023-12-24
 % MATLAB_version: 9.12.0.1884302 (R2022a)
-% Encode: UTF-8 9.12.0.1884302 (R2022a)
 %**************************************************************************
 %Ref:
 %**************************************************************************
-
 wnm=self.wnm;
 maxn=self.maxn;
 

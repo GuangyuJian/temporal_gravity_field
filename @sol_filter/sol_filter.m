@@ -70,6 +70,7 @@ classdef sol_filter<handle
         wnm=w_rec(wnm_basic,recn);
         wnm=w_han(max_degree,R,r0,r1,m1);
         wnm=w_gauss(max_degree,rf,radius_earth) ;
+        [SH]=st_PnMl(SH,nn,ll,Lmax);
     end
 end
 

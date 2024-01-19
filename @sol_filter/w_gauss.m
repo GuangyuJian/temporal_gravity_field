@@ -1,5 +1,7 @@
 function [wnm,wn]=w_gauss(max_degree,rf,radius_earth)                               
-%                              
+% [wnm,wn]=w_gauss(max_degree,rf,radius_earth)                               
+% a static method from class named @sol_filter
+% usage:sol_filter.w_gauss
 %**************************************************************************
 % In   : 
 %       max_degree      [1x1] maximum  degree (int)

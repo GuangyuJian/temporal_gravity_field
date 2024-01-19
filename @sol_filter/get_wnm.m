@@ -1,4 +1,22 @@
 function self=get_wnm(self)
+% usage:self=get_wnm(self)
+%**************************************************************************
+% In   : 
+%       self        @sol_filter
+% Out  :    
+%       self.wnm is changed 
+%       wnm         [(Nmax+2)*(Nmax+1)/2 x 1]   
+%                   weighted coefficients storaged as clm-format                                   
+%----------------------------------------------------------------------------
+
+% Authors: Karl Jian
+% address: Guangdong University of Technology(GDUT)
+% email: gyjian@mail2.gdut.edu.cn
+% date: 2024-01-19
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
+%**************************************************************************
+
 maxn=self.maxn;
 radius_earth=self.radius_earth;
 rn=self.rn;

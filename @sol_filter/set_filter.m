@@ -1,4 +1,34 @@
 function self=set_filter(self,varargin)
+% usage:self.set_filter(varargin)
+%**************************************************************************
+% In   : 
+%       self        @sol_filter
+%       varargin    optional
+%                 set_filter('none');
+%                 set_filter('gauss',r);
+%                 set_filter('fan',r);
+%                 set_filter('han');
+%                 set_filter('rec',recn,'basic_type',r);
+%                 e.g. set_filter('rec',recn,'gauss',r);
+%                 e.g. set_filter('rec',recn,'fan',r);
+%                   r is the radius 
+%                   recn is reconstructive number
+% Out  :    
+%       self.wnm is changed 
+%       wnm         [(Nmax+2)*(Nmax+1)/2 x 1]   
+%                   weighted coefficients storaged as clm-format                                   
+%----------------------------------------------------------------------------
+
+% Authors: Karl Jian
+% address: Guangdong University of Technology(GDUT)
+% email: gyjian@mail2.gdut.edu.cn
+% date: 2024-01-19
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
+%**************************************************************************
+
+
+
 if nargin==1
     disp(self);
     disp('set_filter:请注意，为创建预处理方案，将采用默认值 即无处理');

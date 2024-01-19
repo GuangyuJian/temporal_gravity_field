@@ -13,13 +13,13 @@ load('alpha_my_filter.mat');
 %  即创建sol_sf对象
 myf.set_filter('gauss',300);
 myf.pre_destrip(1,4,6);
-[sf]=shc2sf(csr_shc,myf,my_basin,'mc');
+[sf]=csr_shc.shc2sf(myf,my_basin,'mc');
 %% %有一定范围
 sf.show_range=[60 120 10 70];
 %%
 for tt=1:1:12
     nexttile;
-    sf.obs2map_tt(tt,[-0.1 0.1])
+    sf.obs2map_tt(tt,[-200 200])
 end
 %% 根据sol_sf重新生成sol_shc对象
 % 即做球谐展开

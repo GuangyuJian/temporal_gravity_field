@@ -6,7 +6,7 @@ classdef sol_sf
         ceta double
         value double
         show_range
-
+        
         time
         int_year
         int_month
@@ -19,7 +19,7 @@ classdef sol_sf
             obj.fir=fir;
             obj.ceta=ceta;
         end
-%          [self]=shc2sf(sol_tgf,sol_shc,type);
+        %          [self]=shc2sf(sol_tgf,sol_shc,type);
         self=plot_degree_amplitude(self);
         self=imagesc_tt(self,tt);
         self=imagesc_region(self,tt);
@@ -28,8 +28,12 @@ classdef sol_sf
         objnew = plus(objl,objr);
         objnew = minus(objl,objr);
         % math
-      
+        [myts]=sf2ts(sol_sf,study_basin);
+        [my_shc]=sf2shc(sol_sf,sol_filter,study_basin,type);
 
+    end
+    methods(Static)
+        [tws1,S]=grid2ts(grid,study_basin);
     end
 end
 

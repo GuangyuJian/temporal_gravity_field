@@ -1,10 +1,11 @@
 function [h]=wnm_plot(self)
-%
+%   usage: self.wnm_plot
+%   plot the weight function in degree-depende format
 %----------------------------------------------------------------------------
 % In   :
-%
+%       self    (1x1)  @sol_filter
 % Out  :
-%
+%       h       (1x1)   @handle of plot
 %----------------------------------------------------------------------------
 
 
@@ -23,9 +24,8 @@ maxn=self.maxn;
 
 h=plot(wnm,'LineWidth',1.5);
 ylabel('weight');
-caxis ([0 1])
+caxis ([0 1]);
 grid on;
-
 set(gca,'FontSize',12)
 end
 

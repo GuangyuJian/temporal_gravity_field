@@ -1,7 +1,8 @@
 clear
 clc;
 clc;
-my_addpath('E:\github_desktop\test\temporal_gravity_field\');
+% 
+my_addpath('...\temporal_gravity_field\');
 %%
 s=shaperead('test_alpha\珠江区1：25万界线数据集（2002年）\珠江区.shp');
 my_basin.name='珠江流域';

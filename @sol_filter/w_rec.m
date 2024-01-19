@@ -1,5 +1,7 @@
 function [wnm]=w_rec(wnm_basic,recn)                               
-%                              
+% [wnm]=w_rec(wnm_basic,recn)                                
+% a static method from class named @sol_filter
+% usage:sol_filter.w_rec         
 %**************************************************************************
 % In   : 
 %       wnm_basic     [(Nmax+2)*(Nmax+1)/2 x 1]   
