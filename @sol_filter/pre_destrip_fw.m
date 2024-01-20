@@ -1,4 +1,4 @@
-function pre_destrip_fw(self,option)
+function self=pre_destrip_fw(self,option)
 %这个函数接口冯伟老师的去相关函数包
 % option是去相关的选项
 % NONE, 
@@ -28,6 +28,6 @@ function pre_destrip_fw(self,option)
               error('Wrong in destrip type');
       end
 %         disp(fw_destrip_type);
-        self.PnMl_flag=2;
+        self.destrip_flag=2;
 
 end

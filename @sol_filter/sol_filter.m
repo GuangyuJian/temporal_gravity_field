@@ -10,12 +10,13 @@ classdef sol_filter<handle
         recn            %重构次数
         wnm             %权重系数Wlm
 
-        PnMl_flag       %去相关滤波标记
+        destrip_flag       %去相关滤波标记
         PnMl_n          %拟合阶数
         PnMl_m          %PnMl开始拟合次数
         %================
         %对接冯伟老师的参数部分
         fw_destrip_type
+        ddk_type double
 %         fw_destrip_flag
     end
     %%
@@ -41,7 +42,7 @@ classdef sol_filter<handle
             self.rm=0;
             self.radius_earth=6371; %(unit:km)
 
-            self.PnMl_flag=0;
+            self.destrip_flag=0;
             self.PnMl_n=6;
             self.PnMl_m=3;
 
@@ -54,9 +55,10 @@ classdef sol_filter<handle
 
         end
         %% defind the traditional filter
-        set_filter(self,varargin);%set the filter parameter
-        pre_destrip(self,PnMl_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
-        pre_destrip_fw(self,option); %the destriping method from fengwei toolbox
+        self=set_filter(self,varargin);%set the filter parameter
+        self=pre_destrip(self,destrip_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
+        self=pre_destrip_fw(self,option); %the destriping method from fengwei toolbox
+        self=pre_destrip_ddk(self,option)
         %% show the filter function
         h=wnm_plot(self);
         h=wnm_imagesc(self);

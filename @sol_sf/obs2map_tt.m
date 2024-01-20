@@ -20,7 +20,9 @@ function []=obs2map_tt(self,varargin)
 % tt,value,titlename
 nin=length(varargin);
 if nin==3
-
+   tt=varargin{1};
+    cvalue=varargin{2};
+    titlename=varargin{3};
 
 elseif nin==2
 
@@ -28,9 +30,7 @@ elseif nin==2
     cvalue=varargin{2};
     titlename=[];
 elseif nin==1
-    tt=varargin{1};
-    cvalue=varargin{2};
-    titlename=varargin{3};
+ cvalue=[-200 200];
 end
 
 if ~isempty(self.time)
