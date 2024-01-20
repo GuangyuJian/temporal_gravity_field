@@ -31,11 +31,20 @@ dir_in="GIA_mass0km.txt";
 clc;
 csr_shc.show_info;
 %%
+
+
+%%
 show_time_tag;
 % dialog;
 pre_fix='alpha_';
 filename=[pre_fix 'my_shc'];
 save([filename],"csr_shc");
-
-
+%%
+myf=sol_filter(60);
+basin=study_basin(1);
+%%
+sf=csr_shc.shc2sf(myf,basin,'mc');
+%%
+sf.show_range='global';
+sf.obs2map_tt(162,[-400 400])
 

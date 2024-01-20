@@ -1,4 +1,4 @@
-function  clm = storage_cssc2clm(mat,maxn)
+function  clm = storage_cssc2clm(mat)
 %
 % CSSC2CLM converts CS, SC format matrices and degree variance information
 % to Colombo ordering vectors [l m Clm Slm]
@@ -29,10 +29,10 @@ function  clm = storage_cssc2clm(mat,maxn)
 [rows,cols]=size(mat);
 
 if rows==cols
+    [vecc,vecs,nm]=storage_cs2vec(mat);
+elseif rows*2-1==cols
+    [cs]=storage_sc2cs(mat);
     [vecc,vecs,nm]=storage_cs2vec(cs);
-elseif rows*2+1==cols
-    [cs]=storage_sc2cs(sc);
-    [vecc,vecs,nm]=storage_sc2vec(cs);
 else
     error('!');
 end

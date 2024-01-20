@@ -37,15 +37,15 @@ function [vecc,vecs,nm]=storage_cs2vec(cs)
 %**************************************************************************
 [rows,~]=size(cs);
 k=0;
-for nn=0:rows
+for nn=0:rows-1
     for mm=0:nn
         k=k+1;
 
         nm(k,1)=nn;
         nm(k,2)=mm;
-        vecc(k)=cs(nn+1,mm+1);
+        vecc(k,1)=cs(nn+1,mm+1);
         if mm~=0
-            vecs(k)=cs(mm,nn+1);
+            vecs(k,1)=cs(mm,nn+1);
         end
 
     end

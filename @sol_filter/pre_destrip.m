@@ -8,7 +8,7 @@ if PnMl_flag==1
         error('wrong');
     end
     self.PnMl_m=PnMl_m;
-else
+elseif PnMl_flag==2
     self.PnMl_flag=0;
 end
 show_time_tag;

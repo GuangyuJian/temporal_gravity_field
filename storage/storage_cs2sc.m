@@ -28,13 +28,13 @@ function [sc]=storage_cs2sc(cs)
 % function from project 'SHBundle'
 %**************************************************************************                        
 
-[rows,cols] = size(field);
+[rows,cols] = size(cs);
 if rows~=cols
     error('!');
 else
     maxn = rows-1;
-    c    = tril(field);
-    s    = rot90(triu(field,1),-1);
+    c    = tril(cs);
+    s    = rot90(triu(cs,1),-1);
     sc   = [s(:,2:maxn+1) c];
 end                        
                               

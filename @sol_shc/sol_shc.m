@@ -48,7 +48,8 @@ classdef sol_shc<handle
         h=show_shc_sigma(self,tt);
         [h]=show_shc_degree_sigma(self,tt);
         [h]=show_shc_degree(self,tt);
-
+        [h]=show_nss(self,tt,mm,type)
+%%
         [sf]=shc2sf(sol_shc,sol_filter,study_basin,type);
         %info
         [self]=append_info(self,info_type);

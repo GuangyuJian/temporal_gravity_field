@@ -16,7 +16,7 @@ classdef sol_filter<handle
         %================
         %对接冯伟老师的参数部分
         fw_destrip_type
-        fw_destrip_flag
+%         fw_destrip_flag
     end
     %%
     methods
@@ -45,7 +45,6 @@ classdef sol_filter<handle
             self.PnMl_n=6;
             self.PnMl_m=3;
 
-            self.fw_destrip_flag=0;
             self.fw_destrip_type='NONE';
 
             en=1+(maxn+3)*(maxn)/2;
@@ -57,7 +56,7 @@ classdef sol_filter<handle
         %% defind the traditional filter
         set_filter(self,varargin);%set the filter parameter
         pre_destrip(self,PnMl_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
-        pre_destriping(self,option); %the destriping method from fengwei toolbox
+        pre_destrip_fw(self,option); %the destriping method from fengwei toolbox
         %% show the filter function
         h=wnm_plot(self);
         h=wnm_imagesc(self);
@@ -71,6 +70,12 @@ classdef sol_filter<handle
         wnm=w_han(max_degree,R,r0,r1,m1);
         wnm=w_gauss(max_degree,rf,radius_earth) ;
         [SH]=st_PnMl(SH,nn,ll,Lmax);
+        scnew = st_destriping_swenson(sc);
+        scnew = st_destriping_duan(pair1,pair2,r,gamma,p,K,A,sc);
+        scnew = st_destriping_chen(sc,type);
+        scnew = st_destriping_chambers(sc,type);
+         [shc]=st_destriping(self,fw_destrip_type);
+
     end
 end
 

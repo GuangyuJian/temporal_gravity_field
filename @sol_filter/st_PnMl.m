@@ -1,5 +1,5 @@
 %Decentre-Decorrelation filtering
-function[SH]=math_PnMl(SH,nn,ll,Lmax)
+function[SH]=st_PnMl(SH,nn,ll,Lmax)
 
 
 %  correct :20230317 poly degree is equal the fit number 

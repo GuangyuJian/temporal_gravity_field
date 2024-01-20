@@ -31,11 +31,11 @@ for tt=1:length(grace_shc.time)
     [m,i]=min(tempdif);
     if m<1/24
         grace_shc.storage(tt).cnm(4)=rc20(i);
-        grace_shc.storage(tt).cnm_sigma(4)=rc20_sgima(i);
+%         grace_shc.storage(tt).cnm_sigma(4)=rc20_sgima(i);
 
         if ~isnan(rc30(i))
             grace_shc.storage(tt).cnm(7)=rc30(i);
-            grace_shc.storage(tt).cnm_sigma(7)=rc30_sigma(i);
+%             grace_shc.storage(tt).cnm_sigma(7)=rc30_sigma(i);
         end
         record=[tt record ];
     else

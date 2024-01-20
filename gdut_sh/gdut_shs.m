@@ -41,6 +41,8 @@ for mm=0:maxn
     ta(:,mm+1)=pnm(lc,:)'*cc(:);
     tb(:,mm+1)=pnm(lc,:)'*ss(:);
 end
+% hold on;
+% plot(ta(30,:))
 sfvalue=ta*cmf+tb*smf;
 end
 

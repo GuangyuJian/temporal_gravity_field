@@ -40,13 +40,14 @@ function [sc]=storage_clm2sc(clm, maxn)
 
 sc=zeros(maxn+1,maxn*2+1);
 for k=1:size(clm,1)
-    rr=clm(k,1);
 
-    cc=maxn+1-clm(k,2);
+    rr=clm(k,1);
+    cc=maxn+1+clm(k,2);
+    
     sc(rr+1,cc)=clm(k,3);
     if clm(k,2)~=0
         %     rr=clm(k,1);
-        cc=maxn+1+clm(k,2);
+        cc=maxn+1-clm(k,2);
         sc(rr+1,cc)=clm(k,4);
     end
 end

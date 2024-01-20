@@ -6,7 +6,7 @@ classdef sol_sf
         ceta double
         value double
         show_range
-        
+
         time
         int_year
         int_month
@@ -30,10 +30,12 @@ classdef sol_sf
         % math
         [myts]=sf2ts(sol_sf,study_basin);
         [my_shc]=sf2shc(sol_sf,sol_filter,study_basin,type);
-
+        []=show_info(self);
+        [self]=append_info(self,info_type);
     end
     methods(Static)
         [tws1,S]=grid2ts(grid,study_basin);
+        %         [tws1,S]=grid2ts(grid,study_basin)
     end
 end
 

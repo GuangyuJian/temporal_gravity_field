@@ -1,4 +1,4 @@
-function [sf]=shc2sf(sol_shc,sol_filter,study_basin,type)
+function [sf]=shc2sf(myshc,myf,myb,type)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -16,42 +16,49 @@ function [sf]=shc2sf(sol_shc,sol_filter,study_basin,type)
 %**************************************************************************
 %Ref:
 %**************************************************************************
-% sol_filter=sol_tgf.sol_filter;
-% study_basin=sol_tgf.study_basin;
+% myf=sol_tgf.myf;
+% myb=sol_tgf.myb;
 
-fir=study_basin.fir;
-ceta=study_basin.ceta;
- 
+fir=myb.fir;
+ceta=myb.ceta;
 
 
-maxn=sol_filter.maxn;
+maxn=myf.maxn;
 %------- PnMl---------------
-sol_shc.change_type('gc');
-shc=sol_shc.storage;
+myshc.change_type('gc');
+shc=myshc.storage;
 ntime=length(shc);
 
-if sol_filter.PnMl_flag==1
-
+%% destriping
+if myf.PnMl_flag==1
     disp('----------------------------')
     disp('destrping')
-
     for tt=1:ntime
-        %         disp(sol_shc.time(tt))
-        tt
-        nn=sol_filter.PnMl_n;
-        ll=sol_filter.PnMl_m;
-        [shc(tt).cnm]=sol_filter.math_PnMl(shc(tt).cnm,nn,ll,maxn);
-        [shc(tt).snm]=sol_filter.math_PnMl(shc(tt).snm,nn,ll,maxn);
+        nn=myf.PnMl_n;
+        ll=myf.PnMl_m;
+        [shc(tt).cnm]=sol_filter.st_PnMl(shc(tt).cnm,nn,ll,maxn);
+        [shc(tt).snm]=sol_filter.st_PnMl(shc(tt).snm,nn,ll,maxn);
+    end
+
+elseif myf.PnMl_flag==2
+    [nn,mm]=get_nnmm(maxn);
+    for tt=1:ntime
+        clm=[nn mm shc(tt).cnm shc(tt).snm];
+        [sc]=storage_clm2sc(clm, maxn);
+        [shc(tt)]=sol_filter.st_destriping(sc,myf.fw_destrip_type);
     end
 end
 
+
+
+%%
 switch type
     case 'gdc'
         for k=1:ntime
             [shc(k).cnm]=sol_shc.scf_gc2gdc(shc(k).cnm,maxn);
             [shc(k).snm]=sol_shc.scf_gc2gdc(shc(k).snm,maxn);
         end
-    case 'mc'  
+    case 'mc'
         for k=1:ntime
             [shc(k).cnm]=sol_shc.scf_gc2mc(shc(k).cnm,maxn);
             [shc(k).snm]=sol_shc.scf_gc2mc(shc(k).snm,maxn);
@@ -63,7 +70,7 @@ end
 nfir=length(fir);
 nceta=length(ceta);
 % prepare Ylm (spherical basis function)
-[pnm,cmf,smf,~]=get_sob(sol_filter,study_basin);
+[pnm,cmf,smf,~]=get_sob(myf,myb);
 en=1+(maxn+3)*(maxn)/2;
 % cmf=cmf(1:maxn+1,:);
 % smf=smf(1:maxn+1,:);
@@ -72,7 +79,7 @@ pnm=pnm(1:en,:);
 %     error();
 % end
 % prepare wnm
-wnm=sol_filter.wnm(1:en);
+wnm=myf.wnm(1:en);
 %% pre-assigan memory space
 value=zeros(nceta,nfir,ntime);
 
@@ -93,17 +100,20 @@ switch type
         unit='ewh (mm)';
     case 'gdc'
         unit='uGal';
-        
+
 end
 
 sf=sol_sf(value,unit,fir,ceta);
 % set time info
-sf.time=sol_shc.time;
-sf.int_year=sol_shc.int_year;
-sf.int_month=sol_shc.int_month;
+sf.time=myshc.time;
+sf.int_year=myshc.int_year;
+sf.int_month=myshc.int_month;
+sf.show_range='global';
 show_time_tag;
 disp('shc2sf：sf is done');
+% sf.append_info([myf]);
+% sf.append_info([myb]);
 
-% disp(sol_filter);
+% disp(myf);
 end
 

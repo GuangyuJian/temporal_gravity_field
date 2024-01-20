@@ -1,4 +1,4 @@
-function [my_shc]=sf2shc(sol_sf,sol_filter,study_basin,type)
+function [my_shc]=sf2shc(mysf,myf,myb,type)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -16,21 +16,21 @@ function [my_shc]=sf2shc(sol_sf,sol_filter,study_basin,type)
 %**************************************************************************
 %Ref:
 %**************************************************************************
-% sol_filter=sol_tgf.sol_filter;
-% study_basin=sol_tgf.study_basin;
+% myf=sol_tgf.myf;
+% myb=sol_tgf.myb;
 
-fir=study_basin.fir;
-ceta=study_basin.ceta;
+fir=myb.fir;
+ceta=myb.ceta;
 
-maxn=sol_filter.maxn;
-ntime=length(sol_sf.time);
+maxn=myf.maxn;
+ntime=size(mysf.value,3);
 %------- PnMl---------------
 
 % prepare info of spherical grid
 nfir=length(fir);
 nceta=length(ceta);
 % prepare Ylm (spherical basis function)
-[pnm,cmf,smf,ds]=get_sob(sol_filter,study_basin);
+[pnm,cmf,smf,ds]=get_sob(myf,myb);
 
 en=1+(maxn+3)*(maxn)/2;
 cmf=cmf(1:maxn+1,:);
@@ -47,20 +47,20 @@ pnm=pnm(1:en,:);
 
 %% spherical harmonic synthesis
 for t=1:ntime
-    [shc(t).cnm,shc(t).snm]=gdut_sha(sol_sf.value(:,:,t),cmf,smf,pnm,maxn,ds);
+    [shc(t).cnm,shc(t).snm]=gdut_sha(mysf.value(:,:,t),cmf,smf,pnm,maxn,ds);
 end
 
 %% create sf object (spherical function)
-switch sol_sf.unit
+switch mysf.unit
     case 'ewh (mm)'
     my_shc=sol_shc(shc,maxn,'shc','mc');
 
 end
 % set time info
 my_shc.change_type(type);
-my_shc.time=sol_sf.time;
-my_shc.int_year=sol_sf.int_year;
-my_shc.int_month=sol_sf.int_month;
+my_shc.time=mysf.time;
+my_shc.int_year=mysf.int_year;
+my_shc.int_month=mysf.int_month;
 
 show_time_tag;
 disp('sf2shc: shc is done');

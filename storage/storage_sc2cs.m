@@ -27,13 +27,13 @@ function [cs]=storage_sc2cs(sc)
 % To  save energy and keep line with our own project， we directly use some
 % function from project 'SHBundle'
 %**************************************************************************                        
-[rr,cc] = size(sc);  
-if (cc~=2*rr-1)
+[rows,cols] = size(sc);  
+if (cols~=2*rows-1)
     error('!');
 else
-    lmax = rows-1;
-    c    = sc(:,lmax+1:2*lmax+1);
-    s    = [zeros(lmax+1,1) sc(:,1:lmax)];
+    maxn = rows-1;
+    c    = sc(:,maxn+1:2*maxn+1);
+    s    = [zeros(maxn+1,1) sc(:,1:maxn)];
     cs   = tril(c) + triu(rot90(s),1);    
 end
 
