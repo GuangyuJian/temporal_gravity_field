@@ -37,4 +37,5 @@ objnew=sol_shc(storage,maxn,storage_type,type);
 objnew.time=objl.time;
 objnew.int_year=objl.int_year;
 objnew.int_month=objl.int_month;
+objnew.shc_sigma=objl.shc_sigma;
 end

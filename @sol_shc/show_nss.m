@@ -1,17 +1,22 @@
 function [h]=show_nss(self,tt,mm,type)
-%
+% h=show_nss(self,tt,mm,type)
+% h=self.show_nss(tt,mm,type)
 %----------------------------------------------------------------------------
-% In   :
-%
-% Out  :
-%
+% In   : self   [1x1]  @sol_shc    
+%        tt     [1x1]   time index
+%        mm     [1x1]   spherical harmonic order that you want to show
+%       type    char    
+%               optional:   'c' (default)  |    's'
+%                           show cnm       |     show snm
+% 
+% Out  : h      [1x1]   @handle of plot
 %----------------------------------------------------------------------------
 
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2024-01-19
+% date: 2024-01-23
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************

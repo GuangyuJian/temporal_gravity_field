@@ -20,6 +20,7 @@ function [self]=pre_destrip_ddk(self,options)
 if length(options)~=1
 error('!');
 end
+
 switch   options
     case {1,2,3,4,5,6,7,8}
         self.ddk_type=options;

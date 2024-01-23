@@ -18,8 +18,7 @@ function [self]=append_info(self,info_type)
 %Ref:
 %**************************************************************************
                               
-                              
-  self.info=[self.info '\n ' info_type ]     ;                       
-                              
+  temp=[self.info '\n ' info_type];                     
+  self.info=temp     ;                 
 end
 

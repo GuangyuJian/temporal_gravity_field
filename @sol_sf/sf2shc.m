@@ -54,13 +54,16 @@ end
 switch mysf.unit
     case 'ewh (mm)'
     my_shc=sol_shc(shc,maxn,'shc','mc');
-
+    case 'ugal'
+    my_shc=sol_shc(shc,maxn,'shc','gdc');
 end
 % set time info
 my_shc.change_type(type);
 my_shc.time=mysf.time;
 my_shc.int_year=mysf.int_year;
 my_shc.int_month=mysf.int_month;
+my_shc.append_info('----------------------');
+my_shc.append_info([mysf.info]);
 
 show_time_tag;
 disp('sf2shc: shc is done');

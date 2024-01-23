@@ -1,4 +1,4 @@
-classdef sol_shc<handle
+classdef sol_shc<sol
 
     properties
         type char  {mustBeMember(type,{'gc','mc','gdc'})}='gc';
@@ -8,16 +8,16 @@ classdef sol_shc<handle
         maxn double
         storage struct
         shc_sigma  struct
-        time
-        int_year
-        int_month
-        info char
+%         time
+%         int_year
+%         int_month
+%         info char
     end
 
     %%
     methods
         function self=sol_shc(storage,maxn,storage_type,type)
-
+            self=self@sol();
             shc=storage;
             [en]=get_en(maxn);
             for tt=1:length(shc)

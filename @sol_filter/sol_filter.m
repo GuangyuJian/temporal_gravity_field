@@ -8,7 +8,7 @@ classdef sol_filter<handle
         rn              %阶半径
         rm              %次半径
         recn            %重构次数
-        wnm             %权重系数Wlm
+        wnm             %权重系数wnm
 
         destrip_flag       %去相关滤波标记
         PnMl_n          %拟合阶数
@@ -71,12 +71,14 @@ classdef sol_filter<handle
         wnm=w_rec(wnm_basic,recn);
         wnm=w_han(max_degree,R,r0,r1,m1);
         wnm=w_gauss(max_degree,rf,radius_earth) ;
-        [SH]=st_PnMl(SH,nn,ll,Lmax);
+
+        SH=st_PnMl(SH,nn,ll,Lmax);
+
         scnew = st_destriping_swenson(sc);
         scnew = st_destriping_duan(pair1,pair2,r,gamma,p,K,A,sc);
         scnew = st_destriping_chen(sc,type);
         scnew = st_destriping_chambers(sc,type);
-         [shc]=st_destriping(self,fw_destrip_type);
+        shc =   st_destriping(self,fw_destrip_type);
 
     end
 end

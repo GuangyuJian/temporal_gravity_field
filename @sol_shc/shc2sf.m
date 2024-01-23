@@ -1,10 +1,14 @@
-function [sf]=shc2sf(myshc,myf,myb,type)
-%
+function [mysf]=shc2sf(myshc,myf,myb,type)
+%  [sf]=shc2sf(myshc,myf,myb,type)
 %----------------------------------------------------------------------------
-% In   :
-%
-% Out  :
-%
+% In   : myshc  [1x1]   @sol_shc
+%        myf    [1x1]   @myf
+%        myb    [1x1]   @study_basin
+%       type    char 
+%                       optional    'mc'    'gdc'    
+% Out  :                            |       |
+%       mysf    @sol_sf             |       |       
+%                       .unit       'ewh'   'ugal'
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)
@@ -44,7 +48,7 @@ value=zeros(nceta,nfir,ntime);
 
 %% spherical harmonic synthesis
 for t=1:ntime
-    cnm=squeeze(  shc(t).cnm(1:1:en)  ).*wnm(:);    
+    cnm=squeeze(  shc(t).cnm(1:1:en)  ).*wnm(:);
     snm=squeeze(  shc(t).snm(1:1:en)  ).*wnm(:);
     [value(:,:,t)]=gdut_shs(cnm,snm,cmf,smf,pnm,maxn);
 end
@@ -56,18 +60,41 @@ switch type
     case 'gdc'
         unit='uGal';
 end
-
-sf=sol_sf(value,unit,fir,ceta);
+ 
+mysf=sol_sf(value,unit,fir,ceta);
 % set time info
-sf.time=myshc.time;
-sf.int_year=myshc.int_year;
-sf.int_month=myshc.int_month;
-sf.show_range='global';
+mysf.time=myshc.time;
+mysf.int_year=myshc.int_year;
+mysf.int_month=myshc.int_month;
+mysf.append_info(myshc.info);
+
+mysf.append_info('----------------------');
+switch myf.destrip_flag
+    case 1
+        mysf.append_info(['destrip  type:' 'P' num2str(myf.PnMl_n) 'M' num2str(myf.PnMl_m) ';']);
+    case 2
+        mysf.append_info(['destrip  type:' 'fw' num2str(myf.fw_destrip_type) ';']);
+    case 3
+        mysf.append_info(['destrip  type:' 'ddk' num2str(myf.ddk_type) ';']);
+    otherwise
+        mysf.append_info(['destrip  type:' 'none;']);
+end
+
+mysf.append_info(['smoothing type:' myf.Filter_Type]);
+switch myf.Filter_Type
+    case 'gauss'
+        mysf.append_info(['rn=' num2str(myf.rn)  '\r']);
+    case 'fan'
+        mysf.append_info(['rn=' num2str(myf.rn)  '\r']);
+    case {'recgauss','recfan'}
+        mysf.append_info(['rn=' num2str(myf.rn) '; rm=' num2str(myf.rm) '; rec=' num2str(myf.recn) ';\r']);
+end
+
+
+mysf.show_range='global';
 show_time_tag;
 disp('shc2sf：sf is done');
-% sf.append_info([myf]);
-% sf.append_info([myb]);
-% disp(myf);
+mysf.show_info;
 end
 
 function shc=in_destriping(shc,myf)
@@ -98,8 +125,8 @@ switch myf.destrip_flag
         dataDDK=gmt_destriping_ddk(myf.ddk_type,shc_ddk);
         shc=storage_ddk2shct(dataDDK);
     otherwise
-%         error('!')
-    disp('not desriping');
+        %         error('!')
+        disp('not desriping');
 end
 
 end

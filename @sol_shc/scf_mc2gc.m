@@ -1,5 +1,24 @@
 
 function [gc]=scf_mc2gc(mc,maxn)
+% [mc]=scf_gdc2gc(gc,maxn)                            
+%----------------------------------------------------------------------------
+% In   :   mc   [1xen]  mass coefficients
+%                       storage as degree-dependent  vecc/vecs
+%          maxn [1x1]   maximum degree                    
+% Out  :   gc   [1xen]  geopotential coefficients
+%                       storage as degree-dependent  vecc/vecs                 
+%----------------------------------------------------------------------------
+                                              
+% Authors: Karl Jian (K.J)
+% address: Guangdong University of Technology(GDUT)
+% email: gyjian@mail2.gdut.edu.cn
+% date: 2024-01-23
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8  
+%**************************************************************************
+%Ref:
+%**************************************************************************
+
 % kn=math_Lovenum(maxn);
 load('HanWahrLoveNumbers.mat');
 ae        =  6378136.3;

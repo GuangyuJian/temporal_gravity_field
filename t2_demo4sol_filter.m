@@ -6,6 +6,7 @@ clc;
 %%
 clc;
 myf=sol_filter(60);
+myf.pre_destrip(1,4,6);
 myf.set_filter('gauss',300);
 disp(myf)
 
@@ -15,13 +16,11 @@ close
 nexttile;
 myf.wnm_plot;
 
-
 nexttile;
 myf.wn_plot;
 
 nexttile;
 myf.wn_semilogy;
-
 
 nexttile;
 myf.wnm_imagesc;

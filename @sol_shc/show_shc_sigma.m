@@ -1,23 +1,23 @@
 function [h]=show_shc_sigma(self,tt)                               
-%                              
+% h=show_shc(self,tt)
+% h=self.show_shc(tt)
+% show the sigma of shc for a given time index (tt) in sc-format 
 %----------------------------------------------------------------------------
-% In   :    
-%                              
-% Out  :    
-%                              
+% In   : self   [1x1]  @sol_shc    
+%        tt     [1x1]   time index
+% 
+% Out  : h      [1x1]   @handle of plot
 %----------------------------------------------------------------------------
-                              
-                              
+
+
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2024-01-17
+% date: 2024-01-23
 % MATLAB_version: 9.12.0.1884302 (R2022a)
-% Encode: UTF-8  
+% Encode: UTF-8
 %**************************************************************************
 %Ref:
-%**************************************************************************
-                              
  maxn=self.maxn;
 tempc=self.shc_sigma(tt).cnm_sigma;
 temps=self.shc_sigma(tt).snm_sigma;
