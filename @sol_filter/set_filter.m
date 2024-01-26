@@ -79,11 +79,11 @@ if nargin>=2
 %----------------------------------------------------------------
         case 'han'
 
-            if nargin>0
+            if nargin>2
                 disp(self);
                 error('set_filter：han建议使用默认');
             end
-
+        self.Filter_Type='han';
 
 %----------------------------------------------------------------
         case 'rec'

@@ -6,14 +6,14 @@ clear;
 %%
 
 load('alpha_my_basin.mat');
-load('alpha_my_shc.mat');
+load('alpha_leomy_shc.mat')
 load('alpha_my_filter.mat');
 
 %% 从sol_shc对象计算球面函数
 %  即创建sol_sf对象
 myf.set_filter('gauss',300);
 myf.pre_destrip(1,4,6);
-[sf]=csr_shc.shc2sf(myf,my_basin,'mc');
+[sf]=leo_shc.shc2sf(myf,my_basin,'mc');
 %% %有一定范围
 sf.show_range=[60 120 10 70];
 %%

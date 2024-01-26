@@ -19,8 +19,8 @@ function self=set_single(self,fir,ceta)
 
 self.ceta=ceta;
 self.fir=fir;
-[self.grid_fir,self.grid_ceta]=meshgrid(self.fir,self.ceta);
-Disp_Clock;
+% [self.grid_fir,self.grid_ceta]=meshgrid(self.fir,self.ceta);
+% Disp_Clock;
 disp("单点解决方案创建成功");
 
 

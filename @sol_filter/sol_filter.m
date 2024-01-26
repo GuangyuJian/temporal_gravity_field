@@ -46,7 +46,7 @@ classdef sol_filter<handle
             self.PnMl_n=6;
             self.PnMl_m=3;
 
-            self.fw_destrip_type='NONE';
+            self.fw_destrip_type='none';
 
             en=1+(maxn+3)*(maxn)/2;
             wnm(1:en,1)=1;

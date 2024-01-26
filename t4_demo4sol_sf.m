@@ -4,7 +4,7 @@
 % 通过这个时变重力场方案得到后续的球面函数对象
 clear;
 %%
-
+clear
 load('alpha_my_basin.mat');
 % load('alpha_my_shc.mat');
 load('alpha_csr_my_shc.mat')
@@ -13,15 +13,17 @@ load('alpha_my_filter.mat');
 %% 从sol_shc对象计算球面函数
 %  即创建sol_sf对象
 myf.set_filter('gauss',0);
-myf.pre_destrip_ddk(5);
+myf.destrip_flag=0;
 [sf]=csr_shc.shc2sf(myf,my_basin,'mc');
 %% %有一定范围 默认显示全球
-sf.show_range=[80 120 20 50];
+sf.show_range=[105 120 20 40];
 %% 需要下载m_map工具箱
-for tt=1:1:12
+for tt=1:1:6
     nexttile;
     sf.obs2map_tt(tt,[-200 200])
+    title([ sf.int_year(tt)  sf.int_month(tt) ])
 end
+
 %%
 sf.sf2harmonic([2001,2021],my_basin.mask);
 imagesc(sf.harmonic(:,:,5),[-50 50])
@@ -59,4 +61,17 @@ disp('估计值  —— 残差估计的不确定度' );
  %也可以不指定
 myts.tf2harmonic();
 myts.harmonic
+%%
+% 正演
+myf.set_filter('gauss',300);
+myf.pre_destrip(1,4,6);
+[sf]=csr_shc.shc2sf(myf,my_basin,'mc');
+ [valuefm,rms_it]=fm_unc(sf.value,60,myf.wnm,my_basin.mask);
 
+sf.value=valuefm;
+mytsfm=sf2ts(sf,my_basin);
+
+f=figure('position',[100 200 1000 500]);
+myts.ts_plot;
+hold on;
+mytsfm.ts_plot;

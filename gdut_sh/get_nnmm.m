@@ -1,10 +1,9 @@
 function [nn,mm]=get_nnmm(maxn)
-%
+% [nn,mm]=get_nnmm(maxn)
 %----------------------------------------------------------------------------
-% In   :
+% In   : maxn   [1x1]   maximum degree
 %
-% Out  :
-%
+% Out  : nn/mm  [1xen]  column-vector 
 %----------------------------------------------------------------------------
 
 
@@ -27,6 +26,5 @@ for n=0:maxn
         mm(k)=m;
     end
 end
-
 end
 

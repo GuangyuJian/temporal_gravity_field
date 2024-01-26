@@ -14,12 +14,12 @@ function []=my_addpath(root_path)
 %**************************************************************************
 % use: my_addpath('F:\V4')
 % root_path='F:\V4\allmy_trans_func'
-show_time_tag;
+show_time_tag_in;
 addpath(genpath([root_path]));
 disp([root_path 'is done'])
 end
 
-function []=show_time_tag()
+function []=show_time_tag_in()
 %
 %----------------------------------------------------------------------------
 % In   :

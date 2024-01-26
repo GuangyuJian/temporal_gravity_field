@@ -29,7 +29,8 @@ classdef sol_sf<sol
         self=imagesc_shc_amplitude(self);
         obs2map_tt(self,varargin);
         harmonic2map(self,varargin)
-
+        [h]=show_single(self)
+        
         objnew = plus(objl,objr);
         objnew = minus(objl,objr);
         % math
@@ -39,10 +40,15 @@ classdef sol_sf<sol
         [self]=append_info(self,info_type);
         
         [mysf]=sf2harmonic(mysf,trange,mask);
+
+         [ou]=value_srms(self);
+         [ou]=value_mrms(self);
+
+         [sigma_n]=mean_geoid_height(self,maxn);
     end
 
     methods(Static)
-        
+         [tws1,S]=grid2rms(grid,study_basin);
         [tws1,S]=grid2ts(grid,study_basin);
     end
 end

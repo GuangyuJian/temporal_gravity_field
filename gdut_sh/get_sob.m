@@ -1,8 +1,8 @@
 function [pnm,cmf,smf,ds]=get_sob(sol_filter,study_basin)
-% this function get the Spherical orthogonal basis (SOB) for using Spherical 
-% harmonic synthesis (SHS)
+% this function get the Spherical orthogonal basis (SOB) for 
+% using Spherical harmonic synthesis (SHS)
 %----------------------------------------------------------------------------
-% In   :
+% In   :    
 %
 % Out  :
 %

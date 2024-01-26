@@ -40,6 +40,11 @@ classdef sol_shc<sol
             end
             self.info=[];
         end
+        function [self]=set_time(self,time,int_year,int_month)
+            self.time=time;
+            self.int_year=int_year;
+            self.int_month=int_month;
+        end
         self=change_type(self,unit);
         [self]=de_bg(self,ts,te);
         % show
