@@ -1,22 +1,25 @@
 function [vecc,vecs,nm]=storage_shc2vec(shc,maxn)
 %----------------------------------------------------------------------------
-% In   :    shc     [struct{C;S}]
+% In   :    shc     [struct{cnm;snm}]
 %                   a structure storages values of c and s
 %                   (stored as degree-leading format) in its subfield
-%                   shc.c and shc.s, respectively.
-%           nontion:
-%                   Lmax means maximum degree; tt means the length of shc
-%           e.g.,shc(i).C
-%                   =[  c00(i)  ]
-%                    [  c10(i)  ]
-%                    [  ...     ]
-%                    [  cLmaxLmax(i)]
-%           nmax     [1x1] maximum degree
-% Out  :
-%    vecc            [kx1]   coefficients in vector shape: cosine part
-%    vecs            [kx1]   coefficients in vector shape: sine part
-%    nm              [2xk]   ordering vector the first column is degree,
-%                               the second column is order
+%                   shc.cnm and shc.snm, respectively.
+%           maxn     [1x1] maximum degree
+% OUTPUT:
+%    vecc ..... coefficients in vector shape: cosine part            [en x 1]
+%    vecs ..... coefficients in vector shape: sine part              [en x 1]
+%    nm ...... ordering vector                                       [en x 2]
+%    
+%   notes: vecc=[c00 c10 c11 c20 c21 c22 ----- cmaxn,maxn]T
+%           nm=[0 1 1 2 2 2 3 3 3 ----      maxn   maxn]T
+%              [0 0 1 0 1 2 0 1 2 ----      maxn-1 maxn]
+%   
+%                   Lmax means maximum degree
+%                   e.g.,shc(i).cnm
+%                           =[  c00(i)  ]
+%                            [  c10(i)  ]
+%                            [  ...     ]
+%                            [  cLmaxLmax(i)]
 %----------------------------------------------------------------------------
 
 
@@ -26,8 +29,6 @@ function [vecc,vecs,nm]=storage_shc2vec(shc,maxn)
 % date: 2023-12-10
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
-%**************************************************************************
-%Ref:
 %**************************************************************************
 ntime=length(shc);
 if ntime>1

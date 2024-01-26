@@ -1,20 +1,16 @@
 function [sc]=storage_cs2sc(cs)                               
-%                              
-% CS2SC(FIELD,backval) converts the square (L+1)x(L+1) matrix FIELD, containing
+% [sc]=storage_cs2sc(cs)                                   
+% storage_cs2sc converts the square (L+1)x(L+1) matrix, containing
 % spherical harmonics coefficients in |C\S| storage format into a 
 % rectangular (L+1)x(2L+1) matrix in  /S|C\format.
-%
+%--------------------------------------------------------------------------
 % IN:
-%    field .... the square (L+1)x(L+1) matrix FIELD , containing
-%               spherical harmonics coefficients in |C\S| storage format
-%    backval .. optional input and describes the matrix entries, 
-%               where m > l. Default is 0!
+%    cs ............. matrix   [ maxn+1 x maxn+1] 
+%                              coefficients in C\S format
 % OUT: 
-%    sc ....... rectangular (L+1)x(2L+1) matrix in  /S|C\format
-%    rows ..... rows of rectangular (L+1)x(2L+1) matrix  in  /S|C\format
-%    cols ..... columns of rectangular (L+1)x(2L+1) matrix  in  /S|C\format                       
+%    sc ............. matrix   [maxn+1 x maxn*2+1] 
+%                              coefficients in /S|C\ format                    
 %----------------------------------------------------------------------------
-   
 
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
@@ -23,10 +19,7 @@ function [sc]=storage_cs2sc(cs)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-%Ref: 
-% To  save energy and keep line with our own project， we directly use some
-% function from project 'SHBundle'
-%**************************************************************************                        
+                     
 
 [rows,cols] = size(cs);
 if rows~=cols

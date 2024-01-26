@@ -1,10 +1,8 @@
 function [ddk_shc]=storage_shct2ddk(shc,maxn)
-%
+% [ddk_shc]=storage_shct2ddk(shc,maxn)
 %----------------------------------------------------------------------------
-% In   :
-%
-% Out  :
-%
+% In   : shct       [struct{cnm;snm}]   struct in shct-format
+% Out  : shc_ddk    [struct{C;S}]       struct in DDK-format
 %----------------------------------------------------------------------------
 
 
@@ -14,8 +12,6 @@ function [ddk_shc]=storage_shct2ddk(shc,maxn)
 % date: 2024-01-20
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
-%**************************************************************************
-%Ref:
 %**************************************************************************
 
 

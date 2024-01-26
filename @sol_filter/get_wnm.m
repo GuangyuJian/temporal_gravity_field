@@ -7,7 +7,7 @@ function self=get_wnm(self)
 %       self.wnm is changed 
 %       wnm         [(Nmax+2)*(Nmax+1)/2 x 1]   
 %                   weighted coefficients storaged as clm-format                                   
-%----------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 
 % Authors: Karl Jian
 % address: Guangdong University of Technology(GDUT)

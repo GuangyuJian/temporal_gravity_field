@@ -1,18 +1,15 @@
 function [cs]=storage_sc2cs(sc)                               
-%        
 % [cs, rows, cols]=storage_sc2cs(sc)     
-% SC2CS(FIELD) converts the rectangular (L+1)x(2L+1) matrix FIELD, containing
+% storage_sc2cs converts the rectangular (L+1)x(2L+1) matrix FIELD, containing
 % spherical harmonics coefficients in /S|C\ storage format into a 
 % square (L+1)x(L+1) matrix in |C\S| format.
-%
+%--------------------------------------------------------------------------
 % IN:
-%    field .... the rectangular (L+1)x(2L+1) matrix FIELD, containing
-%               spherical harmonics coefficients in /S|C\ storage format
-%
+%    sc ............. matrix   [maxn+1 x maxn*2+1] 
+%                              coefficients in /S|C\ format    
 % OUT: 
-%    cs ....... square (L+1)x(L+1) matrix in |C\S| format
-%    rows ..... the number of rows for matrix FIELD
-%    cols ..... the number of columns for matrix FIELD                      
+%    cs ............. matrix   [ maxn+1 x maxn+1] 
+%                              coefficients in C\S format
 %----------------------------------------------------------------------------
    
 
@@ -23,10 +20,7 @@ function [cs]=storage_sc2cs(sc)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-%Ref: 
-% To  save energy and keep line with our own project， we directly use some
-% function from project 'SHBundle'
-%**************************************************************************                        
+                      
 [rows,cols] = size(sc);  
 if (cols~=2*rows-1)
     error('!');

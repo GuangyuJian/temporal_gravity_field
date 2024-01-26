@@ -1,26 +1,19 @@
 function [vecc,vecs,nm]=storage_cs2vec(cs)
-%
-% CS2VEC rearranges a field of spherical harmonic coefficients in
-% cs- or sc-format to a vector shape. The order will be:
-%
-% CASE I: degree-wise (default)
-%        nm   = [0    1    1    2    2    2    3    3    3    3  ...
-%                0    0    1    0    1    2    0    1    2    3  ...]
-% CASE II: order-wise
-%        nm   = [0    1    2    3    1    2    3    2    3    3  ...
-%                0    0    0    0    1    1    1    2    2    3  ...]
-%
+% [vecc,vecs,nm]=storage_cs2vec(cs)
+% storage_cs2vec rearranges a field of spherical harmonic coefficients in
+% cs-format to a vector shape in degree-dependent order. 
+%----------------------------------------------------------------------------
 % IN:
-%    in ....... [n,m]   input in cs- or sc-format
-%    ordflag .. [bool]  false = degree-wise ordering (default)
-%                       true  = order-wise ordering
-%
+%    cs ............. matrix   [ maxn+1 x maxn+1] 
+%                              coefficients in C\S format
 % OUTPUT:
-%    nm ...... ordering vector                                      [2,k]
-%              maximum degree - degree-wise ordering is assumed     [1,1]
-%    outc ..... coefficients in vector shape: cosine part            [1,k]
-%    outs ..... coefficients in vector shape: sine part              [1,k]
-%
+%    vecc ..... coefficients in vector shape: cosine part            [en x 1]
+%    vecs ..... coefficients in vector shape: sine part              [en x 1]
+%    nm ...... ordering vector                                       [en x 2]
+%    
+%   notes: vecc=[c00 c10 c11 c20 c21 c22 ----- cmaxn,maxn]T
+%           nm=[0 1 1 2 2 2 3 3 3 ----      maxn   maxn]T
+%              [0 0 1 0 1 2 0 1 2 ----      maxn-1 maxn]
 %----------------------------------------------------------------------------
 
 
@@ -30,10 +23,6 @@ function [vecc,vecs,nm]=storage_cs2vec(cs)
 % date: 2023-12-10
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
-%**************************************************************************
-%Ref:
-% To  save energy and keep line with our own project， we directly use some
-% function from project 'SHBundle'
 %**************************************************************************
 [rows,~]=size(cs);
 k=0;
