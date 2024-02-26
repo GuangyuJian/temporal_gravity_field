@@ -44,15 +44,15 @@ for tt=1:ntt
             grace_shc.storage(tt).cnm(2)=c10s10(i,1);
             grace_shc.storage(tt).snm(2)=c10s10(i,2);
 
-%             grace_shc.storage(tt).cnm_sigma(2)=c10s10(i,3);
-%             grace_shc.storage(tt).snm_sigma(2)=c10s10(i,4);
+            grace_shc.storage(tt).cnm_sigma(2)=c10s10(i,3);
+            grace_shc.storage(tt).snm_sigma(2)=c10s10(i,4);
 
             %c11 s11 and their sigma
             grace_shc.storage(tt).cnm(3)=c11s11(i,1);
             grace_shc.storage(tt).snm(3)=c11s11(i,2); 
 
-%             grace_shc.storage(tt).cnm_sigma(3)=c11s11(i,3);
-%             grace_shc.storage(tt).snm_sigma(3)=c11s11(i,4);
+            grace_shc.storage(tt).cnm_sigma(3)=c11s11(i,3);
+            grace_shc.storage(tt).snm_sigma(3)=c11s11(i,4);
 
             lc=i;
             i=nii;

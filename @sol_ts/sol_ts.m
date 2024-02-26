@@ -4,10 +4,6 @@ classdef sol_ts<sol
         unit char
         value (:,1) double
         name char
-        harmonic
-%         time
-%         int_year
-%         int_month
     end
     %%
     methods
@@ -16,17 +12,21 @@ classdef sol_ts<sol
             self.value=value(:);
             self.unit=unit;
         end
+         
+        %% interp
+        [self2]=filling(self,trange);
+        %% plot
+        [h]=ts_plot(self);
+        [h]=ts_bar(self)                  
+        [h]=tsa_fft(self,fs,trange,fillflag)    
 
-
-        ts_plot(self);
-        % math
-         []=show_info(self);
-        [self]=append_info(self,info_type);
-        
-        objnew = plus(objl,objr);
-        objnew = minus(objl,objr)
-
-        [myts]=tf2harmonic(myts,trange);
+        %% math        
+%         objnew = plus(objl,objr);
+%         objnew = minus(objl,objr)
+%         objnew = mean(obj1,ts,te);
+%         [self] = de_bg(self,ts,te);
+        %% statistic
+        [r,p]=ts_corrcoef(solts1,solts2)    
     end
 end
 

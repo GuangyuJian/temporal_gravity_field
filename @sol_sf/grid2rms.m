@@ -26,7 +26,7 @@ n=size(ewh,3);
 tws=zeros(n,1);
 
 if size(ewh,1)~=size(mask,1)|size(ewh,2)~=size(mask,2)
-    Disp_Clock;
+%     Disp_Clock;
     disp('Region_2_TWS:尝试计算中，ewh与mask不同纬度');
 %     disp(Sol);
 end

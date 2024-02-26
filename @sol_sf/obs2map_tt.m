@@ -33,6 +33,7 @@ elseif nin==1
 
     tt=varargin{1};
  cvalue=[-200 200];
+ titlename=[];
 end
 
 if ~isempty(self.time)
@@ -47,7 +48,7 @@ if ~isempty(self.time)
     end
     title(titlestr);
 end
-if ~isempty(titlename)
+if isempty(titlename)
     titlename=titlestr;
 end
 

@@ -10,7 +10,7 @@ n=size(ewh,3);
 tws=zeros(n,1);
 
 if size(ewh,1)~=size(mask,1)|size(ewh,2)~=size(mask,2)
-    Disp_Clock;
+%     Disp_Clock;
     disp('Region_2_TWS:尝试计算中，ewh与mask不同纬度');
 %     disp(Sol);
 end
@@ -29,7 +29,12 @@ rr=1:size(ewh,1);
 cc=1:size(ewh,2);
 
 for k=1:n
-    temp=  ewh(:,:,k)    .*mask(rr,cc)  .*cwg(rr,cc);
+    if length(ewh(:,:,k))>0
+%         disp('存在无效值');
+        tempewh=ewh(:,:,k);
+        tempewh(isnan(tempewh))=0;
+    end
+    temp=  tempewh.*mask(rr,cc).*cwg(rr,cc);
     m=sum(mask(rr,cc) .*cwg(rr,cc),'all');
     tws(k,1)=sum(  temp ,'all')/m;
 end

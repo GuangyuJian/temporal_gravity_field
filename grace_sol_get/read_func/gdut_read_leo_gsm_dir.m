@@ -1,10 +1,12 @@
 function [shc,time,int_year,int_month,shc_sigma]=gdut_read_leo_gsm_dir(dir_in,nmax)
-%
+%  [shc,time,int_year,int_month,shc_sigma]=gdut_read_gsm_dir(dir_in,nmax)
+% this function dedicated to read all the leo-gsm file in a the same path
 %----------------------------------------------------------------------------
 % In   :
+%		dir_in	[char]	full-path of all the gsm file
 %
 % Out  :
-%
+%		nmax	[1x1]	maximum degree
 %----------------------------------------------------------------------------
 
 

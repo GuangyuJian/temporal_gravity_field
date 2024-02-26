@@ -1,4 +1,4 @@
-function []=obs2map_fs12(ewh,value,range,titlename)
+function [h]=obs2map_fs12(ewh,value,range,titlename)
 if nargin==4
     disp('画图')
 end

@@ -1,5 +1,6 @@
 function [C,S,C_Sigma,S_Sigma,time,int_year,int_month]=gdut_read_gsm(dir_in,file_name,nmax)
 %  [C,S,C_Sigma,S_Sigma]=gdut_read_gsm(dir_in,file_name,nmax);
+% this function reads a single file(*gfc)
 %----------------------------------------------------------------------------
 % In   :    full path   [char] full path
 %           file_name   [char] filename
@@ -18,8 +19,8 @@ function [C,S,C_Sigma,S_Sigma,time,int_year,int_month]=gdut_read_gsm(dir_in,file
 % MATnAB_version: 9.12.0.1884302 (R2022a)
 %**************************************************************************
 %Ref:
-% 
-% 
+%
+%
 % external project:
 % GRACE_Matlab_Toolbox-master
 %   --->gmt_get_mon_day
@@ -51,7 +52,8 @@ while isempty(flag)
     end
 end
 fclose all;
-
+disp('********************************************');
+disp(['gdut_read_gsm: " ' file_name '"']);
 %read
 [ n ,  m,c, s, sigmac, sigmas  ]=textread(path,'%*s %f %f %f %f %f %f' , 'headerlines', sum);
 
@@ -67,31 +69,34 @@ for loc=1:length(n)
     nn=n(loc);
     mm=m(loc);
     nm=(nn^2+nn+2)/2+mm;
-    
-%     for checking
-%     nnn(nm,1)=nn;
-%     mmm(nm,1)=mm;
-    
+
+    %     for checking
+    %     nnn(nm,1)=nn;
+    %     mmm(nm,1)=mm;
+
     C(nm,1)=c(loc);
     S(nm,1)=s(loc);
     C_Sigma(nm,1)=sigmac(loc);
     S_Sigma(nm,1)=sigmas(loc);
 end
 
-[year1,year2,day1,day2]= get_yyyyddd(file_name);
-[meanday]=get_mean_day(year1,year2,day1,day2);
+[year1,year2,day1,day2]= read_yyyyddd(file_name);
+[meanday,time,int_year]=gdut_get_mean_day(year1,year2,day1,day2);
+% meanday     = round(meanday);
+int_month   = yds2md(int_year,meanday);
 
-time        = year1 + meanday/365.;
-meanday     = round(meanday);
-int_year    = year1;
-int_month   = gmt_get_mon_day(year1,meanday+1);
+% time        = year1 + meanday/365.;
+% meanday     = round(meanday);
+% int_year    = year1;
+% int_month   = gmt_get_mon_day(year1,meanday);
+% int_month   = gmt_get_mon_day(year1,meanday); %modify in 20240205 kj
 
-disp('********************************************');
-disp(['gdut_read_gsm: " ' file_name '"']);
+
+
 end
 
 %--------------------------------------------------
-function[year1,year2,day1,day2]= get_yyyyddd(file_name)
+function[year1,year2,day1,day2]= read_yyyyddd(file_name)
 
 tempstr=file_name(1:3);
 
@@ -116,20 +121,5 @@ switch tempstr
         error('gdut_read_gsm: cannot find right type');
 end
 
-
-end
-
-function [meanday]=get_mean_day(year1,year2,day1,day2)
-
-if year1 == year2
-    meanday = (day1+day2)/2;
-else
-    if (day1+(366-day1+day2)/2)>365 % in latter year
-        year1   = year1 + 1;
-        meanday = day2-(366-day1+day2)/2;
-    else
-        meanday = day1+(366-day1+day2)/2;  % in former year
-    end
-end
 
 end

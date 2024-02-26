@@ -65,7 +65,7 @@ my_shc.int_month=mysf.int_month;
 my_shc.append_info('----------------------');
 my_shc.append_info([mysf.info]);
 
-show_time_tag;
-disp('sf2shc: shc is done');
+% show_time_tag;
+% disp('sf2shc: shc is done');
 end
 

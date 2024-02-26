@@ -20,9 +20,9 @@ maxn=self.maxn;
 
 type_original=self.type;
 if strcmp(type_want,type_original)
-    disp('--------------------------')
-    disp('change_type: no need for transforming');
-    disp(['change_type: original ones is ' type_want]);
+%     disp('--------------------------')
+%     disp('change_type: no need for transforming');
+%     disp(['change_type: original ones is ' type_want]);
 else
     self.type=type_want;
 

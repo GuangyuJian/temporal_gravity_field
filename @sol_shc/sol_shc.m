@@ -8,10 +8,6 @@ classdef sol_shc<sol
         maxn double
         storage struct
         shc_sigma  struct
-%         time
-%         int_year
-%         int_month
-%         info char
     end
 
     %%
@@ -23,8 +19,8 @@ classdef sol_shc<sol
             for tt=1:length(shc)
                 shc(tt).cnm=shc(tt).cnm(1:en);
                 shc(tt).snm=shc(tt).snm(1:en);
-                %                 shc(tt).cnm_sigma=shc(tt).cnm_sigma(1:en);
-                %                 shc(tt).snm_sigma=shc(tt).snm_sigma(1:en);
+                %shc(tt).cnm_sigma=shc(tt).cnm_sigma(1:en);
+                %shc(tt).snm_sigma=shc(tt).snm_sigma(1:en);
             end
             self.storage=shc;
             self.maxn=maxn;
@@ -40,34 +36,33 @@ classdef sol_shc<sol
             end
             self.info=[];
         end
-        function [self]=set_time(self,time,int_year,int_month)
-            self.time=time;
-            self.int_year=int_year;
-            self.int_month=int_month;
-        end
-        self=change_type(self,unit);
-        [self]=de_bg(self,ts,te);
-        % show
-        show_info(self);
+     
+        %% show-----------------------------------------
+        % power spectrum
+        [h]=show_sps(self,tt);
+        [h]=show_nps(self,tt);
+        % show spherical harmonic spectrum
         h=show_shc(self,tt);
         h=show_shc_sigma(self,tt);
-        [h]=show_shc_degree_sigma(self,tt);
-        [h]=show_shc_degree(self,tt);
+        % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type)
-%%
+        %% transfer
         [sf]=shc2sf(sol_shc,sol_filter,study_basin,type);
+        self=change_type(self,unit);
         %info
-        [self]=append_info(self,info_type);
-        % math
-        objnew = plus(objl,objr);
-        objnew = minus(objl,objr);
-        objnew = mean(obj1,ts,te);
+        %% math
+%         objnew = plus(objl,objr);
+%         objnew = minus(objl,objr);
+%         objnew = mean(obj1,ts,te);
+        objnew = mtimes(objl,objr);
+        objnew = mrdivide(objl,objr);
+%         [self] = de_bg(self,ts,te);
     end
 
     methods(Static)
-        [gc]=scf_mc2gc(mc,maxn);
-        [gc]=scf_gdc2gc(gdc) ;
-        [mc]=scf_gc2mc(gc,maxn);
+        [gc] =scf_mc2gc(mc,maxn);
+        [gc] =scf_gdc2gc(gdc) ;
+        [mc] =scf_gc2mc(gc,maxn);
         [gdc]=scf_gc2gdc(gc,maxn);
     end
 

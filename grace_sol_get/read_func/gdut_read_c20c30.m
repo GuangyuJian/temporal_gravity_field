@@ -1,21 +1,22 @@
 function [time,rc20, rc20_sgima,rc30,rc30_sigma]=gdut_read_c20c30(dir_in)
 %   [time,rc20, rc20_sgima,rc30,rc30_sigma]=gdut_read_c20c30(dir_in)
+%
 %---------------------------------------------------------------------------
 % In   :
 %       dir_in  [str]    path of the TN-14_C30_C20_GSFC_SLR.txt
 % Out  :
-%       times       [iix1]   vector of the time at the middle (year+fraction) 
-%       rc20        [iix1]   column vector full filled with c20
-%       rc30        [iix1]   column vector full filled with c30
+%       times       	[iix1]   vector of the time at the middle (year+fraction) 
+%       rc20        	[iix1]   column vector full filled with c20
+%       rc30        	[iix1]   column vector full filled with c30
 %       rc20_sgima  [iix1]   column vector full filled with (c20)  sigma
 %       rc30_sigma  [iix1]   column vector full filled with (c30)  sigma
 %       
 %       e.g., output0 is storaged as 
-%                         [c20(1) ]
-%                         [```````]
-%                         [c20(i) ]
-%                         [```````]
-%                         [c20(ii)]
+%                         [c20(1)   ]
+%                         [```````	]
+%                         [c20(i)   ]
+%                         [```````	]
+%                         [c20(ii)  ]
 %       notes
 %       i is the time index and row index.
 %       ii is the total number of the shc (c10/c11/s10/s11).

@@ -1,4 +1,4 @@
-function []=harmonic2map(self,varargin)
+function [h]=harmonic2map(self,varargin)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -52,7 +52,7 @@ end
 range=self.show_range;
 ewh=self.harmonic(:,:,lc);
 
-obs2map_fs12(ewh,cvalue,range,titlename);
+h=obs2map_fs12(ewh,cvalue,range,titlename);
 
 
 

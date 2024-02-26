@@ -8,7 +8,7 @@ function [C,S,C_Sigma,S_Sigma,time,int_year,int_month]=gdut_read_leo_gsm(dir_in,
 %           C\S             [1x en] shpherical harmonic coefficient (SHC)
 %           C_Sigma\S_Sigma [1x en] formal standard deviation of SHC
 %
-%           both vector are storagee in degree-rank form
+%           both vector are storagee in degree-dependent storage
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)

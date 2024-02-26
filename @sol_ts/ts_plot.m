@@ -18,7 +18,7 @@ function [h]=ts_plot(self)
 %Ref:
 %**************************************************************************
 
-plot(self.time,self.value,'LineWidth',1.5);
+h=plot(self.time,self.value,'LineWidth',1.5);
 ylabel(self.unit);
 xlabel('Year');
 title(self.name);

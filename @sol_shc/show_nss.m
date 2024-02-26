@@ -56,8 +56,8 @@ h=plot(nn,temp(locn),'black-');
 rg=[-1.2*max(abs(temp(locn))) 1.2*max(abs(temp(locn)))];
 grid on;
 box on;
-xlabel('degree');
-ylabel('coefficient');
+xlabel('阶数');
+ylabel('球谐系数');
 
 hold on;
 % nexttile;    
@@ -68,8 +68,8 @@ ylim(rg);
 xlim([0 maxn]);
 grid on;
 box on;
-xlabel('degree');
-ylabel('coefficient');
+xlabel('阶数');
+ylabel('球谐系数');
 fontsize(gca,12,'points')
 
 l=legend('odd+even','odd','even');

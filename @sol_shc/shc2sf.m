@@ -63,9 +63,7 @@ end
  
 mysf=sol_sf(value,unit,fir,ceta);
 % set time info
-mysf.time=myshc.time;
-mysf.int_year=myshc.int_year;
-mysf.int_month=myshc.int_month;
+mysf.set_time(myshc.time,myshc.int_year,myshc.int_month);
 mysf.append_info(myshc.info);
 
 mysf.append_info('----------------------');
@@ -92,9 +90,9 @@ end
 
 
 mysf.show_range='global';
-show_time_tag;
-disp('shc2sf：sf is done');
-mysf.show_info;
+% show_time_tag;
+% disp('shc2sf：sf is done');
+% mysf.show_info;
 end
 
 function shc=in_destriping(shc,myf)
@@ -104,8 +102,8 @@ ntime=length(shc);
 switch myf.destrip_flag
 
     case 1
-        disp('----------------------------')
-        disp('destrping')
+%         disp('----------------------------')
+%         disp('destrping')
         for tt=1:ntime
             nn=myf.PnMl_n;
             ll=myf.PnMl_m;
@@ -125,8 +123,8 @@ switch myf.destrip_flag
         dataDDK=gmt_destriping_ddk(myf.ddk_type,shc_ddk);
         shc=storage_ddk2shct(dataDDK);
     otherwise
-        %         error('!')
-        disp('not desriping');
+%                 error('!')
+%         disp('not desriping');
 end
 
 end

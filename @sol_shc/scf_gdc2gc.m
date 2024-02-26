@@ -1,4 +1,4 @@
-function [gc]=scf_gdc2gc(gdc)                               
+function [gc]=scf_gdc2gc(gdc,maxn)                               
 % [mc]=scf_gdc2gc(gc,maxn)                            
 %----------------------------------------------------------------------------
 % In   :   gdc   [1xen] gravity disturbance coefficients

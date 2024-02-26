@@ -6,11 +6,6 @@ classdef sol_sf<sol
         ceta double
         value double
         show_range
-        harmonic
-%         time
-%         int_year
-%         int_month
-%         info
     end
     %%
     methods
@@ -24,31 +19,28 @@ classdef sol_sf<sol
         end
 
         self=plot_degree_amplitude(self);
-        self=imagesc_tt(self,tt);
-        self=imagesc_region(self,tt);
-        self=imagesc_shc_amplitude(self);
-        obs2map_tt(self,varargin);
-        harmonic2map(self,varargin)
-        [h]=show_single(self)
-        
-        objnew = plus(objl,objr);
-        objnew = minus(objl,objr);
-        % math
-        [myts]=sf2ts(sol_sf,study_basin);
+%         self=imagesc_tt(self,tt);
+        %% plot
+        [h]=imagesc_tt(self,varargin);
+        []=obs2map_tt(self,varargin);
+        [h]=harmonic2map(self,varargin)
+        [h,y1]=show_slice(self,tt,slice_fir,slice_ceta);
+        %% math        
+%         objnew = plus(objl,objr);
+%         objnew = minus(objl,objr);
+%         objnew = mean(objl,ts,te);
+%         [self]=de_bg(self,ts,te);
+        %% math2
+        [sigma_n]=mean_geoid_height(self,maxn);
+        [tso,tsl]=check_mass_conservation(mysf,ocean_mask);
+        %% transfer
+        [ts]=get_point_ts(self,fir,ceta)
+        [myts]  =sf2ts(sol_sf,study_basin);
         [my_shc]=sf2shc(sol_sf,sol_filter,study_basin,type);
-        []=show_info(self);
-        [self]=append_info(self,info_type);
-        
-        [mysf]=sf2harmonic(mysf,trange,mask);
-
-         [ou]=value_srms(self);
-         [ou]=value_mrms(self);
-
-         [sigma_n]=mean_geoid_height(self,maxn);
     end
 
     methods(Static)
-         [tws1,S]=grid2rms(grid,study_basin);
+        [tws1,S]=grid2rms(grid,study_basin);
         [tws1,S]=grid2ts(grid,study_basin);
     end
 end
