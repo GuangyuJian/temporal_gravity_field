@@ -1,4 +1,4 @@
-function []=obs2map_fs12(ewh,value,range,titlename)
+function [h]=obs2map_fs12(ewh,value,range,titlename)
 if nargin==4
     disp('画图')
 end
@@ -61,7 +61,7 @@ e=lc2(1):lc2(end);
 ewh(find(ewh==0))=nan;
 m=m_pcolor(Plg,Plt,ewh(lc2,lc1));
 % m_contourf(Plg,Plt,ewh(lc2,lc1),[value(1):1:value(end)],'linestyle','none','levelstep',.1);% 陆地高程
-
+% set_nan_h(m,ewh(lc2,lc1))
 shading flat;
 
 hold on;
@@ -71,6 +71,8 @@ m_coast('LineWidth',1,'color',[0 0 0]);
 
 caxis(value)
 shading flat;
+bgcolor=[.2 .65 1];
+bgcolor='none'
 if strcmp(range,'global')
     m_grid('box','on',...
         'tickdir','in',...   'linestyle','none',...
@@ -79,7 +81,7 @@ if strcmp(range,'global')
         'Xtick',5,...
         'FontName', 'Helvetica',...
         'xlabeldir','middle',...
-        'backcolor',[.2 .65 1]);
+        'backcolor',bgcolor);
 else
     m_grid('box','on',...
         'tickdir','in',...   'linestyle','none',...
@@ -88,7 +90,7 @@ else
         'xtick',4,...%     'Xtick',[-105 -90 -80 -65],...
         'FontName', 'Helvetica',...
         'xlabeldir','middle',...
-        'backcolor',[.2 .65 1]);
+        'backcolor',bgcolor);
 
 end
 
@@ -112,5 +114,6 @@ if ~isempty(titlename)
     %     'Units','normalized',...
     %     'BackgroundColor',[1 1 1]);
 end
-colormap(jet)
+colormap(gca,jet);
+h=gca;
 end

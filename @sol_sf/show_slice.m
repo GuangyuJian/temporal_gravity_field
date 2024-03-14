@@ -1,4 +1,4 @@
-function [h,yall]=show_slice(mysf,tt,slice_fir,slice_ceta)
+function [h,yall]=show_slice(mysf,tt,slice_fir,slice_ceta,plot_flag)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -91,7 +91,18 @@ switch flag
 %         h(3)=plot(slice_fir,yocean,'Marker','+');
         xlabel('经度（°）');
     case 2
-        h=plot(yall);
+        sf=deg2rad(slice_fir-slice_fir(1));
+        sc=deg2rad(slice_ceta-slice_ceta(1));
+        sall=sqrt(sf.^2+sc.^2);
+        sall=sall.*6371;
+
+        if plot_flag==0
+        h=plot(sall,yall);
+            xlabel('公里');
+        elseif plot_flag==1
+            h=plot(yall,sall);
+            ylabel('公里');
+        end
 end
 end
 

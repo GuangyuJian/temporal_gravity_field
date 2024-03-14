@@ -1,7 +1,7 @@
 function [h]=show_nps(self,tt)                               
 % h=show_shc_degree_sigma(self,tt)
 % h=self.show_shc_degree_sigma(tt)
-% show the degree amplitude of noise for a given time index (tt)  
+% show the noise degree amplitude of noise for a given time index (tt)  
 %----------------------------------------------------------------------------
 % In   : self   [1x1]  @sol_shc    
 %        tt     [1x1]   time index

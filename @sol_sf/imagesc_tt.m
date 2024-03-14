@@ -20,7 +20,7 @@ function [h]=imagesc_tt(self,varargin)
 
 fir=self.fir;
 ceta=self.ceta;
-
+if nargin==2
 switch length(varargin)
 
     case 1
@@ -39,6 +39,10 @@ switch length(varargin)
         end
     otherwise
         error('wrong input');
+end
+elseif nargin==1
+
+tt=1;
 end
 
 
@@ -73,5 +77,9 @@ xlabel('经度（°）');
 ylabel('纬度（°）');
 grid on;
 box on;
+caxis([-300 300]);
+load coast
+hold on;
+plot(long,lat,'LineWidth',2);
 end
 

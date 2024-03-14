@@ -3,7 +3,7 @@ clc;
 
 %% 读取CSR系数
 %  并创建sol_shc对象
-dir_in='test_alpha\csrdo60_unfilter';
+dir_in='E:\github_desktop\test\temporal_gravity_field\test_alpha\csrdo60_unfilter';
 [shc,time,int_year,int_month,shc_sigma]=gdut_read_gsm_dir(dir_in,60);
 %%
 % clc;
@@ -12,6 +12,7 @@ csr_shc.time=time;
 csr_shc.int_year=int_year;
 csr_shc.int_month=int_month;
 csr_shc.shc_sigma=shc_sigma;
+%%
 % 替换和改正项 $leo不用
 dir_in='TN-14_C30_C20_GSFC_SLR.txt';
 replace_c20c30(csr_shc,dir_in); 

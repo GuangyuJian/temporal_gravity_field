@@ -52,6 +52,10 @@ switch class(objl)
             case     'double'
                 vr=objr;
                 value=vl(:)-vr(:);
+                 unit=objl.unit;
+                objnew=sol_ts(value,unit);
+                objnew.name=objl.name;
+                
             case 'sol_ts'
                 vr=objr.value;
 
@@ -75,6 +79,8 @@ switch class(objl)
 
         end
 
-        objnew.set_time(objl.time,objl.int_year,objl.int_month);
+      
+end
+  objnew.set_time(objl.time,objl.int_year,objl.int_month);
 
 end

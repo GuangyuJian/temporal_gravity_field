@@ -16,9 +16,7 @@ for r=1:size(ewh,1)
         else
                grid(r,c,1:5)=0;
         end
-
     else 
-
          grid(r,c,1:5)=nan;
     end
          

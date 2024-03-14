@@ -39,7 +39,7 @@ classdef study_basin<handle
         mask                %a mask corresponding to the study basin
         % defult: a nan-matrix
         cos_weight_grid     %a weight for the study basin
-
+        area_size
     end
     %%
     methods

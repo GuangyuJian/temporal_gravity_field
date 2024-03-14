@@ -45,15 +45,18 @@ classdef sol_shc<sol
         h=show_shc(self,tt);
         h=show_shc_sigma(self,tt);
         % show  spectrum for a given spherical harmonic order
-        [h]=show_nss(self,tt,mm,type)
+        [h]=show_nss(self,tt,mm,type);
         %% transfer
         [sf]=shc2sf(sol_shc,sol_filter,study_basin,type);
         self=change_type(self,unit);
+        [myvsf]=vshc2sf(myvshc,myf,myb,type);
         %info
         %% math
 %         objnew = plus(objl,objr);
 %         objnew = minus(objl,objr);
 %         objnew = mean(obj1,ts,te);
+        [obj2]=truncate(obj1,maxnnew);
+         [obj2]=truncate_m(obj1,maxm)                      
         objnew = mtimes(objl,objr);
         objnew = mrdivide(objl,objr);
 %         [self] = de_bg(self,ts,te);

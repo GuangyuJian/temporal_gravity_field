@@ -48,6 +48,26 @@ switch length(varargin)
         else
             error('! wrong argument ');
         end
+
+        case 3
+        if strcmp(varargin{1},'one')
+            y1=varargin{2};
+            m1=varargin{3};
+            if length(y1)~=1||length(m1)~=1
+                error('! wrong argument :trange');
+            else
+
+                ly1=(self.int_year==y1);
+                lm1=(self.int_month==m1);
+  
+                lym1=ly1.*lm1;
+                llc=find(lym1==1);
+                clear ly1  lm1  lym1 ;
+            end
+        else
+            error('! wrong argument 3');
+        end
+
     otherwise
         error('!');
 end
@@ -59,7 +79,7 @@ switch class(self)
     case 'sol_sf'
         self2=sol_sf(self.value(:,:,llc),self.unit,self.fir,self.ceta);
     case 'sol_ts'
-        self2=sol_ts(self.value(:,:,llc),self.unit);
+        self2=sol_ts(self.value(llc),self.unit);
     case 'sol_shc'
         self2=sol_shc(self.storage(llc),self.maxn,self.storage_type,self.type);
 end

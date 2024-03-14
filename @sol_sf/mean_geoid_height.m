@@ -33,9 +33,11 @@ for tt=1:ntime
     cnm=value(tt).cnm;
     snm=value(tt).cnm;
     for nn=0:maxn
+%         nlist=2*nn+1;
+        nlist=1;
         loc=get_nm(nn,0:nn);
         tempsum=cnm(loc).^2+cnm(loc).^2;
-        temp(nn+1,tt)=radius*sqrt(sum(tempsum,'all'));
+        temp(nn+1,tt)=radius*sqrt(sum(tempsum,'all')/(nlist));
     end
 end
 sigma_n=mean(temp,2)*1000;

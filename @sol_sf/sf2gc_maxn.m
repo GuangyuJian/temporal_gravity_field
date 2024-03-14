@@ -1,4 +1,4 @@
-function [my_shc]=sf2shc(mysf,myf,myb,type)
+function [my_shc]=sf2gc_maxn(mysf,maxn)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -19,12 +19,12 @@ function [my_shc]=sf2shc(mysf,myf,myb,type)
 % myf=sol_tgf.myf;
 % myb=sol_tgf.myb;
 
-if nargin==1
-myf=sol_filter(96);
+
+myf=sol_filter(maxn);
 res=180/size(mysf.value,1);
 myb=study_basin(res);
 type='gc';
-end
+
 
 fir=myb.fir;
 ceta=myb.ceta;

@@ -1,4 +1,4 @@
-function [ewhvmd,ewhvecr,ewhvecr_mode] =vmd_grace_mass_field_v3(ewh,maxnum,PenaltyFactor)
+function [ewhvmd,ewhvecr,ewhvecr_mode,info] =vmd_grace_mass_field_wk(ewh,maxnum,PenaltyFactor)
 
 % Input :
 % ewh:		matrix (r,c,K)	original observation

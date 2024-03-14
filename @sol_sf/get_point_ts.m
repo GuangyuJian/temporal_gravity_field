@@ -17,32 +17,34 @@ function [myts]=get_point_ts(mysf,fir,ceta)
 %**************************************************************************
 %Ref:
 %**************************************************************************
+for j=1:length(mysf)
+    tempsf=mysf(j);
+    gfir=tempsf.fir;
+    gceta=tempsf.ceta;
 
-gfir=mysf.fir;
-gceta=mysf.ceta;
+    dfir=abs(gfir-fir);
+    dceta=abs(gceta-ceta);
 
-dfir=abs(gfir-fir);
-dceta=abs(gceta-ceta);
+    [~,ifir]=sort(dfir,'ascend');
+    [~,iceta]=sort(dceta,'ascend');
 
-[~,ifir]=sort(dfir,'ascend');
-[~,iceta]=sort(dceta,'ascend');
+    ifir=sort(ifir(1:2),'ascend');
+    iceta=sort(iceta(1:2),'ascend');
+    lf=ifir(1):1:ifir(2);
+    lc=iceta(1):1:iceta(2);
+    ntime=size(tempsf.value,3);
+    [X,Y]=meshgrid(gfir(lf),gceta(lc));
+    load land_mask_csr.mat;
 
-ifir=sort(ifir(1:2),'ascend');
-iceta=sort(iceta(1:2),'ascend');
-lf=ifir(1):1:ifir(2);
-lc=iceta(1):1:iceta(2);
-ntime=size(mysf.value,3);
-[X,Y]=meshgrid(gfir(lf),gceta(lc));
-load land_mask_csr.mat;
-
-% X=X(:);
-% Y=Y(:);
-for k=1:ntime
-temp=mysf.value(lc,lf,k);
-Z=temp;
-y1(k) = interp2(X,Y,Z,fir,ceta,'linear');
+    % X=X(:);
+    % Y=Y(:);
+    for k=1:ntime
+        temp=tempsf.value(lc,lf,k);
+        Z=temp;
+        y1(k) = interp2(X,Y,Z,fir,ceta,'linear');
+    end
+    % ts=y1;
+    myts(j)=sol_ts(y1,'ewh (mm)');
+    myts(j).set_time(tempsf.time,tempsf.int_year,tempsf.int_month);
 end
-% ts=y1;
-myts=sol_ts(y1,'ewh (mm)');
-myts.set_time(mysf.time,mysf.int_year,mysf.int_month);
 end

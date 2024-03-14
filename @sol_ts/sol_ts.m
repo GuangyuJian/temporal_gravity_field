@@ -19,14 +19,16 @@ classdef sol_ts<sol
         [h]=ts_plot(self);
         [h]=ts_bar(self)                  
         [h]=tsa_fft(self,fs,trange,fillflag)    
-
+        [h]=tsa_xwt(obj1,obj2);
         %% math        
 %         objnew = plus(objl,objr);
 %         objnew = minus(objl,objr)
 %         objnew = mean(obj1,ts,te);
 %         [self] = de_bg(self,ts,te);
         %% statistic
-        [r,p]=ts_corrcoef(solts1,solts2)    
+        [r,p]=ts_corrcoef(solts1,solts2)  
+        [mean_an]=mean_annual(self,trange,filling_flag);
+
     end
 end
 

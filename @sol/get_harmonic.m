@@ -27,13 +27,25 @@ switch class(self)
         if nargin==1
             [ou]= fit_harmonic_sf(tt,self.value);
         elseif nargin==2
-            lc=find(tt>trange(1)&tt<trange(2));
+
+            trange=varargin{1};
+            ymd1=trange(1)+(trange(2)-0.5)/12;
+            ymd2=trange(3)+(trange(4)-0.5)/12;
+
+            lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
             [ou]= fit_harmonic_sf(tt,self.value(:,:,lc));
         elseif nargin==3
-            lc=find(tt>trange(1)&tt<trange(2));
+            trange=varargin{1};
+
+            mask=varargin{2};
+            ymd1=trange(1)+(trange(2)-0.5)/12;
+            ymd2=trange(3)+(trange(4)-0.5)/12;
+
+            lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
             [ou]= fit_harmonic_sf_mask(tt,self.value(:,:,lc),mask);
+
         end
 
     case 'sol_ts'
@@ -42,8 +54,11 @@ switch class(self)
             [temp]= fit_harmonic_ts(tt,self.value);
             ou=temp;
         elseif nargin==2
+            trange=varargin{1};
+            ymd1=trange(1)+(trange(2)-0.5)/12;
+            ymd2=trange(3)+(trange(4)-0.5)/12;
 
-            lc=find(tt>trange(1)&tt<trange(2));
+            lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
             [temp]= fit_harmonic_ts(tt,self.value(lc));
             ou=temp;
