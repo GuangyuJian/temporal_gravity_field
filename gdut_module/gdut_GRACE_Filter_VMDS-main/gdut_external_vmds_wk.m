@@ -1,4 +1,4 @@
-function [sol_shc_vmds]=gdut_external_vmds_wk(sol_shc_in,k_max,alpha,wk_max)
+function [sol_shc_vmds,sol_wk]=gdut_external_vmds_wk(sol_shc_in,k_max,alpha,wk_max)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -40,6 +40,7 @@ for tt=1:length(sf.time)
     loc=find(wk<=wk_max);
     loc=[1 ;loc+1];
     obs_vmd(:,:,tt)=sum(ewhvmd(:,:,loc),3);
+    sol_wk(:,tt)=wk;
 end
 
 

@@ -17,6 +17,7 @@ function [sf_fm,rms_it]=fm_zh_delta(mysf,myf,myb,ocean_mask,noise_level,delta_di
 %**************************************************************************
 %Ref:
 %**************************************************************************
+nit_max=100;
 
 land_mask=1-ocean_mask;
 
@@ -45,7 +46,7 @@ for t=1:ntime
         delta=noise_level(t);
     end
 %     for nit=1:100
-        while rms_dif>delta&nit<=100
+        while rms_dif>delta&nit<=nit_max
             nit=nit+1;
             %分配
             [model1]=reset_model(model1,land_mask,ocean_mask,myb);

@@ -21,7 +21,7 @@ function [res,rms_oor]=get_res(time,trange,obs)
 % loading basic val of FFT for futher high-pass filtering
 
 ds=get_ds(size(obs,1),size(obs,2)); %spatial weight
-t1=gdut_uniform_time(trange) %time epoch of missing month
+t1=gdut_uniform_time(trange); %time epoch of missing month
 loc=find(time(1)-1/48<t1&t1<=time(end)+1/48);
 
 t1=t1(loc);
@@ -50,7 +50,7 @@ for r=1:size(obs,1)
         Y = fft(X);
 
         low_filter=ones(floor(L/2)+1,1);
-        lc=find(f>1); %cut off one-year
+        lc=find(f>=1); %cut off one-year
         low_filter(lc)=0;
         lf=[low_filter(:); flipud(low_filter(2:end))];
         X2=ifft(Y.*lf); %filtering and inversion fft

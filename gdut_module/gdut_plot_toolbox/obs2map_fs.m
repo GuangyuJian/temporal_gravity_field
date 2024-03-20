@@ -1,4 +1,4 @@
-function [h]=obs2map_fs12(ewh,value,range,titlename)
+function [h]=obs2map_fs(ewh,value,range,titlename,fs)
 if nargin==4
     disp('画图')
 end
@@ -30,7 +30,7 @@ if ischar(range)||isstring(range)
             rangef='global'
     end
 end
-fs=12;
+% fs=12;
 
 % d=1;
 % d=180/size(ewh,1);

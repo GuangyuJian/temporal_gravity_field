@@ -40,10 +40,13 @@ clm=[nn mm tempc temps];
 sc(sc==0)=nan;
 sc=log10((sc));
 h=imagesc(-maxn:1:maxn,0:maxn,sc);
+% set(gca,'FontSize',10,'units','points')
+set(gca,'FontSize',10,'FontUnits','points')
+
 
 xticks([-maxn:20:maxn]);
 xticklabels({-maxn:20:maxn});
-set(gca,'FontSize',12)
+
 set(h,'alphadata',~isnan(sc));
 ylabel('Degree (n)');
 xlabel('C<——Order (m)——>S');
@@ -64,7 +67,6 @@ titlestr=([num2str(iy) '-' num2str(im) ]);
 end
 title(titlestr);
 end
-
 
 end
 

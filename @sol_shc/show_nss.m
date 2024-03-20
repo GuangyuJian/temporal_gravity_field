@@ -68,9 +68,10 @@ ylim(rg);
 xlim([0 maxn]);
 grid on;
 box on;
+set(gca,'fontsize',10,'Units','points')
+
 xlabel('阶数');
 ylabel('球谐系数');
-fontsize(gca,12,'points')
 
 l=legend('odd+even','odd','even');
 l.Location="northwest";

@@ -44,7 +44,8 @@ sc_degre=sqrt(sum(sc.^2,2)./nlist(:));
 h=semilogy(2:1:maxn,sc_degre(3:end));
 
 grid on;           
-   set(gca,'FontSize',12)
+%    set(gca,'FontSize',10,'units','points')
+set(gca,'FontSize',10,'FontUnits','points')
 
 if ~isempty(self.time)
 iy=self.int_year(tt);

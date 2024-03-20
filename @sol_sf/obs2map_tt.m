@@ -58,7 +58,7 @@ end
 range=self.show_range;
 ewh=self.value(:,:,tt);
 
-obs2map_fs12(ewh,cvalue,range,titlename);
+obs2map_fs(ewh,cvalue,range,titlename,10);
 
 
 

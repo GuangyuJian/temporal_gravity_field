@@ -58,7 +58,7 @@ titlestr=([num2str(iy) '-' num2str(im) ]);
 end
 title(titlestr);
 end
-set(gca,'FontSize',12)
+set(gca,'FontSize',10,'FontUnits','points')
 
 end
 

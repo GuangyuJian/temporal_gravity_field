@@ -52,7 +52,7 @@ end
 range=self.show_range;
 ewh=self.harmonic(:,:,lc);
 titlename=[];
-h=obs2map_fs12(ewh,cvalue,range,titlename);
+h=obs2map_fs(ewh,cvalue,range,titlename,10);
 
 
 
