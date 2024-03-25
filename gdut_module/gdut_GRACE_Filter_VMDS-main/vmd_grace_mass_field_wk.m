@@ -52,7 +52,8 @@ end
 ewhvecr=mat2vecr(ewh.*ds);
     
 % decomposition
-    [mra,res,info]=vmd(ewhvecr,'NumIMF',maxnum,'PenaltyFactor',PenaltyFactor);
+%     [mra,res,info]=vmd(ewhvecr,'NumIMF',maxnum,'PenaltyFactor',PenaltyFactor,'MaxIterations',500);
+  [mra,res,info]=my_vmd(ewhvecr,'NumIMF',maxnum,'PenaltyFactor',PenaltyFactor,'MaxIterations',500);
 
 % decomposition
 % record each mode 

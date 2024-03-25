@@ -39,7 +39,7 @@ else
             end
 
         case 'gc2gdc'
-            self.unit='ugal';
+            self.unit='uGal';
             for k=1:length(in_shc)
                 [ou_shc(k).cnm]=sol_shc.scf_gc2gdc(in_shc(k).cnm,maxn);
                 [ou_shc(k).snm]=sol_shc.scf_gc2gdc(in_shc(k).snm,maxn);
@@ -52,7 +52,7 @@ else
                 [ou_shc(k).snm]=sol_shc.scf_mc2gc(in_shc(k).snm,maxn);
             end
         case 'mc2gdc'
-            self.unit='ugal';
+            self.unit='uGal';
             for k=1:length(in_shc)
                 [in_shc(k).cnm]=sol_shc.scf_mc2gc(in_shc(k).cnm,maxn);
                 [in_shc(k).snm]=sol_shc.scf_mc2gc(in_shc(k).snm,maxn);

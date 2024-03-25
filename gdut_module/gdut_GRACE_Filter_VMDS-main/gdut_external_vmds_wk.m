@@ -1,4 +1,4 @@
-function [sol_shc_vmds,sol_wk]=gdut_external_vmds_wk(sol_shc_in,k_max,alpha,wk_max)
+function [sol_shc_vmds,sol_wk,info]=gdut_external_vmds_wk(sol_shc_in,k_max,alpha,wk_max)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -34,13 +34,14 @@ my_addpath('E:\github_desktop\test\external_module\GRACE_Filter_VMDS-main\');
 %%
 for tt=1:length(sf.time)
     tt
-    [ewhvmd,~,~,info] =vmd_grace_mass_field_wk(sf.value(:,:,tt),k_max,alpha);
-    wk=info.CentralFrequencies;
+    [ewhvmd,~,~,info(tt)] =vmd_grace_mass_field_wk(sf.value(:,:,tt),k_max,alpha);
+    wk=info(tt).CentralFrequencies;
     wk=wk(end:-1:1);
     loc=find(wk<=wk_max);
     loc=[1 ;loc+1];
     obs_vmd(:,:,tt)=sum(ewhvmd(:,:,loc),3);
     sol_wk(:,tt)=wk;
+    
 end
 
 

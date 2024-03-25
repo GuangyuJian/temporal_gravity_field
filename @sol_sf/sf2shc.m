@@ -61,7 +61,7 @@ end
 switch mysf.unit
     case 'ewh (mm)'
     my_shc=sol_shc(shc,maxn,'shc','mc');
-    case 'ugal'
+    case 'uGal'
     my_shc=sol_shc(shc,maxn,'shc','gdc');
 end
 % set time info

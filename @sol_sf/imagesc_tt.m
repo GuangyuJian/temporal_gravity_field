@@ -20,7 +20,7 @@ function [h]=imagesc_tt(self,varargin)
 
 fir=self.fir;
 ceta=self.ceta;
-if nargin==2
+if nargin>1
 switch length(varargin)
 
     case 1
@@ -77,9 +77,21 @@ xlabel('经度（°）');
 ylabel('纬度（°）');
 grid on;
 box on;
+switch self.unit
+
+case 'ewh (mm)'
 caxis([-300 300]);
+
+case 'uGal'
+caxis([-10 10]);
+
+end
+
 load coast
 hold on;
 plot(long,lat,'LineWidth',2);
+xlim([self.show_range(1:2)]);
+
+ylim([self.show_range(3:4)]);
 end
 

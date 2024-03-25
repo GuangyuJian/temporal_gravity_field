@@ -2,7 +2,7 @@ classdef sol_shc<sol
 
     properties
         type char  {mustBeMember(type,{'gc','mc','gdc'})}='gc';
-        unit  char  {mustBeMember(unit,{'none','ewh (mm)','ugal'})}='none';
+        unit  char  {mustBeMember(unit,{'none','ewh (mm)','uGal'})}='none';
         storage_type(1,:) char {mustBeMember(storage_type,{'shc'})}='shc';
 
         maxn double
@@ -30,7 +30,7 @@ classdef sol_shc<sol
                 case 'gc'
                     self.unit='none';
                 case 'gdc'
-                    self.unit='ugal';
+                    self.unit='uGal';
                 case 'mc'
                     self.unit='ewh (mm)';
             end
@@ -44,6 +44,7 @@ classdef sol_shc<sol
         % show spherical harmonic spectrum
         h=show_shc(self,tt);
         h=show_shc_sigma(self,tt);
+        [h,csnm]=show_shct(self,n,m,type);
         % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type);
         %% transfer
@@ -64,7 +65,7 @@ classdef sol_shc<sol
 
     methods(Static)
         [gc] =scf_mc2gc(mc,maxn);
-        [gc] =scf_gdc2gc(gdc) ;
+        [gc] =scf_gdc2gc(gdc,maxn) ;
         [mc] =scf_gc2mc(gc,maxn);
         [gdc]=scf_gc2gdc(gc,maxn);
     end

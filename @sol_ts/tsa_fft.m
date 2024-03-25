@@ -7,6 +7,7 @@ function [h]=tsa_fft(self,fs,trange,fillflag)
 %       fs:     [1x1] sample frequency (12 means monthly series)
 %       trange  [1x4] the series we want to estimate by FFT
 %               e.g [2002,4,2022,12] means 200204-202212
+%       fillflag [1x1] 1 -> need gap filling 
 % Out  :
 %
 %----------------------------------------------------------------------------
