@@ -1,9 +1,15 @@
 function [h]=harmonic2map(self,varargin)
-%
+% show the temporal property of sf
+% usage:    self.harmonic2map('aa');  annual amplitude (self.unit)
+%           self.harmonic2map('ap');  annual phase (°)
+%           self.harmonic2map('saa'); semi-annual amplitude (self.unit)
+%           self.harmonic2map('sap'); semi-annual phase  (°)
+%           self.harmonic2map('tr');  trend （self.unit/yr）
 %----------------------------------------------------------------------------
-% In   :
-%
-% Out  :
+% In   : self   [1x1]   @sol_sf
+%        varargin [1x1] str 
+%                       optional: 'aa' 'ap' 'saa' 'sap' 'tr'
+% Out  : h      [1x1]   handle of gca
 %
 %----------------------------------------------------------------------------
 
@@ -11,7 +17,7 @@ function [h]=harmonic2map(self,varargin)
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2024-01-13
+% date: 2023-12-29
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************

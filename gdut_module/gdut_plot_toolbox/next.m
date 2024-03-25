@@ -1,5 +1,6 @@
-function []=next()                               
-%                              
+function []=next()
+% short name of nexttile; same as nexttile;
+% usage: next                             
 %----------------------------------------------------------------------------
 % In   :    
 %                              
@@ -19,7 +20,7 @@ function []=next()
 %**************************************************************************
                               
                               
-                          nexttile;    
+nexttile;    
                               
 end
 

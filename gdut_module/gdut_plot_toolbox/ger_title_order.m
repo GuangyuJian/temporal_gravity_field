@@ -1,9 +1,11 @@
 function [title_order]=ger_title_order()                               
-%                              
+% this function are used to gernerate a structure of alphabet from a to z
+% with Full bracket
+% usage: [title_order]=ger_title_order()                          
 %----------------------------------------------------------------------------
-% In   :    
+% In   :    none
 %                              
-% Out  :    
+% Out  :    title_order [1x26] alphabet
 %                              
 %----------------------------------------------------------------------------
                               

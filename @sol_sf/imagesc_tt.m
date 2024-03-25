@@ -1,9 +1,12 @@
 function [h]=imagesc_tt(self,varargin)
-%
+% usage: h=imagesc_tt(self,varargin);
+%           self.imagesc_tt(varargin);
+%           self.imagesc_tt('ym',int_year,int_month); recommend!
+%           self.imagesc_tt(int_location);
 %----------------------------------------------------------------------------
-% In   :
-%
-% Out  :
+% In   : self   [1x1]   @sol_sf
+%           varargin
+% Out  : h      [1x1]   handle of gca
 %
 %----------------------------------------------------------------------------
 

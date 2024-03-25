@@ -1,9 +1,10 @@
-function [c]=ger_colorbar(str)                               
-%                              
+function [c]=ger_colorbar(label)                               
+% this function are used to gernerate a colorbar with the label str
+% usage: c=get_colorbar('(mm)') or get_colorbar('(mm)') 
 %----------------------------------------------------------------------------
-% In   :    
+% In   :    label:  [1xn] str of colorbar label
 %                              
-% Out  :    
+% Out  :    c   :   [1x1] a handle of colorbar object 
 %                              
 %----------------------------------------------------------------------------
                               
@@ -21,7 +22,7 @@ function [c]=ger_colorbar(str)
  
 c=colorbar;
 set(c,'Units','points','fontsize',10);
-c.Label.String=str;
+c.Label.String=label;
                              
                               
                               
