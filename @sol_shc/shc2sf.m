@@ -4,7 +4,7 @@ function [mysf]=shc2sf(myshc,myf,myb,type)
 % In   : myshc  [1x1]   @sol_shc
 %        myf    [1x1]   @myf
 %        myb    [1x1]   @study_basin
-%       type    char 
+%        type   [1xn]   char 
 %                       optional    'mc'    'gdc'    
 % Out  :                            |       |
 %       mysf    @sol_sf             |       |       

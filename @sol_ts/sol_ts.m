@@ -1,7 +1,7 @@
 classdef sol_ts<sol
 
     properties
-        unit char
+        unit char  {mustBeMember(unit,{'none','ewh (mm)','uGal'})}='none';
         value (:,1) double
         name char
     end
@@ -17,8 +17,8 @@ classdef sol_ts<sol
         [self2]=filling(self,trange);
         %% plot
         [h]=ts_plot(self);
-        [h]=ts_bar(self)                  
-        [h]=tsa_fft(self,fs,trange,fillflag)    
+        [h]=ts_bar(self);                  
+        [h]=tsa_fft(self,fs,trange,fillflag);    
         [h]=tsa_xwt(obj1,obj2);
         %% math        
 %         objnew = plus(objl,objr);

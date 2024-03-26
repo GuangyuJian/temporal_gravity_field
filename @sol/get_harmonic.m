@@ -1,10 +1,31 @@
 function [self]=get_harmonic(self,varargin)
-%
+% usage:
+%       if self== @sol_ts or @sol_sf 
+%       self.get_harmonic 
+%       self.get_harmonic(trange) 
+%       ----------------------------------
+%       if self == @sol_sf 
+%       self.get_harmonic（trange,'mask');
 %----------------------------------------------------------------------------
-% In   :
-%
+% In   : self   [1x1]   @sol_ts          or          @sol_sf
+%        varargin option:
+%                       self.get_harmonic           self.get_harmonic
+%                       self.get_harmonic(trange)   self.get_harmonic(trange)   
+%                                                   self.get_harmonic(trange,mask)   
+%       
+%       if trange is missing, the algorithm automatically calculate the
+%       whole period of the self.time
+% 
+%       trange=[int_year1 int_month1 int_year2 int_month2]; 
+%       e.g., trange=[2002,4,2022,12] means the harmonic parameters
+%       estimated from 200204-202212
+%     
+%       mask    [rrxcc] mask of study_basin
+%       note: if mask is given, the algorithm only calculate the harmonic
+%       parameters over the mask.
+% 
 % Out  :
-%
+%       self    [1x1]  @sol_ts or @sol_sf updating the harmonic of self(@sol)
 %----------------------------------------------------------------------------
 
 

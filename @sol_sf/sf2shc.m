@@ -1,10 +1,15 @@
 function [my_shc]=sf2shc(mysf,myf,myb,type)
-%
+% [my_shc]=sf2shc(mysf,myf,myb,type)
 %----------------------------------------------------------------------------
-% In   :
-%
+% In   :    mysf    [1x1] @sol_sf 
+%           myf     [1x1] @sol_filter
+%           myb     [1x1] @study_basin
+%           type    [1xn] char
+%                           option: 'mc' 'gc' 'gdc'
 % Out  :
-%
+%           my_shc  [1x1] @sol_shc a object truncated up to degree maxn
+%           maxn derived from myf
+%           
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)
@@ -66,9 +71,7 @@ switch mysf.unit
 end
 % set time info
 my_shc.change_type(type);
-my_shc.time=mysf.time;
-my_shc.int_year=mysf.int_year;
-my_shc.int_month=mysf.int_month;
+my_shc.set_time(mysf.time,mysf.int_year,mysf.int_month)
 my_shc.append_info('----------------------');
 my_shc.append_info([mysf.info]);
 

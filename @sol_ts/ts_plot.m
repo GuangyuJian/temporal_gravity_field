@@ -1,9 +1,9 @@
 function [h]=ts_plot(self)
-%plot the time series from @sol_ts (1x1 or 1xn)
+% plot the time series from @sol_ts (1x1 or 1xn)
 %----------------------------------------------------------------------------
-% In   : 
+% In   :    self [1x1] or [1xn] @sol_ts    
 %
-% Out  :
+% Out  :    h    [1x1] or [1xn]  handle of plot
 %
 %----------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ for k=1:length(self)
     xlabel('Year');
     title(tempts.name);
 %     set(gca,'FontSize',12,'FontWeight','Bold');
-set(gca,'FontSize',10,'FontUnits','points')
+    set(gca,'FontSize',10,'FontUnits','points')
     grid on;
     box on;
     hold on;
