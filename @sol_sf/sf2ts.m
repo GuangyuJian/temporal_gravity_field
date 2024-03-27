@@ -1,13 +1,13 @@
 function[myts]=sf2ts(mysf,myb)
 % [myts]=sf2ts(mysf,myb)
 %----------------------------------------------------------------------------
-% In   :    mysf    [1x1] @sol_sf 
-%                   option: 'ewh (mm)' 'uGal' 
+% In   :    mysf    [1x1] @sol_sf
+%                   option: 'ewh (mm)' 'uGal'
 %           myb     [1x1] @study_basin
-%                          
+%
 % Out  :
-%           myts    [1x1] @sol_ts 
-%                   a average value of time series over study basin 
+%           myts    [1x1] @sol_ts
+%                   a average value of time series over study basin
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)
@@ -20,16 +20,17 @@ function[myts]=sf2ts(mysf,myb)
 %Ref:
 %**************************************************************************
 
+for k=1:length(mysf)
+    grid=mysf(k).value;
 
-grid=mysf.value;
 
+    [tws1,S]=sol_sf.grid2ts(grid,myb);
+    myts(k)=sol_ts(tws1,mysf(k).unit);
 
-[tws1,S]=sol_sf.grid2ts(grid,myb);
-myts=sol_ts(tws1,mysf.unit);
+    myts(k).set_time(mysf(k).time,mysf(k).int_year,mysf(k).int_month);
 
-myts.set_time(mysf.time,mysf.int_year,mysf.int_month);
+    myts(k).name=[myb.name ];
+    myb.area_size=S;
 
-myts.name=[myb.name ];
-myb.area_size=S;
-
+end
 end
