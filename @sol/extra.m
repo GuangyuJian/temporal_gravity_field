@@ -26,6 +26,7 @@ switch length(varargin)
         if strcmp(varargin{1},'trange')
             trange=varargin{2};
             if length(trange)~=4
+                disp(["e.g., sol2=sol1.extra('trange',[2002,4,2004,5])"]);
                 error('! wrong argument :trange');
             else
                 y1=trange(1);
@@ -50,7 +51,7 @@ switch length(varargin)
         end
 
         case 3
-        if strcmp(varargin{1},'one')
+        if strcmp(varargin{1},'one')||strcmp(varargin{1},'ym')
             y1=varargin{2};
             m1=varargin{3};
             if length(y1)~=1||length(m1)~=1
@@ -87,6 +88,7 @@ end
 time=self.time(llc);
 int_year=self.int_year(llc);
 int_month=self.int_month(llc);
+
 self2.set_time(time,int_year,int_month);
 self2.append_info(self.info);
 self2.append_info(['extra from ' num2str(llc) '\r']);

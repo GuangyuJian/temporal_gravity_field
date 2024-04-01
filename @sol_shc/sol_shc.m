@@ -39,7 +39,9 @@ classdef sol_shc<sol
      
         %% show-----------------------------------------
         % power spectrum
-        [h]=show_sps(self,tt);
+        [h,sc_degre ]=show_sps_perm(self,tt) 
+        [h,sc_degre ]=show_sps_pern(self,tt) ;
+        [h,sc_degre]=show_sps(self,tt);
         [h]=show_nps(self,tt);
         % show spherical harmonic spectrum
         h=show_shc(self,tt);
@@ -47,6 +49,7 @@ classdef sol_shc<sol
         [h,csnm]=show_shct(self,n,m,type);
         % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type);
+        [h]=show_shc_ref(obj1,obj2)
         %% transfer
         [sf]=shc2sf(sol_shc,sol_filter,study_basin,type);
         self=change_type(self,unit);

@@ -41,7 +41,11 @@ y=[self.ceta(1),self.ceta(end)];
 h=imagesc(x,y,M);
 colormap(jet);
 set(h,'alphadata',~isnan(M));
-
+load coast;
+plot(long,lat);
+xlim([min(self.boundary_fir)  max(self.boundary_fir)]);
+ylim([min(self.boundary_ceta) max(self.boundary_ceta)]);
+ 
 end
 
 function plot_grid(self)
@@ -51,7 +55,11 @@ hold on;
 x=grid_fir.*self.mask;
 y=grid_ceta.*self.mask;
 scatter(x(:),y(:));
-
+load coast;
+plot(long,lat);
+xlim([min(self.boundary_fir)  max(self.boundary_fir)]);
+ylim([min(self.boundary_ceta) max(self.boundary_ceta)]);
+ 
 end
 
 function plot_cos_weight_grid(self)
@@ -65,6 +73,11 @@ y=[self.ceta(1),self.ceta(end)];
 h=imagesc(x,y,M);
 colormap(jet);
 set(h,'alphadata',~isnan(M));
+load coast;
+plot(long,lat);
+xlim([min(self.boundary_fir)  max(self.boundary_fir)]);
+ylim([min(self.boundary_ceta) max(self.boundary_ceta)]);
+ 
 end
 
 

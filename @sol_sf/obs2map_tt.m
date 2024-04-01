@@ -49,7 +49,12 @@ if ~isempty(self.time)
     title(titlestr);
 end
 if isempty(titlename)
+    if exist("titlestr")
     titlename=titlestr;
+    else
+    titlename=[];
+    end
+ 
 end
 
 

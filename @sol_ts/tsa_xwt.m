@@ -3,8 +3,8 @@ function [h]=tsa_xwt(obj1,obj2)
 % need external module name wavelet-coherence-master toolbox
 % http://www.glaciology.net/wavelet-coherence
 %----------------------------------------------------------------------------
-% In   :
-%
+% In   : obj1 @sol_ts
+%        obj2 @sol_ts
 % Out  :
 %
 %----------------------------------------------------------------------------

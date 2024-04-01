@@ -1,5 +1,5 @@
-function [my_shc]=vsf2shc(mysf,myf,myb,type)
-% same function like sf2shc
+function [sf]=ewhr1do60(myshc)
+%
 %----------------------------------------------------------------------------
 % In   :
 %
@@ -9,18 +9,23 @@ function [my_shc]=vsf2shc(mysf,myf,myb,type)
 
 
 % Authors: Karl Jian (K.J)
+% address: Sun Yat-sen University   (SYSU)
+% email: temp~~
+% supervisor: Min zhong
+%----------------------------------------------------------------------------
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2024-03-14
+% supervisor: Chuang Xu
+% date: 2024-03-28
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
 %Ref:
 %**************************************************************************
-for k=1:length(mysf)
-    [my_shc(k)]=sf2shc(mysf(k),myf,myb,type);
-end
 
 
+myf=sol_filter(60);
+myb=study_basin(1);
+sf=vshc2sf(myshc,myf,myb,'mc');
 end
 

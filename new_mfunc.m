@@ -1,5 +1,5 @@
 function new_mfunc(filename)
-% 生成 MATLAB 头注释模板
+%   生成 MATLAB 头注释模板
 %   generate a  filename.m file in current path-
 %**************************************************************************
 % In   :

@@ -50,7 +50,7 @@ xlabel_str=[0 0.05 0.1 0.2 0.3 0.5 1 1.19 1.46  2.12  3.18 3.8  4.77 6.36 12  19
 
 xticks(xlabel_str);
 xlabel('周期（年）');
-ylabel('幅值（mm）');
+ylabel('幅值（ ）');
 grid on;
 box on;
 end

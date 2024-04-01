@@ -1,4 +1,4 @@
-function [h]=show_sps(self,tt)                               
+function [h,sc_degre]=show_sps(self,tt)                               
 % h=show_shc_degree(self,tt)
 % h=self.show_shc_degree(tt)
 % show the signal degree amplitude (total power per degree) of shc for a given time index (tt)  

@@ -5,7 +5,9 @@ classdef sol<handle
     % The linear operations including: 
     % + - x / of the three subclasses
     % are defined in this parent class.
-    %
+
+
+
     properties
         time double
         int_year double
