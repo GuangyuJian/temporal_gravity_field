@@ -5,7 +5,16 @@ classdef sol_sf<sol
         fir double
         ceta double
         value double
-        show_range
+        show_range % 
+                    %  ——the first option
+                    %   sol_sf.show_range=mat [1x4];
+                    % mat=[mimimum_longitude maximum_longitude mimimum_latitude maximum_latitude ] 
+                    %       unit:degree
+                    %       longitude range from -180° to 180°
+                    %       latitude range from -90° to 90°
+                    %
+                    %  ——the second option    
+                    % sol_sf.show_range='global' means the whole sphere
     end
     %%
     methods
