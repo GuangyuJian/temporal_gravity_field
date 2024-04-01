@@ -5,7 +5,7 @@ classdef sol_sf<sol
         fir double
         ceta double
         value double
-        show_range % 
+        show_range  % 
                     %  ——the first option
                     %   sol_sf.show_range=mat [1x4];
                     % mat=[mimimum_longitude maximum_longitude mimimum_latitude maximum_latitude ] 
