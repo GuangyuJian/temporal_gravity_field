@@ -77,7 +77,9 @@ for t=1:ntime
                 break
             end
         end
-        model1=model1+dif_obs*1.4;
+%         sc=1.4 %中美洲用
+        sc=1;
+        model1=model1+dif_obs*sc;
         %         rms_dif
     end
     output(:,:,t)=model1;

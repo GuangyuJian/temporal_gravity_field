@@ -27,10 +27,10 @@ if filling_flag==1
 selftemp=self.filling;
 else
     y1=self.int_year(1);
-     m1=self.int_month(1);
+    m1=self.int_month(1);
 
     y2=self.int_year(end);
-     m2=self.int_month(end);
+    m2=self.int_month(end);
     selftemp=self.extra('trange',[ y1 m1 y2 m2]);
 end
 
@@ -59,6 +59,6 @@ else
     error('非整数年');
 
 end
-
+mean_an=mean_an-mean(mean_an);
 end
 
