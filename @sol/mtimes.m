@@ -4,7 +4,7 @@ function objnew=mtimes(objl,objr)
 
 switch class(objl)
     %
-    case 'sol_ts'
+    case 'sol_shc'
         vl=objl.value;
         switch class(objr)
             case     'double'
@@ -15,7 +15,7 @@ switch class(objl)
 
         end
 
-    case 'sol_ts'
+    case 'sol_sf'
         vl=objl.value;
         switch class(objr)
             case  'double'

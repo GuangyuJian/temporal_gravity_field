@@ -1,4 +1,4 @@
-function [sf_fm,rms_it]=fm_zf(mysf,myf,myb,ocean_mask,noise_level)
+function [sf_fm,rms_it]=fm_zf(mysf,myf,myb,basin_mask,ocean_mask,noise_level)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -20,7 +20,7 @@ function [sf_fm,rms_it]=fm_zf(mysf,myf,myb,ocean_mask,noise_level)
 
 land_mask=1-ocean_mask;
 
-basin_mask=myb.mask;
+% basin_mask=myb.mask;
 fir=myb.fir;
 ceta=myb.ceta;
 unit=mysf.unit;
@@ -84,5 +84,6 @@ for t=1:ntime
 
 end
 sf_fm=sol_sf(output,unit,fir,ceta);
+sf_fm.set_time(mysf.time,mysf.int_year,mysf.int_month);
 end
 

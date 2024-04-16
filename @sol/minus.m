@@ -1,27 +1,39 @@
 function objnew=minus(objl,objr)
 
 
-
+if length(objl)==1
 switch class(objl)
     %%
     case 'sol_sf'
+        switch class(objr)
+
+            case 'sol_sf'
+                
         value=objl.value-objr.value;
         fir=objl.fir;
         ceta=objl.ceta;
         unit=objl.unit;
         objnew=sol_sf(value,unit,fir,ceta);
+
+            case 'double'
+        value=objl.value-objr;
+        fir=objl.fir;
+        ceta=objl.ceta;
+        unit=objl.unit;
+        objnew=sol_sf(value,unit,fir,ceta);
+        end
         %%
     case 'sol_shc'
 
         if strcmp(objl.type,objr.type)
         else
             show_time_tag;
-            disp('sol_shc:-->plus: different tyep');
+            disp('minus@sol: different tyep');
             objr.change_type(objl.type);
         end
 
         if objl.maxn~= objr.maxn
-            error('different max degree');
+            error('minus@sol:different max degree');
         end
         shcr=objr.storage;
         shcl=objl.storage;
@@ -46,28 +58,25 @@ switch class(objl)
 
         objnew=sol_shc(storage,maxn,storage_type,type);
         objnew.shc_sigma=objl.shc_sigma;
+        %%
     case 'sol_ts'
         vl=objl.value;
         switch class(objr)
-            case     'double'
+            case  'double'
                 vr=objr;
                 value=vl(:)-vr(:);
-                 unit=objl.unit;
+                unit=objl.unit;
                 objnew=sol_ts(value,unit);
                 objnew.name=objl.name;
                 
             case 'sol_ts'
                 vr=objr.value;
-
                 if length(vl)==length(vr)
                     value=vl(:)-vr(:);
                 else
                     if length(vl)==1||length(vr)==1
-                        
                          value=vl(:)-vr(:);
-
                     else
-
                         error('!');
                     end
                 end
@@ -76,11 +85,15 @@ switch class(objl)
                 objnew=sol_ts(value,unit);
                 objnew.name=objl.name;
             otherwise
-
+            error('!');
         end
-
       
 end
   objnew.set_time(objl.time,objl.int_year,objl.int_month);
+else
+    for k=1:length(objl)
+        objnew(k)=objl(k)-objr;
+    end
+end
 
 end

@@ -23,6 +23,7 @@ function [h]=tsa_xwt(obj1,obj2)
 tws1=[obj1.time(:),obj1.value(:)];
 tws2=[obj2.time(:),obj2.value(:)];
 xwt(tws1,tws2);
+% wtc(tws1,tws2);
 % colorbar off;
 h=gca;
 ylabel('周期（年）');

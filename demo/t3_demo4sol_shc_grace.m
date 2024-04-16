@@ -1,6 +1,5 @@
 clear;
 clc;
-
 %% 读取CSR系数
 %  并创建sol_shc对象
 dir_in='E:\github_desktop\test\temporal_gravity_field\test_alpha\csrdo60_unfilter';
@@ -29,7 +28,7 @@ dir_in="GIA_mass0km.txt";
 [bg]=bg_ggm05c();
 csr_shc=csr_shc-bg;
 %  去除背景场2004-2010 也提供了如下背景场去除方法
- csr_shc.de_bg(2004,2010);
+csr_shc.de_bg(2004,2010);
 clc;
 
 %% 记录了csr_shc的处理过程
@@ -49,10 +48,10 @@ nexttile;
 csr_shc.show_shc_sigma(1);
 % 展示球谐系数的信号阶方差
 nexttile;
-csr_shc.show_shc_degree(1);
+csr_shc.show_sps(1);
 % 展示球谐系数的噪声阶方差
 nexttile;
-csr_shc.show_shc_degree_sigma(1);
+csr_shc.show_nps(1);
 %%
 csr_shc.change_type('mc'); %对比图内容的变化。
 figure('Position',[0 0 1500 900]);
@@ -62,15 +61,16 @@ csr_shc.show_nss(1,6,'c');
 % 展示球谐系数
 nexttile;
 csr_shc.show_shc(1);
+caxis([-2 2])
 % 展示球谐系数标准差
 nexttile;
 csr_shc.show_shc_sigma(1);
 % 展示球谐系数的信号阶方差
 nexttile;
-csr_shc.show_shc_degree(1);
+csr_shc.show_sps(1);
 % 展示球谐系数的噪声阶方差
 nexttile;
-csr_shc.show_shc_degree_sigma(1);
+csr_shc.show_nps(1);
 
 %%
 show_time_tag;

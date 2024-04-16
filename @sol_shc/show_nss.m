@@ -51,7 +51,7 @@ titlename=['C_{nm} (m=' num2str(mm) ,')'];
         temp=shc(tt).snm;
         titlename=['S_{nm} (m=' num2str(mm) ,')'];
 end
-nexttile;
+% nexttile;
 h=plot(nn,temp(locn),'black-');
 rg=[-1.2*max(abs(temp(locn))) 1.2*max(abs(temp(locn)))];
 grid on;

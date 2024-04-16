@@ -1,19 +1,8 @@
 function [sht]=storage_shct2sht(shct)                               
-%[sh]=storage_shc2sht(shc)                                
+%[sht]=storage_shct2sht(shct)                                 
 %----------------------------------------------------------------------------
-% In   :    shc     [struct{cnm;snm}] 
-%                   a structure storages values of c and s 
-%                   (stored as degree-leading format) in its subfield
-%                   shc.cnm and shc.snm, respectively.
-%           nontion:
-%                   Lmax means maximum degree; tt means the length of shc
-%                   e.g.,    
-%                       shc(i).cnm=  [  c00(i)  ]
-%                                    [  c10(i)  ]
-%                                    [  ...     ]
-%                                    [  cLmaxLmax(i)]
 %                              
-% Out  :    sht       [(Lmax+1)*(Lmax+2) x tt] 
+% In  :    sht       [(Lmax+1)*(Lmax+2) x tt] 
 %                   a matrix storages the temporal changes of all c and s
 %               e.g.,  
 %             [c00(1) ···  c00(i) ··· c00(tt)]
@@ -24,6 +13,17 @@ function [sht]=storage_shct2sht(shct)
 %             [...    ...  ...    ... ...    ]
 %             [sLmaxLmax(1) ···  sLmaxLmax(i) ··· sLmaxLmax(tt)]  
 % 
+% Out   :    shc     [struct{cnm;snm}] 
+%                   a structure storages values of c and s 
+%                   (stored as degree-leading format) in its subfield
+%                   shc.cnm and shc.snm, respectively.
+%           nontion:
+%                   Lmax means maximum degree; tt means the length of shc
+%                   e.g.,    
+%                       shc(i).cnm=  [  c00(i)  ]
+%                                    [  c10(i)  ]
+%                                    [  ...     ]
+%                                    [  cLmaxLmax(i)]
 %----------------------------------------------------------------------------
                                                           
 % Authors: Karl Jian (K.J)
@@ -37,7 +37,8 @@ tt=length(shct);
 nsh=length(shct(1).cnm);
 
 sht=zeros(nsh*2,tt);
-for i=1:tt         
+for i=1:tt   
+    i
 sht(:,i)=[shct(i).cnm;shct(i).snm];
 end
 

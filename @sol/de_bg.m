@@ -21,7 +21,11 @@ if nargin==1
     ts=2004;
     te=2010;
 end
-bg=mean(self,ts,te);
+% loc=find(self.time>=ts&&self.time<=te);
+% iy=find;
+% im=;
+
+bg=mean(self.extra('trange2',[ts,1,te-1,12]),1);
 objn=self-bg;
 
 switch class(self)

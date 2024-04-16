@@ -5,13 +5,17 @@ classdef sol<handle
     % The linear operations including: 
     % + - x / of the three subclasses
     % are defined in this parent class.
-
-
-
+    % sum   
+    % mean
+    %     
     properties
         time double
         int_year double
         int_month double
+        %----------------- for sysu-module
+        int_day double      %modify by kj 20240415
+        span double         % modify by kj 20240415
+        %------------------
         info char
         harmonic double
     end
@@ -21,26 +25,24 @@ classdef sol<handle
         function self=sol()
             self.info=[];
         end
-
-        function [self]=set_time(self,time,int_year,int_month)
-            self.time=time;
-            self.int_year=int_year;
-            self.int_month=int_month;
-        end
+        [self]=set_time(self,time,int_year,int_month);
         %% show
-        []=show_info(self)
+        []=show_info(self);
         [self]=append_info(self,info_type);
         %%
         [self2]=extra(self,varargin);
         [self]=get_harmonic(self,varargin);
         %% math
-        objnew= plus    (objl,objr);
-        objnew= minus   (objl,objr);
-        objnew= mtimes  (objl,objr);
-        objnew= mrdivide(objl,objr);
-        objnew= mean    (obj1,ts,te);
-        [self]= de_bg(self,ts,te);
-        [objv2]=sum(objv,lc);
+        objnew  = plus      (objl,objr);
+        objnew  = minus     (objl,objr);
+        objnew  = mtimes    (objl,objr);
+        objnew  = mrdivide  (objl,objr);
+        objnew  = mean      (objv,dim); 
+        [self]  = de_bg     (self,ts,te);
+        [objv2] = sum       (objv,dim);
+        
+%         [objv2]=sum(objv,lc);
+%         objnew= mean(obj1,ts,te); %modify by kj 20240415
     end
 
     methods(Static)

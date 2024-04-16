@@ -34,7 +34,7 @@ if nargin<=3
     X1=[ones(size(t1,1),1) t1 cos(2*t1*pi) sin(2*t1*pi)  cos(4*t1*pi)  sin(4*t1*pi)     ];
     X2=[ones(size(t2,1),1) t2 cos(2*t2*pi) sin(2*t2*pi)  cos(4*t2*pi)  sin(4*t2*pi)     ];
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                0
-%     [b1,bint,~,~,~,] = regress(tws_temp,X1);
+%   [b1,bint,~,~,~,] = regress(tws_temp,X1);
     [b1,~,r,~,~] = regress(tws_temp,X1);
     n=size(X1,1);
     t=length(b1);
@@ -55,7 +55,7 @@ if nargin<=3
     mp1=2*sqrt(Dbb(3,3) * (b1(4)^2/Amp1^4)+ Dbb(4,4) * (b1(3)^2/Amp1^4));
     mp2=2*sqrt(Dbb(5,5) * (b1(6)^2/Amp2^4)+ Dbb(6,6) * (b1(5)^2/Amp2^4));
     
-     mp1=2*sqrt(Dbb(3,3) * (b1(4)/Amp1^2)^2+ Dbb(4,4) * (b1(3)/Amp1^2)^2);
+    mp1=2*sqrt(Dbb(3,3) * (b1(4)/Amp1^2)^2+ Dbb(4,4) * (b1(3)/Amp1^2)^2);
     mp2=2*sqrt(Dbb(5,5) * (b1(6)/Amp2^2)^2+ Dbb(6,6) * (b1(5)/Amp2^2)^2);
     
     mp1=rad2deg(mp1);

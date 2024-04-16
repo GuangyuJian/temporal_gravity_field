@@ -16,12 +16,12 @@ switch class(objl)
         if strcmp(objl.type,objr.type)
         else
             show_time_tag;
-            disp('sol_shc:-->plus: different tyep');
+            disp('plus@sol: different tyep');
             objr.change_type(objl.type);
         end
 
         if objl.maxn~= objr.maxn
-            error('different max degree');
+            error('plus@sol: different max degree');
         end
         shcr=objr.storage;
         shcl=objl.storage;
@@ -56,7 +56,7 @@ switch class(objl)
                 if length(vl)==length(vr)
                     value=vl(:)+vr(:);
                 else
-                    error();
+                    error('!');
                 end
         end
 

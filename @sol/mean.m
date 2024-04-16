@@ -1,54 +1,56 @@
-function objnew = mean(obj1,ts,te)
+function obj2 = mean(objv,dim)
+% mean(objv,1)
+% mean(obj2,2)
+%----------------------------------------------------------------------------
+% In   :
+%
+% Out  :
+%
+%----------------------------------------------------------------------------
 
 
+% Authors: Karl Jian (K.J)
+% address: Guangdong University of Technology(GDUT)
+% email: gyjian@mail2.gdut.edu.cn
+% date: 2024-02-02
+% MATLAB_version: 9.12.0.1884302 (R2022a)
+% Encode: UTF-8
+%**************************************************************************
+%Ref:
+%**************************************************************************
 
-switch class(obj1)
-    %%
-    case 'sol_sf'
-        temp=obj1.value;
-        time=obj1.time;
+if length(dim)==1
+    obj2=sum(objv,dim);
+    nsol2=length(obj2);
+    nsol=length(objv);
+    ntime=length(objv(1).time);
+    if dim==1
+        nn=ntime;
+    elseif dim==2
+        nn=nsol;
+    end
 
-        loc=find(time>ts&time<te);
-        tempm=mean(temp(:,:,loc),3);
-        objnew=sol_sf(tempm,obj1.unit,obj1.fir,obj1.ceta);
+    switch class(obj2)
+        case {'sol_sf','sol_ts'}
+            for k=1:nsol2
+                obj2(k).value=obj2(k).value/nn;
+            end
+        case 'sol_shc'
+            for k=1:nsol2
+                shct= obj2(k).storage;
+                [sht]=storage_shct2sht(shct) ;
+                shtm=sht/nn;
+                shct=storage_sht2shct(shtm);
+                obj2(k).storage=shct;
+            end
+    end
 
-        %%
-    case 'sol_shc'
+elseif length(dim)==2
 
-        shct=obj1.storage;
-        time=obj1.time;
-
-        [sht]=storage_shct2sht(shct) ;
-
-        loc=find(time>ts&time<te);
-        shtm=mean(sht(:,loc),2);
-
-        loc1=length(sht)/2;
-        shcm.cnm=shtm(1:loc1);
-        shcm.snm=shtm(1+loc1:end);
-
-        maxn=obj1.maxn;
-        storage_type=obj1.storage_type;
-        type=obj1.type;
-        %
-        objnew=sol_shc(shcm,maxn,storage_type,type);
-                objnew.shc_sigma=obj1.shc_sigma;
-    case 'sol_ts'
-
-        temp=obj1.value;
-        time=obj1.time;
-
-        loc=find(time>ts&time<te);
-        tempm=mean(temp(loc));
-
-        unit=obj1.unit;
-        objnew=sol_ts(tempm,unit);
-
-
-    otherwise
+    obj2 = mean(objv,dim(2));
+    obj2 = mean(obj2,dim(1));
 
 end
 
-% objnew.set_time(obj1.time,obj1.int_year,obj1.int_month);
-
 end
+
