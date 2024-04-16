@@ -33,14 +33,14 @@ classdef sol<handle
         [self2]=extra(self,varargin);
         [self]=get_harmonic(self,varargin);
         %% math
-        objnew  = plus      (objl,objr);
+        objnew  = plus      (objl,objr); 
         objnew  = minus     (objl,objr);
         objnew  = mtimes    (objl,objr);
         objnew  = mrdivide  (objl,objr);
         objnew  = mean      (objv,dim); 
+        objnew  = sum       (objv,dim);
         [self]  = de_bg     (self,ts,te);
-        [objv2] = sum       (objv,dim);
-        
+    
 %         [objv2]=sum(objv,lc);
 %         objnew= mean(obj1,ts,te); %modify by kj 20240415
     end

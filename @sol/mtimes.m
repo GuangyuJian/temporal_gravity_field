@@ -35,7 +35,6 @@ switch class(objl)
                 unit=objl.unit;
                 objnew=sol_ts(value,unit);
                 objnew.name=objl.name;
-
         end
 end
 
