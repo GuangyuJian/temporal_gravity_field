@@ -23,20 +23,22 @@ function [self2]=filling(self,trange)
 % https://doi.org/10.1029/2020JB021227.
 %**************************************************************************
 %%
-if isempty(self.time)
-    error('missing a property: time');
-end
 
-if length(self.time)~=length(self.value)
-    error('time and serires have different length');
-end
 
 
 [time,int_year,int_month]=gdut_uniform_time(trange)  ;
 for k=1:length(self)
+    if isempty(self(k).time)
+        error('missing a property: time');
+    end
+
+    if length(self(k).time)~=length(self(k).value)
+        error('time and serires have different length');
+    end
+
     ser=[self(k).time(:),self(k).value(:) ];
     [tt1,X3]=ssa_ys(ser,trange);
-    
+
     self2(k)=sol_ts(X3,self(k).unit);
     self2(k).set_time(tt1,int_year,int_month);
 

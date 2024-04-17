@@ -10,7 +10,7 @@ classdef sol_filter<handle
         recn            %重构次数
         wnm             %权重系数wnm
 
-        destrip_flag       %去相关滤波标记
+        destrip_flag    %去相关滤波标记
         PnMl_n          %拟合阶数
         PnMl_m          %PnMl开始拟合次数
         %================

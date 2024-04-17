@@ -1,4 +1,4 @@
-function [h]=show_nps(self,tt)                               
+function [h,sc_degre]=show_nps(self,tt)                               
 % h=show_shc_degree_sigma(self,tt)
 % h=self.show_shc_degree_sigma(tt)
 % show the noise degree amplitude of noise for a given time index (tt)  

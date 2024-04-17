@@ -42,7 +42,7 @@ classdef sol_shc<sol
         [h,sc_degre ]=show_sps_perm(self,tt) 
         [h,sc_degre ]=show_sps_pern(self,tt) ;
         [h,sc_degre]=show_sps(self,tt);
-        [h]=show_nps(self,tt);
+        [h,sc_degre]=show_nps(self,tt);
         % show spherical harmonic spectrum
         h=show_shc(self,tt);
         h=show_shc_sigma(self,tt);
