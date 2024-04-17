@@ -107,7 +107,7 @@ if nargin>=2
                         self.rn=varargin{4};
                         self.rm=varargin{4};
                     otherwise
-                        error('wrong');
+                        error('wrong: 基础滤波器不正确');
                 end
             end
 

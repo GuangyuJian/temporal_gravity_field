@@ -17,7 +17,7 @@ classdef sol_filter<handle
         %对接冯伟老师的参数部分
         fw_destrip_type
         ddk_type double
-%         fw_destrip_flag
+%       fw_destrip_flag
     end
     %%
     methods
@@ -60,8 +60,8 @@ classdef sol_filter<handle
         self=pre_destrip_fw(self,option); %the destriping method from fengwei toolbox
         self=pre_destrip_ddk(self,option)
         %% show the filter function
-        h=wnm_plot(self);
-        h=wnm_imagesc(self);
+        [h]=wnm_plot(self);
+        [h]=wnm_imagesc(self);
         [h]=wn_plot(self);
         [h]=wn_semilogy(self);
     end

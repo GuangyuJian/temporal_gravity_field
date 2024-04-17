@@ -12,7 +12,6 @@ switch class(objl)
                 value=vl*vr(:);
                 unit=objl.unit;
                 objnew=sol_shc(value,objl.unit,objl.fir,objl.ceta);
-
         end
 
     case 'sol_sf'

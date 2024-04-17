@@ -28,6 +28,11 @@ function [wnm,wn]=w_gauss(max_degree,rf,radius_earth)
 %
 % r1=rf;%%Unit:km
 % weights per degree
+arguments
+    max_degree      (1,1) {mustBeNumeric}
+    rf              (1,1) {mustBeNumeric}
+    radius_earth    (1,1) {mustBeNumeric}
+end
 
 for n=0:max_degree
     wn(n+1)=exp(-((n)*rf/radius_earth)^2/(4*log(2)));

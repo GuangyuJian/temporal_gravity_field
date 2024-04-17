@@ -44,7 +44,6 @@ if length(objl)==1&length(objr)==1
                     ceta=objl.ceta;
                     unit=objl.unit;
                     objnew=sol_sf(value,unit,fir,ceta);
-
             end
             %%
         case 'sol_shc'

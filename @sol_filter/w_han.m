@@ -1,18 +1,18 @@
-function [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)                               
-% [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)                              
+function [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)
+% [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)
 % a static method from class named @sol_filter
-% usage:sol_filter.w_han                
+% usage:sol_filter.w_han
 %**************************************************************************
-% In   :    
+% In   :
 %       max_degree      [1x1] maximum  degree (int)
-%       radius_earth    [1x1] radius of earth (km)    
-%       r0;             [1 x 1]  parameter of han smoothing, unit: km 
-%       r1;             [1 x 1]  parameter of han smoothing, unit: km 
-%       m1;             [1 x 1]  parameter of han smoothing, unit: km                                          
-% Out  :    
-%       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
+%       radius_earth    [1x1] radius of earth (km)
+%       r0;             [1 x 1]  parameter of han smoothing, unit: km
+%       r1;             [1 x 1]  parameter of han smoothing, unit: km
+%       m1;             [1 x 1]  parameter of han smoothing, unit: km
+% Out  :
+%       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]
 %               weighted coefficients storaged as clm-format
-%       wcs     [(Nmax+1)  x  (Nmax+1)/2] 
+%       wcs     [(Nmax+1)  x  (Nmax+1)/2]
 %               weighted coefficients storaged as cs-format
 %----------------------------------------------------------------------------
 
@@ -23,11 +23,18 @@ function [wnm,w_han]=w_han(max_degree,R,r0,r1,m1)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-% Ref: Han, SC et al. 2005. 
-% ‘Non-Isotropic Filtering of GRACE Temporal Gravity 
-% for Geophysical Signal Enhancement’. 
+% Ref: Han, SC et al. 2005.
+% ‘Non-Isotropic Filtering of GRACE Temporal Gravity
+% for Geophysical Signal Enhancement’.
 % GEOPHYSICAL JOURNAL INTERNATIONAL 163(1): 18–25.
-%**************************************************************************  
+%**************************************************************************
+arguments
+    max_degree  (1,1) {mustBeNumeric}
+    R           (1,1) {mustBeNumeric}
+    r0          (1,1) {mustBeNumeric}
+    r1          (1,1) {mustBeNumeric}
+    m1          (1,1) {mustBeNumeric}
+end
 
 if nargin==2
     disp('defval the parameter in Han')
@@ -40,7 +47,7 @@ for m=0:max_degree
     rtemp=(r1-r0)/m1*m+r0;
     r_ml=rtemp*1000;
     for l=0:max_degree
-        
+
         if m>l
             w_han(l+1,m+1)=nan;
         else
@@ -55,8 +62,8 @@ for l=0:max_degree
         wnm(st+m,1)=w_han(l+1,m+1);
     end
 end
-                             
-                              
-                              
+
+
+
 end
 

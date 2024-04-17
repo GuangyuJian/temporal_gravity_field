@@ -6,7 +6,7 @@ clc;
 %%
 clc;
 myf=sol_filter(60); %grace  do/60
-%leo    do/40
+                    %leo    do/40
 %%
 % myf.pre_destrip(1,3,10); 1
 % % myf.pre_destrip_fw('chenp3m6');2

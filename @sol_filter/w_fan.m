@@ -1,15 +1,15 @@
-function [wnm]=w_fan(max_degree,rf,radius_earth)                               
-% [wnm]=w_fan(max_degree,rf,radius_earth)                                   
+function [wnm]=w_fan(max_degree,rf,radius_earth)
+% [wnm]=w_fan(max_degree,rf,radius_earth)
 % a static method from class named @sol_filter
 % usage:sol_filter.w_fan
 %**************************************************************************
-% In   : 
+% In   :
 %       max_degree      [1x1] maximum  degree (int)
 %       rf              [1x1] radius of Fan smoothing (km)
-%       radius_earth    [1x1] radius of earth (km)                    
-% Out  :    
-%       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]   
-%               weighted coefficients storaged as clm-format                                   
+%       radius_earth    [1x1] radius of earth (km)
+% Out  :
+%       wnm     [(Nmax+2)*(Nmax+1)/2 x 1]
+%               weighted coefficients storaged as clm-format
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian
@@ -19,13 +19,18 @@ function [wnm]=w_fan(max_degree,rf,radius_earth)
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
-% Ref:  Zhang, Zi-Zhan, B. F. Chao, Yang Lu, and Hou-Tse Hsu. 2009. 
-% ‘An Effective Filtering for GRACE Time-Variable Gravity: Fan Filter’. 
+% Ref:  Zhang, Zi-Zhan, B. F. Chao, Yang Lu, and Hou-Tse Hsu. 2009.
+% ‘An Effective Filtering for GRACE Time-Variable Gravity: Fan Filter’.
 % GEOPHYSICAL RESEARCH LETTERS.
 %**************************************************************************
 
 % r1=rf*1000;%%Unit:km
 % weights per degree
+arguments
+    max_degree      (1,1) {mustBeNumeric}
+    rf              (1,1) {mustBeNumeric}
+    radius_earth    (1,1) {mustBeNumeric}
+end
 
 for n=0:max_degree
     wn(n+1)=exp(-((n)*rf/radius_earth)^2/(4*log(2)));
@@ -37,8 +42,8 @@ for n=0:max_degree
     for m=0:n
         wnm(st+m,1)=wn(n+1)*wn(m+1);
     end
-end                                               
-                              
-                              
+end
+
+
 end
 

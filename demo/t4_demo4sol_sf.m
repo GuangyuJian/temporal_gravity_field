@@ -6,13 +6,12 @@ clear;
 %%
 clear
 load('alpha_my_basin.mat');
-% load('alpha_my_shc.mat');
 load('alpha_csr_my_shc.mat')
 load('alpha_my_filter.mat');
 
 %% 从sol_shc对象计算球面函数
 %  即创建sol_sf对象
-myf.set_filter('gauss',0);
+myf.set_filter('gauss',300);
 myf.destrip_flag=0;
 [sf]=csr_shc.shc2sf(myf,my_basin,'mc');
 %% %有一定范围 默认显示全球
@@ -25,10 +24,9 @@ for tt=1:1:6
 end
 
 %%
-sf.sf2harmonic([2001,2021],my_basin.mask);
-imagesc(sf.harmonic(:,:,5),[-50 50])
+
 %%
-sf.sf2harmonic([2001,2010]);
+sf.get_harmonic;
 
 figure;
 sf.harmonic2map('aa',[0 150]);

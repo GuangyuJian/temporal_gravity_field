@@ -135,7 +135,6 @@ else
             objnew(k)=objl(k)-objr(k);
         end
     elseif length(objl)==1
-
         for k=1:length(objr)
             objnew(k)=objl-objr(k);
         end
