@@ -1,26 +1,28 @@
-function []=gca_label(x,y)                               
-%                              
+function []=gca_label(x,y)
+%
 %----------------------------------------------------------------------------
-% In   :    
-%                              
-% Out  :    
-%                              
+% In   :
+%
+% Out  :
+%
 %----------------------------------------------------------------------------
-                              
-                              
+
+
 % Authors: Karl Jian (K.J)
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
 % date: 2024-01-17
 % MATLAB_version: 9.12.0.1884302 (R2022a)
-% Encode: UTF-8  
+% Encode: UTF-8
 %**************************************************************************
 %Ref:
 %**************************************************************************
+arguments
+    x  {mustBeText}
+    y  {mustBeText}
+end
 xlabel(x);
-ylabel(y);                              
-                              
-                             
-                              
+ylabel(y);
+
 end
 

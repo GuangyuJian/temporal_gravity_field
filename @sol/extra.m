@@ -66,22 +66,21 @@ switch length(varargin)
         if strcmp(varargin{1},'one')||strcmp(varargin{1},'ym')
             switch length(varargin)
                 case 3
-                    y1=varargin{2};
+                    y1=varargin{2};  
                     m1=varargin{3};
                     if length(y1)~=1||length(m1)~=1
                         error('! wrong argument :one or ym');
                     end
-                case 2
-
-                    ym=varargin{2};
-                    if length(ym)~=1
-                        error('! wrong argument :one or ym');
-                    else
-                        y1=ym1(1);
-                        m1=ym1(2);
-                    end
+%                 case 2
+%                     ym=varargin{2};
+%                     if length(ym)~=1
+%                         error('! wrong argument :one or ym');
+%                     else
+%                         y1=ym1(1);
+%                         m1=ym1(2);
+%                     end
                 otherwise
-                    error('length varagin <2');
+                    error('length varagin <3');
             end
             ly1=(self.int_year==y1);
             lm1=(self.int_month==m1);

@@ -4,12 +4,18 @@ function [h]=imagesc_tt(self,varargin)
 %           self.imagesc_tt('ym',int_year,int_month); recommend!
 %           self.imagesc_tt('one',int_year,int_month); recommend!
 %           self.imagesc_tt(int_location);
+%       if you wanna adjust your show_range,please change the show_range of
+%       self(@sol_sf) outside prior to inputting self(@sol_sf) into this function.
 %----------------------------------------------------------------------------
 % In   : self   [1x1]   @sol_sf
-%        varargin
+%        varargin           optional
+%                       ('ym',int_year,int_month); recommend!
+%                       ('one',int_year,int_month); recommend!
+%                       (int_location);
+%                       int_year; int_month; int_location [1x1] double
+%                       int_location means the location of your selection
 % 
 % Out  : h      [1x1]   handle of gca
-%
 %----------------------------------------------------------------------------
 
 % Authors: Karl Jian (K.J)
@@ -34,8 +40,8 @@ if nargin>1
             %  self.imagesc_tt(int_location);
             tt=varargin{1};
         case 3
-            %           self.imagesc_tt('ym',int_year,int_month); recommend!
-            %           self.imagesc_tt('one',int_year,int_month); recommend!
+            % self.imagesc_tt('ym',int_year,int_month); recommend!
+            % self.imagesc_tt('one',int_year,int_month); recommend!
             if strcmp(varargin{1},'ym')||strcmp(varargin{1},'one')
                 iy=varargin{2};
                 im=varargin{3};
@@ -83,8 +89,8 @@ if ~isempty(self.time)
     end
     title(titlestr);
 end
-xlabel('经度（°）');
-ylabel('纬度（°）');
+xlabel('经度 [°]');
+ylabel('纬度 [°]');
 grid on;
 box on;
 switch self.unit
