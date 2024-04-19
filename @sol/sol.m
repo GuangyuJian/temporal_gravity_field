@@ -32,6 +32,8 @@ classdef sol<handle
         %%
         [self2]=extra(self,varargin);
         [self]=get_harmonic(self,varargin);
+        %% check
+         [ym_char,ym_flag]=check_ym(self,tt)
         %% math
         objnew  = plus      (objl,objr); 
         objnew  = minus     (objl,objr);

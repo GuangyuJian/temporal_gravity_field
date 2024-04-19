@@ -1,13 +1,13 @@
 classdef sol_shc<sol
 
     properties
-        type char  {mustBeMember(type,{'gc','mc','gdc'})}='gc';
-        unit  char  {mustBeMember(unit,{'none','ewh (mm)','uGal'})}='none';
-        storage_type(1,:) char {mustBeMember(storage_type,{'shc'})}='shc';
+        type                char  {mustBeMember(type,{'gc','mc','gdc'})}='gc';
+        unit                char  {mustBeMember(unit,{'none','ewh (mm)','uGal'})}='none';
+        storage_type(1,:)   char {mustBeMember(storage_type,{'shc'})}='shc';
 
-        maxn double
-        storage struct
-        shc_sigma  struct
+        maxn        (1,1)   double
+        storage             struct
+        shc_sigma           struct
     end
 
     %%
@@ -43,27 +43,30 @@ classdef sol_shc<sol
         [h,sc_degre ]=show_sps_pern(self,tt) ;
         [h,sc_degre]=show_sps(self,tt);
         [h,sc_degre]=show_nps(self,tt);
+
         % show spherical harmonic spectrum
         h=show_shc(self,tt);
         h=show_shc_sigma(self,tt);
         [h,csnm]=show_shct(self,n,m,type);
+
         % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type);
         [h]=show_shc_ref(obj1,obj2)
         %% transfer
-        [sf]=shc2sf(sol_shc,sol_filter,study_basin,type);
-        self=change_type(self,unit);
+        [mysf]=shc2sf(myshc,myf,myb,type);
         [myvsf]=vshc2sf(myvshc,myf,myb,type);
+        self=change_type(self,unit);
+
         %info
         %% math
 %         objnew = plus(objl,objr);
 %         objnew = minus(objl,objr);
 %         objnew = mean(obj1,ts,te);
         [obj2]=truncate(obj1,maxnnew);
-         [obj2]=truncate_m(obj1,maxm)                      
-        objnew = mtimes(objl,objr);
-        objnew = mrdivide(objl,objr);
-%         [self] = de_bg(self,ts,te);
+        [obj2]=truncate_m(obj1,maxm)                      
+%         objnew = mtimes(objl,objr);
+%         objnew = mrdivide(objl,objr);
+%       [self] = de_bg(self,ts,te);
     end
 
     methods(Static)

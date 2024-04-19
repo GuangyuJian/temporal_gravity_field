@@ -27,15 +27,7 @@ function [h,sc_degre ]=show_sps_perm(self,tt)
 maxn=self.maxn;
 tempc=self.storage(tt).cnm;
 temps=self.storage(tt).snm;
-
-f=0;
-for n=0:maxn
-    for m=0:n
-        f=f+1;
-        nn(f,1)=n;
-        mm(f,1)=m;
-    end
-end
+[nn,mm]=get_nnmm(maxn); %modify by kj 20240419
 clm=[nn mm tempc temps];
 
 
