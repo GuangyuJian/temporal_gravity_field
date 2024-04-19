@@ -21,7 +21,5 @@ for k=1:length(myvshc)
     myvsf(k)=shc2sf(myvshc(k),myf,myb,type);
 end
 
-
-
 end
 

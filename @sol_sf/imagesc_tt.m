@@ -35,7 +35,6 @@ ceta=self.ceta;
 if nargin>1
 
     switch length(varargin)
-
         case 1
             %  self.imagesc_tt(int_location);
             tt=varargin{1};
@@ -47,7 +46,6 @@ if nargin>1
                 im=varargin{3};
                 lm1=(self.int_month==im);
                 ly1=(self.int_year==iy);
-
                 tt=find(lm1.*ly1==1);
             else
                 error('! wrong argument ');
