@@ -31,6 +31,7 @@ shc=myshc.storage;
 
 %% destriping and scaling
 shc=in_destriping(shc,myf);
+% shctemp=shc;
 shc=in_scale(shc,maxn,type);
 
 %% prepare Ylm (spherical basis function)
@@ -96,6 +97,32 @@ switch myf.destrip_flag
         [shc_ddk]=storage_shct2ddk(shc,maxn);
         dataDDK=gmt_destriping_ddk(myf.ddk_type,shc_ddk);
         shc=storage_ddk2shct(dataDDK);
+    case 4 %mcf:multi-channel filter
+    if myf.maxn==60
+        
+        myshctemp=sol_shc(shc,myf.maxn,'shc','gc');
+        switch myf.mcf_destrip_type
+            case {'SSAS','ssas'}
+                [myshctemp]=gdut_external_ssas(myshctemp);
+            case {'MVMDS','mvmds'}
+%                 mcf_par=myf.mcf_par;
+%                 kmax=mcf_par.kmax;
+%                 alpha=mcf_par.alpha;
+%                 fk=mcf_par.fk;
+%                 [myshctemp]=gdut_external_mvmds(myshctemp,kmax,alpha,fk);
+                [myshctemp]=gdut_external_mvmds(myshctemp);
+            case {'VMDS','vmds'}
+                mcf_par=myf.mcf_par;
+                kmax=mcf_par.kmax;
+                alpha=mcf_par.alpha;
+                fk=mcf_par.fk;
+                [myshctemp]=gdut_external_vmds_wk(myshctemp,kmax,alpha,fk);
+        end
+        shc=myshctemp.storage;
+    else
+        error('the current algorithm only can be adopted for do60 product');
+    end
+
     otherwise
         disp('destriping is none');
 end
@@ -129,6 +156,8 @@ switch myf.destrip_flag
         mysf.append_info(['destrip  type:' 'fw' num2str(myf.fw_destrip_type) ';']);
     case 3
         mysf.append_info(['destrip  type:' 'ddk' num2str(myf.ddk_type) ';']);
+    case 4
+        mysf.append_info(['destrip  type:' 'mcf' num2str(myf.mcf_destrip_type) ';']);
     otherwise
         mysf.append_info(['destrip  type:' 'none;']);
 end

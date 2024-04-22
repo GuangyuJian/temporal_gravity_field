@@ -33,7 +33,7 @@ my_addpath('E:\github_desktop\test\external_module\GRACE_Filter_VMDS-main\');
 % alpha=500;
 % loc=[1:4];
 %%
-for tt=1:length(sf.time)
+for tt=1:size(sf.value,3)
     tt
     [ewhvmd,~,~,info(tt)] =vmd_grace_mass_field_wk(sf.value(:,:,tt),k_max,alpha);
     wk=info(tt).CentralFrequencies;

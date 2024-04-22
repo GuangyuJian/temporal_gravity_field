@@ -16,6 +16,8 @@ classdef sol_filter<handle
         %================
         %对接冯伟老师的参数部分
         fw_destrip_type
+        mcf_destrip_type
+        mcf_par
         ddk_type double
 %       fw_destrip_flag
     end

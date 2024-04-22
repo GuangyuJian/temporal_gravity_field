@@ -29,7 +29,7 @@ alpha=500;
 ds_flag=1;
 omega_max=0.1;
 %%
-for tt=1:length(sf.time)
+for tt=1:size(sf.value,3)
     tt
     [signal,~]=my_MVMDS_omega_ou(sf.value(:,:,tt),kk,alpha,ds_flag,omega_max);
     obs_vmd(:,:,tt)=signal;

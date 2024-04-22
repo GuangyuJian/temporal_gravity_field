@@ -11,13 +11,14 @@ load('alpha_my_filter.mat');
 
 %% 从sol_shc对象计算球面函数
 %  即创建sol_sf对象
-myf.set_filter('gauss',300);
-myf.destrip_flag=0;
+my_basin=study_basin(1);
+myf=sol_filter(60);
+myf.set_filter('fan',300);
 [sf]=csr_shc.shc2sf(myf,my_basin,'mc');
 %% %有一定范围 默认显示全球
 sf.show_range=[105 120 20 40];
 %% 需要下载m_map工具箱
-for tt=1:1:6
+for tt=1:1:2
     nexttile;
     sf.obs2map_tt(tt,[-200 200])
     title([ sf.int_year(tt)  sf.int_month(tt) ])

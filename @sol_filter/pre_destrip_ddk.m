@@ -1,4 +1,4 @@
-function [self]=pre_destrip_ddk(self,options)
+function [self]=pre_destrip_ddk(self,option)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -17,13 +17,14 @@ function [self]=pre_destrip_ddk(self,options)
 %**************************************************************************
 %Ref:
 %**************************************************************************
-if length(options)~=1
-error('!');
+
+if length(option)~=1
+    error('!');
 end
 
-switch   options
+switch   option
     case {1,2,3,4,5,6,7,8}
-        self.ddk_type=options;
+        self.ddk_type=option;
     otherwise
         error('! wrong ddk');
 end

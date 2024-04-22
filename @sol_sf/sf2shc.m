@@ -71,7 +71,7 @@ switch mysf.unit
 end
 % set time info
 my_shc.change_type(type);
-my_shc.set_time(mysf.time,mysf.int_year,mysf.int_month)
+my_shc.set_time(mysf.time,mysf.int_year,mysf.int_month);
 my_shc.append_info('----------------------');
 my_shc.append_info([mysf.info]);
 
