@@ -1,10 +1,26 @@
 function [self]=pre_destrip_mcf(self,varargin)
-%
-%----------------------------------------------------------------------------
-% In   :
-%
+% [self]=pre_destrip_mcf(self,varargin)
+%--------------------------------------------------------------------------
+% In   : self   [1x1] @sol_filter
+%           optional:
+% ----------------------using default parameter----------------------------
+%                       self.pre_destrip_mcf('SSAS');
+%                       self.pre_destrip_mcf('ssas');
+%                       self.pre_destrip_mcf('MVMDS');
+%                       self.pre_destrip_mcf('mvmds');
+%                       self.pre_destrip_mcf('VMDS');
+%                       self.pre_destrip_mcf('vmds'); 
+% ----------------------using user-definded parameter----------------------
+%                       self.pre_destrip_mcf('VMDS',kmax,alpha,fk);
+%                       self.pre_destrip_mcf('vmds',kmax,alpha,fk);
+% 
+%       notes:
+%       kmax    [1x1] double    the total number of mode(unitless) 
+%       alpha   [1x1] double    the alpha factor (unitless)
+%       fk      [1x1] double    the cut-off frequency (Hz)
+%       
 % Out  :
-%
+%       self [1x1] @sol_filter
 %----------------------------------------------------------------------------
 
 

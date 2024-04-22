@@ -60,7 +60,8 @@ classdef sol_filter<handle
         self=set_filter(self,varargin);%set the filter parameter
         self=pre_destrip(self,destrip_flag,PnMl_n,PnMl_m);%our pnml method for gdut project
         self=pre_destrip_fw(self,option); %the destriping method from fengwei toolbox
-        self=pre_destrip_ddk(self,option)
+        self=pre_destrip_ddk(self,option);
+        self=pre_destrip_mcf(self,varargin);
         %% show the filter function
         [h]=wnm_plot(self);
         [h]=wnm_imagesc(self);
