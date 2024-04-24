@@ -13,7 +13,7 @@ function [self]=pre_destrip_mcf(self,varargin)
 % ----------------------using user-definded parameter----------------------
 %                       self.pre_destrip_mcf('VMDS',kmax,alpha,fk);
 %                       self.pre_destrip_mcf('vmds',kmax,alpha,fk);
-% 
+%-------------------------------------------------------------------------- 
 %       notes:
 %       kmax    [1x1] double    the total number of mode(unitless) 
 %       alpha   [1x1] double    the alpha factor (unitless)

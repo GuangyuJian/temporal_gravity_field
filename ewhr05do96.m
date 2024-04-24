@@ -1,4 +1,4 @@
-function [h,csnm]=show_shct(self,n,m,type)
+function [sf]=ewhr05do96(myshc)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -9,33 +9,23 @@ function [h,csnm]=show_shct(self,n,m,type)
 
 
 % Authors: Karl Jian (K.J)
+% address: Sun Yat-sen University   (SYSU)
+% email: temp~~
+% supervisor: Min zhong
+%----------------------------------------------------------------------------
 % address: Guangdong University of Technology(GDUT)
 % email: gyjian@mail2.gdut.edu.cn
-% date: 2024-03-22
+% supervisor: Chuang Xu
+% date: 2024-03-28
 % MATLAB_version: 9.12.0.1884302 (R2022a)
 % Encode: UTF-8
 %**************************************************************************
 %Ref:
 %**************************************************************************
 
-loc= get_nm(n,m);
 
-sht=storage_shct2sht(self.storage);
-nl=length(sht)/2;
-
-snm=sht(nl+loc,:);
-cnm=sht(loc,:);
-switch type
-
-    case 'c'
-        h=plot(self.time,cnm);
-        csnm=cnm;
-    case 's'
-        h=plot(self.time,snm);
-        csnm=snm;
-    otherwise
-        error('c or s');
-end
-
+myf=sol_filter(96);
+myb=study_basin(0.5);
+sf=vshc2sf(myshc,myf,myb,'mc');
 end
 

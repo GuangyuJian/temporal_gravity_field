@@ -63,7 +63,8 @@ classdef sol_shc<sol
 %         objnew = minus(objl,objr);
 %         objnew = mean(obj1,ts,te);
         [obj2]=truncate(obj1,maxnnew);
-        [obj2]=truncate_m(obj1,maxm)                      
+        [obj2]=truncate_m(obj1,maxm)    
+        [obj2]=truncate_m1_m2(obj1,maxm)          
 %         objnew = mtimes(objl,objr);
 %         objnew = mrdivide(objl,objr);
 %       [self] = de_bg(self,ts,te);
