@@ -24,7 +24,7 @@ end
 
 if filling_flag==1
 
-selftemp=self.filling;
+selftemp=self.filling(trange);
 else
     y1=self.int_year(1);
     m1=self.int_month(1);

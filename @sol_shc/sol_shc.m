@@ -46,17 +46,22 @@ classdef sol_shc<sol
 
         % show spherical harmonic spectrum
         h=show_shc(self,tt);
-        h=show_shc_sigma(self,tt);
+%         h=show_shc_sigma(self,tt);
+        [h]=show_shc_sigma(self,varargin)    ;
         [h,csnm]=show_shct(self,n,m,type);
-
+        [scrms]=show_shc_rms(self);
+        
         % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type);
         [h]=show_shc_ref(obj1,obj2)
+
+%         [h,sc_degre2]=show_spst(self) 20240502
+        [h,sc_degre2,time,kk2]=show_spst(self)
         %% transfer
         [mysf]=shc2sf(myshc,myf,myb,type);
         [myvsf]=vshc2sf(myvshc,myf,myb,type);
         self=change_type(self,unit);
-
+         [sc_degre]=sps_pern(self,tt)                  
         %info
         %% math
 %         objnew = plus(objl,objr);

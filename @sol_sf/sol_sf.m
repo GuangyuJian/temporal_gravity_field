@@ -40,6 +40,7 @@ classdef sol_sf<sol
         [ ]=obs2map_Robinson_fs(ewh,value,range,titlename,fs);
         [h]=harmonic2map(self,varargin)
         [h,y1]=show_slice(self,tt,slice_fir,slice_ceta,plot_flag);
+        [yall]=show_slice_t(mysf,slice_fir,slice_ceta);
         %% math        
 %         objnew = plus(objl,objr);
 %         objnew = minus(objl,objr);

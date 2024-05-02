@@ -85,10 +85,7 @@ switch flag
         xlabel('纬度（°）');
     case 1
         h(1)=plot(slice_fir,yall,'LineWidth',2);
-%         hold on;
-%         h(2)=plot(slice_fir,yland,'Marker','o','LineWidth',2);
-%         hold on;
-%         h(3)=plot(slice_fir,yocean,'Marker','+');
+
         xlabel('经度（°）');
     case 2
         sf=deg2rad(slice_fir-slice_fir(1));
@@ -100,7 +97,7 @@ switch flag
         h=plot(sall,yall);
             xlabel('公里');
         elseif plot_flag==1
-            h=plot(yall,sall);
+            h=plot(slice_fir,yall);
             ylabel('公里');
         end
 end

@@ -1,4 +1,4 @@
-function [h]=show_shc_sigma(self,tt)                               
+function [h]=show_shc_sigma(self,varargin)                               
 % h=show_shc(self,tt)
 % h=self.show_shc(tt)
 % show the sigma of shc for a given time index (tt) in sc-format 
@@ -18,7 +18,40 @@ function [h]=show_shc_sigma(self,tt)
 % Encode: UTF-8
 %**************************************************************************
 %Ref:
- maxn=self.maxn;
+if nargin>1
+
+    switch length(varargin)
+        case 1
+            %  self.imagesc_tt(int_location);
+            tt=varargin{1};
+        case 3
+            % self.imagesc_tt('ym',int_year,int_month); recommend!
+            % self.imagesc_tt('one',int_year,int_month); recommend!
+            if strcmp(varargin{1},'ym')||strcmp(varargin{1},'one')
+                iy=varargin{2};
+                im=varargin{3};
+                lm1=(self.int_month==im);
+                ly1=(self.int_year==iy);
+                tt=find(lm1.*ly1==1);
+            else
+                error('! wrong argument ');
+            end
+        otherwise
+            error('wrong input');
+    end
+
+elseif nargin==1
+    disp('show the first one');
+    tt=1;
+end
+
+if isempty(tt)
+    disp([num2str(iy) '-' num2str(im) 'is missing']);
+    error('target sf is not here')
+end
+
+
+maxn=self.maxn;
 tempc=self.shc_sigma(tt).cnm_sigma;
 temps=self.shc_sigma(tt).snm_sigma;
 
