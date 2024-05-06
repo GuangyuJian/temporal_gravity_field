@@ -19,7 +19,8 @@ function [mean_an]=mean_annual(self,trange,filling_flag)
 %**************************************************************************
 if nargin==2
 filling_flag=2;
-
+else
+    error('need trange');
 end
 
 if filling_flag==1
@@ -56,7 +57,7 @@ if mod(length(lc),12)==0
         mean_an(mm,1)=mean(tws(lc));
     end
 else
-    error('非整数年');
+    error('非整数年 请输入2002.04-2022.03 或者2002.01-2021.12');
 
 end
 mean_an=mean_an-mean(mean_an);

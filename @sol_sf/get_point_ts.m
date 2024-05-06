@@ -38,6 +38,7 @@ for j=1:length(mysf)
 
     % X=X(:);
     % Y=Y(:);
+    clear y1;
     for k=1:ntime
         temp=tempsf.value(lc,lf,k);
         Z=temp;

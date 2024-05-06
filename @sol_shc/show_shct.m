@@ -1,4 +1,4 @@
-function [h,csnm]=show_shct(self,n,m,type)
+function [h,time,csnm]=show_shct(self,n,m,type)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -36,6 +36,9 @@ switch type
     otherwise
         error('c or s');
 end
-
+grid on;
+box on;
+set(gca,'FontSize',10);
+time=self.time;
 end
 
