@@ -50,7 +50,7 @@ classdef sol_shc<sol
         [h]=show_shc_sigma(self,varargin)    ;
         %         [h,csnm]=show_shct(self,n,m,type); 20240503
         [h,time,csnm]=show_shct(self,n,m,type);
-        [scrms]=show_shc_rms(self);
+        [scrms,scrms2]=show_shc_rms(self);
         
         % show  spectrum for a given spherical harmonic order
         [h]=show_nss(self,tt,mm,type);

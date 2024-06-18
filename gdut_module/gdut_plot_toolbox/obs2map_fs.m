@@ -21,6 +21,7 @@ d=180/size(ewh,1);
 % if isempty(range)
 % defval('range',[-180 180 -90 90]);
 % end
+
 if ischar(range)||isstring(range)
     switch range
 
@@ -28,6 +29,7 @@ if ischar(range)||isstring(range)
 %             range=[-179.5 179.5 -89.5 89.5];
             range=[-180+d/2 180-d/2 -90+d/2 90-d/2];
             rangef='global'
+
     end
 end
 % fs=12;
@@ -73,6 +75,10 @@ caxis(value)
 shading flat;
 bgcolor=[.2 .65 1];
 bgcolor='none'
+if ~exist('rangef')
+rangef=[''];
+end
+
 if strcmp(rangef,'global')
     m_grid('box','on',...
         'tickdir','in',...   'linestyle','none',...

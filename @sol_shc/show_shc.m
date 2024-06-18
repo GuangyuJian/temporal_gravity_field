@@ -67,6 +67,6 @@ end
 
 
 caxis([-15 -9])
-
+ger_colorbar('log_{10}(V)');
 end
 

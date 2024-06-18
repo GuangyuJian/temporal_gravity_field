@@ -38,15 +38,18 @@ function [self]=get_harmonic(self,varargin)
 %**************************************************************************
 %Ref:
 %**************************************************************************
-tt=self.time;
+
+for k=1:length(self)
+tempself=self(k);
+tt=tempself.time;
 
 
-switch class(self)
+switch class(tempself)
 
     case 'sol_sf'
         %         [ou]=sf2harmonic(self,varargin);
         if nargin==1
-            [ou]= fit_harmonic_sf(tt,self.value);
+            [ou]= fit_harmonic_sf(tt,tempself.value);
         elseif nargin==2
 
             trange=varargin{1};
@@ -55,7 +58,7 @@ switch class(self)
 
             lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
-            [ou]= fit_harmonic_sf(tt,self.value(:,:,lc));
+            [ou]= fit_harmonic_sf(tt,tempself.value(:,:,lc));
         elseif nargin==3
             trange=varargin{1};
 
@@ -65,14 +68,14 @@ switch class(self)
 
             lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
-            [ou]= fit_harmonic_sf_mask(tt,self.value(:,:,lc),mask);
+            [ou]= fit_harmonic_sf_mask(tt,tempself.value(:,:,lc),mask);
 
         end
 
     case 'sol_ts'
 
         if nargin==1
-            [temp]= fit_harmonic_ts(tt,self.value);
+            [temp]= fit_harmonic_ts(tt,tempself.value);
             ou=temp;
         elseif nargin==2
             trange=varargin{1};
@@ -81,11 +84,11 @@ switch class(self)
 
             lc=find(tt>ymd1&tt<ymd2);
             tt=tt(lc);
-            [temp]= fit_harmonic_ts(tt,self.value(lc));
+            [temp]= fit_harmonic_ts(tt,tempself.value(lc));
             ou=temp;
         end
 end
-self.harmonic=ou;
-
+self(k).harmonic=ou;
+end
 end
 

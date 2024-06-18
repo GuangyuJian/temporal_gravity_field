@@ -1,4 +1,4 @@
-function [sol_shc_mvmds]=gdut_external_mvmds(sol_shc_in)
+function [sol_shc_mvmds]=gdut_external_mvmds(sol_shc_in,k_max,alpha,wk_max)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -24,14 +24,17 @@ basin=study_basin(1);
 [sf]=shc2sf(sol_shc_in,myf,basin,'mc');
 %% VMDS滤波
 my_addpath('E:\github_desktop\test\external_module\GRACE_Filter_MVMDS-main\');
-kk=6;
+if nargin==1
+k_max=6;
 alpha=500;
+wk_max=0.1;
+end
+
 ds_flag=1;
-omega_max=0.1;
 %%
 for tt=1:size(sf.value,3)
     tt
-    [signal,~]=my_MVMDS_omega_ou(sf.value(:,:,tt),kk,alpha,ds_flag,omega_max);
+    [signal,~]=my_MVMDS_omega_ou(sf.value(:,:,tt),k_max,alpha,ds_flag,wk_max);
     obs_vmd(:,:,tt)=signal;
 end
 

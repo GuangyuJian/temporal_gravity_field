@@ -1,4 +1,4 @@
-function[signal,mode]=my_MVMDS_omega_ou(ewhnone,maxnum,penaly_factor,ds_flag,omega_ou_max)
+function[signal,mode,omega_ou]=my_MVMDS_omega_ou(ewhnone,maxnum,penaly_factor,ds_flag,omega_ou_max)
 %%
 %  This function is dedicated to decompose the input 2-d matrix and collect the wanted mode 
 %  by using a cut-off frequency omega_ou_max

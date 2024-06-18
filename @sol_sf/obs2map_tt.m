@@ -27,10 +27,11 @@ elseif nin==2
    tt=varargin{1};
     cvalue=varargin{2};
 %     titlename=varargin{3};
-
+    titlename=[];
 elseif nin==1
 
     tt=varargin{1};
+    cvalue=[-200 200];
 %     cvalue=varargin{2};
     titlename=[];
 elseif nin==0

@@ -42,7 +42,7 @@ xticklabels({-maxn:20:maxn});
 set(gca,'FontSize',12)
 set(h,'alphadata',~isnan(sc));
 ylabel('Degree (n)');
-xlabel('C<——Order (m)——>S');
+xlabel('S<——Order (m)——>C');
 
 colorbar;
 % caxis ([0 1])

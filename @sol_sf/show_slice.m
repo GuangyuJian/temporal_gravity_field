@@ -58,7 +58,7 @@ for k=1:npt
 
     temp=mysf.value(lc,lf,tt);
     Z=temp;
-    temp = interp2(X,Y,Z,fir(k),ceta(k),'nearest');
+    temp = interp2(X,Y,Z,fir(k),ceta(k),'linear');
     
     [in]=inpolygon(fir(k),ceta(k),long,lat);
 %     in

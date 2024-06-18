@@ -1,4 +1,4 @@
-function [scrms]=show_shc_rms(self)
+function [scrms,scrms2]=show_shc_rms(self)
 %
 %----------------------------------------------------------------------------
 % In   :
@@ -44,8 +44,8 @@ for tt=1:length(ntime)
 %     sc=log10(abs(sc));
 
 end
-scrms=rms(sc,3);
-scrms=log10(abs(scrms));
+scrms2=rms(sc,3);
+scrms=log10(abs(scrms2));
  scrms(scrms==0)=nan;
 
 
